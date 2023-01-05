@@ -1,7 +1,7 @@
 html,
 body {
     font-family: 'Karla', sans-serif;
-    margin:0;
+    margin: 0;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 h1 {
     font-family: sans-serif;
     font-size: 60px;
-    color:#097969;
+    color: #097969;
 }
 
 h2 {
@@ -32,12 +32,12 @@ p {
 }
 
 a:hover {
-    background-color:#ffd700;
+    background-color: #ffd700;
 }
 
 a {
-color:#097969;
-text-decoration: none;
+    color: #097969;
+    text-decoration: none;
 }
 
 li {
@@ -46,15 +46,15 @@ li {
 }
 
 button {
-  background: #ffd700;
-  border: 1px solid;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 10px;
+    background: #ffd700;
+    border: 1px solid;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
 }
 
-button a{
+button a {
     color: black;
 }
