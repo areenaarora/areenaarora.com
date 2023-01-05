@@ -8,9 +8,9 @@
 	footer {
 		display: flex;
 		align-items: center;
-		padding: 20px 10px;
+		padding: 80px 10px 20px 10px;
 		position: sticky;
-		top: 00vh;
+		top: 100vh;
 		justify-content: center;
 	}
 
