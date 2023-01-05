@@ -1,4 +1,9 @@
+<script>
+	export const prerender = true;
+</script>
+
 <title>About</title>
+
 <div class="center-content">
 	<h2>Just a bit more...</h2>
 	<p>

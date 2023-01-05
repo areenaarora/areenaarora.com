@@ -1,3 +1,7 @@
+<script>
+	export const prerender = true;
+</script>
+
 <title>Portfolio</title>
 
 <div class="center-content">
@@ -9,7 +13,8 @@
 					href="https://www.knoxnews.com/story/news/politics/elections/2022/11/14/knox-county-election-maps-show-more-democrats-year-by-year/69640296007/"
 					target="_blank"
 					rel="noreferrer"
-					>The last three midterms in Knox County show blue creeping in. Check out the maps</a>
+					>The last three midterms in Knox County show blue creeping in. Check out the maps</a
+				>
 				<br />
 				Mapped data from state House and Senate races from the past three midterm elections — 2014, 2018
 				and 2022 to show changes in voting patterns.

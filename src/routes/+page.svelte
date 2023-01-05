@@ -1,3 +1,7 @@
+<script>
+	export const prerender = true;
+</script>
+
 <title>Areena Arora</title>
 <div class="center-content">
 	<h1>Hi! I'm Areena 👋🏻</h1>
@@ -10,7 +14,8 @@
 		I'm new to the world of data-powered storytelling, and slowly paving my path at <a
 			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
 			target="_blank"
-			rel="noreferrer">Knox News.</a>
+			rel="noreferrer">Knox News.</a
+		>
 	</p>
 	<p>
 		I'm also ✨NEW✨ to coding, and learning Svelte. This website is where I showcase my best
