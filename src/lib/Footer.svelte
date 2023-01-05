@@ -15,16 +15,16 @@
 	}
 
 	footer a {
-		color: black;
+		color: #02594c;
 		text-align: center;
 		padding: 12px;
-		text-decoration: none;
+		/* text-decoration: none; */
 		font-size: 18px;
 		line-height: 25px;
 		border-radius: 4px;
 	}
 
-	footer p{
+	footer p {
 		font-size: 18px;
 	}
 

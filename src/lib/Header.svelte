@@ -15,11 +15,10 @@
 
 	.header a {
 		float: left;
-		color: black;
+		color: #02594c;
 		text-align: center;
 		padding: 12px;
-		text-decoration: none;
-		font-size: 18px;
+		font-size: 20px;
 		line-height: 25px;
 		border-radius: 4px;
 	}
