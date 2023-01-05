@@ -7,7 +7,11 @@
 
 <svelte:head>
 	{#if !dev}
-		<script defer data-domain="areenaarora.com" src="https://plausible.io/js/script.js"></script>
+		<script
+			data-api="/stats/api/event"
+			data-domain="areenaarora.com"
+			src="/stats/js/script.js"
+		></script>
 	{/if}
 </svelte:head>
 
