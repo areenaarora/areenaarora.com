@@ -6,7 +6,7 @@
 		Knoxville, Tennessee. I have a master’s degree in Data Journalism from Columbia University where
 		I took classes in environmental reporting, algorithms and mapping, among other courses. I’ve
 		also worked as a city beat reporter for a local newsroom in Idaho, worked for Reuters as a
-		publisher and at a media start-up.
+		publisher and as an editor at a media start-up.
 	</p>
 	<p>
 		In my current role as the first and only data reporter in the newsroom, I’ve worked on building
