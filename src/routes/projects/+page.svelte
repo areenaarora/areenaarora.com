@@ -39,3 +39,9 @@
     <h2>Currently working on:</h2>
     <p>Improving this website + building some cool maps!</p>
 </div>
+
+<style>
+    h2{
+        margin-bottom: 0;
+    }
+</style>
