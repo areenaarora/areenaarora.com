@@ -60,12 +60,13 @@
 			</p>
 		</li>
 	</ul>
-	<h2>Currently working on:</h2>
+	<h3>Currently working on:</h3>
 	<p>Improving this website + building some cool maps!</p>
 </div>
 
 <style>
-	h2 {
+	h3 {
 		margin-bottom: 0;
+		font-size: 36px;
 	}
 </style>
