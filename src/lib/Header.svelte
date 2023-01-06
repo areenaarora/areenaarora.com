@@ -24,7 +24,7 @@
 	}
 
 	.header a.Home {
-		font-size: 25px;
+		font-size: 22px;
 		font-weight: bold;
 	}
 

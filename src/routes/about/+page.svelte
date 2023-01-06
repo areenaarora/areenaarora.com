@@ -39,5 +39,5 @@
 		situations!
 	</p>
 	<br />
-	<button> <a href="/Areena_Arora_Resume.pdf"> Download my resume</a></button>
+	<button><a href="/Areena_Arora_Resume.pdf" target="_blank"> Download my resume</a></button>
 </div>

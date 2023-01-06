@@ -18,7 +18,6 @@
 		color: #02594c;
 		text-align: center;
 		padding: 12px;
-		/* text-decoration: none; */
 		font-size: 18px;
 		line-height: 25px;
 		border-radius: 4px;
@@ -31,6 +30,7 @@
 	footer a:hover {
 		background-color: gold;
 		color: black;
+		font-weight: bolder;
 	}
 
 	@media screen and (max-width: 500px) {
