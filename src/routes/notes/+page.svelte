@@ -16,4 +16,5 @@
 	</p>
 	<p>Stay tuned!</p>
 	<Table />
+	<p>Updated: January 18, 2023</p>
 </div>
