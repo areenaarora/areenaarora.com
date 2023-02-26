@@ -38,6 +38,19 @@
 		<li>
 			<p>
 				<a
+					href="https://www.knoxnews.com/in-depth/money/business/2023/02/07/smokies-stadium-drives-up-knoxville-old-city-real-estate-prices/69701999007/"
+					target="_blank"
+					rel="noreferrer"
+					>Investors spent big on parking lots, empty buildings, iconic lofts near Old City stadium
+				</a>
+				<br />
+				Scraped data in two stages — first from an ESRI website and then from the county property assessor's
+				website. Reported on the data, wrote and designed the story layout too!
+			</p>
+		</li>
+		<li>
+			<p>
+				<a
 					href="https://www.knoxnews.com/story/sports/college/university-of-tennessee/football/2022/12/19/tennessee-football-neyland-stadium-beer-sales-crime-data/69725142007/"
 					target="_blank"
 					rel="noreferrer"
@@ -47,18 +60,6 @@
 				<br />
 				As the city debates keeping beer sales going at the University of Tennessee's Neyland Stadium,
 				a data dive to explain how little affect beer sales actually have on rowdy incidents.
-			</p>
-		</li>
-		<li>
-			<p>
-				<a
-					href="https://www.knoxnews.com/story/news/local/2022/12/13/knoxville-among-top-cities-where-immigrants-thrive-study-shows/69712809007/"
-					target="_blank"
-					rel="noreferrer"
-					>Knoxville among top cities where immigrants thrive, study shows
-				</a>
-				<br />
-				Story based off a study from the Bush Institute.
 			</p>
 		</li>
 	</ul>
