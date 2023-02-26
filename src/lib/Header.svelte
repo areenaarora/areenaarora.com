@@ -4,7 +4,7 @@
 		<a href="/about">About</a>
 		<a href="/journalism">Journalism</a>
 		<a href="/projects">Personal Projects</a>
-		<a href="/notes">Experiments</a>
+		<a href="/experiments">Experiments</a>
 	</div>
 </div>
 
