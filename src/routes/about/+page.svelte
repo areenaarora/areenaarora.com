@@ -4,10 +4,11 @@
 	<h2>Just a bit more...</h2>
 	<p>
 		I’m a Data and Investigative Reporter at Knox News, a Gannett-owned local newspaper in
-		Knoxville, Tennessee. I have a master’s degree in Data Journalism from Columbia University where
-		I took classes in environmental reporting, algorithms and mapping, among other courses. I’ve
-		also worked as a city beat reporter for a local newsroom in Idaho, worked for Reuters as a
-		publisher and as an editor at a media start-up.
+		Knoxville, Tennessee. I've recently started covering K-12 education in Knox County! I have a
+		master’s degree in Data Journalism from Columbia University where I took classes in
+		environmental reporting, algorithms and mapping, among other courses. I’ve also worked as a city
+		beat reporter for a local newsroom in Idaho, worked for Reuters as a publisher and as an editor
+		at a media start-up.
 	</p>
 	<p>
 		In my current role as the first and only data reporter in the newsroom, I’ve worked on building
