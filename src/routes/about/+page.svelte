@@ -1,7 +1,3 @@
-<script>
-	export const prerender = true;
-</script>
-
 <title>About</title>
 
 <div class="center-content">

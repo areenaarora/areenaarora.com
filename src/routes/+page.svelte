@@ -1,7 +1,3 @@
-<script>
-	export const prerender = true;
-</script>
-
 <title>Areena Arora</title>
 <div class="center-content">
 	<h1>Hi! I'm Areena 🙏🏻</h1>

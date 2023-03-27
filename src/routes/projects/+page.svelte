@@ -1,7 +1,3 @@
-<script>
-	export const prerender = true;
-</script>
-
 <title>Personal Projects</title>
 
 <div class="center-content">
