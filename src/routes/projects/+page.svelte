@@ -22,7 +22,7 @@
 				<b
 					><span style="background-color: #ffd700">
 						This project's live link is currently broken. I'm working to fix it though!</span
-					></b
+					>😅</b
 				>
 			</p>
 		</li>
