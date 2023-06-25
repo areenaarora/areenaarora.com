@@ -18,6 +18,11 @@
 				I presented the project at
 				<a href="https://vimeo.com/684724640#t=3h26m24s" target="_blank" rel="noreferrer"
 					>NICAR 2022 in Atlanta.</a
+				><br />
+				<b
+					><span style="background-color: #ffd700">
+						This project's live link is currently broken. I'm working to fix it though!</span
+					></b
 				>
 			</p>
 		</li>
