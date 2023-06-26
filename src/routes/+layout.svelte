@@ -3,6 +3,7 @@
 	import Footer from '../lib/Footer.svelte';
 	import Header from '../lib/Header.svelte';
 	import '../app.css';
+	import Button from '../lib/Button.svelte';
 	export const prerender = true;
 </script>
 
@@ -17,6 +18,7 @@
 </svelte:head>
 
 <Header />
+<Button>Change mode</Button>
 <main>
 	<slot />
 </main>
