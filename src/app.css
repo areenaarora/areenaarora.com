@@ -2,17 +2,14 @@ html,
 body {
     font-family: 'Karla', sans-serif;
     margin: 0;
-}
-
-:global(body) {
-    background-color: #f2eee2;
-    color: #0084f6;
+    background-color: #ffffff;
+    color: #000000;
     transition: background-color 0.3s
 }
 
-:global(body.dark-mode) {
-    background-color: #1d3040;
-    color: #bfc2c7;
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 body {
@@ -81,10 +78,9 @@ button {
     border: none;
     border-radius: 4px;
     padding: 0.5rem;
-    text-transform: uppercase;
 }
 
-:global(body.dark-mode) button {
-    background-color: #0084f6;
-    color: white;
+body.dark-mode button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
 }
