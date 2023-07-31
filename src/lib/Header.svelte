@@ -21,7 +21,7 @@
 		padding: 16px;
 		font-size: 20px;
 		line-height: 25px;
-		border-radius: 400px;
+		border-radius: 6px;
 	}
 
 	.header a.Home {
