@@ -11,5 +11,5 @@
 
 	<h3>🚧 This page is a work in progress! 🚧</h3>
 	<p>Stay tuned!</p>
-	<p>Last updated: March 27, 2023</p>
+	<p>Last updated: July 30, 2023</p>
 </div>
