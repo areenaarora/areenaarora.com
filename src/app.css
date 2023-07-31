@@ -52,25 +52,3 @@ li {
     font-size: 24px;
     list-style-type: square;
 }
-
-button {
-    background: #ffd700;
-    border: 1px solid;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 10px;
-}
-
-button a {
-    color: black;
-}
-
-button {
-    background-color: #f76027;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem;
-}

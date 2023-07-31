@@ -40,5 +40,17 @@
 		situations!
 	</p>
 	<br />
-	<button><a href="/Areena_Arora_Resume.pdf" target="_blank"> Download my resume</a></button>
+	<a href="/Areena_Arora_Resume.pdf" target="_blank"> Download my resume</a>
 </div>
+
+<style>
+	a {
+		background: #ffd700;
+		border-radius: 6px;
+		box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+		cursor: pointer;
+		font-size: 20px;
+		font-weight: bold;
+		padding: 10px;
+	}
+</style>
