@@ -18,10 +18,10 @@
 		float: left;
 		color: #02594c;
 		text-align: center;
-		padding: 12px;
+		padding: 16px;
 		font-size: 20px;
 		line-height: 25px;
-		border-radius: 4px;
+		border-radius: 400px;
 	}
 
 	.header a.Home {
