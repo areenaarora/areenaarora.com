@@ -1,7 +1,3 @@
-<script>
-	import Table from '../../lib/Table.svelte';
-</script>
-
 <title>Experiments</title>
 
 <div class="center-content">
