@@ -1,7 +1,7 @@
 <title>Personal Projects</title>
 
 <div class="center-content">
-	<h2>Some of my select projects</h2>
+	<h2>Some of my select projects (work and personal)</h2>
 	<ul>
 		<li>
 			<p>
@@ -57,7 +57,8 @@
 				</a>
 				<br />
 				Built a database of property transactions in two neighborhoods to analyze real estate market.
-				This project is a work in progress.
+				This project is a work in progress. The project led to reporting that confirmed the local popular
+				narrative about the project's impact on real estate.
 			</p>
 		</li>
 	</ul>
