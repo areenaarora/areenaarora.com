@@ -27,8 +27,8 @@
 	</p>
 	<p>
 		For visualization, I’m trained in making interactives with Python libraires such as Altair and
-		Plotly and I’m constantly working to improve my D3 skills. I enjoy mapping with QGIS, Mapbox and
-		Google Earth Pro. For quick turnarounds, I also rely on free resources such as Datawrapper and
+		Plotly and I’m working on improving my D3 skills. I enjoy mapping with QGIS, Mapbox and Google
+		Earth Pro. For quick turnarounds, I also rely on free resources such as Datawrapper and
 		Flourish.
 	</p>
 	<p>
