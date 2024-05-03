@@ -24,6 +24,6 @@
 
 <style>
 	main {
-		padding: 0 15px;
+		padding: 0 25px;
 	}
 </style>
