@@ -2,7 +2,40 @@
 
 <div class="center-content">
 	<h2>Here's some of my recent work!</h2>
+	<h3>
+		Find all my work on <a
+			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
+			target="_blank">Knox News here!</a
+		>
+	</h3>
 	<ul>
+		<li>
+			<p>
+				<a
+					href="https://www.knoxnews.com/story/news/education/2024/04/23/knox-county-schools-foundations-boost-some-but-others-are-left-out/73417988007/"
+					target="_blank"
+					rel="noreferrer"
+					>Foundations give big boosts to some Knox County schools, but others are left behind
+				</a>
+				<br />
+				A look at how private fundraising for public schools creates unintended inequities. Important
+				to note here - private fundraising for public schools is legal and seems to not have much of
+				an impact on students' academic results.
+			</p>
+		</li>
+		<li>
+			<p>
+				<a
+					href="https://www.knoxnews.com/story/news/education/2024/04/05/knox-county-schools-will-form-book-review-committees/73181096007/"
+					target="_blank"
+					rel="noreferrer"
+					>National conversation on banning books comes knocking at Knox County Schools' doors
+				</a>
+				<br />
+				Localizing the national discourse on book bans, led by the far-right, parents' rights advocacy
+				group Moms for Liberty.
+			</p>
+		</li>
 		<li>
 			<p>
 				<a
@@ -42,20 +75,6 @@
 				<br />
 				Scraped data in two stages — first from an ESRI website and then from the county property assessor's
 				website. Reported on the data, wrote and designed the story layout too!
-			</p>
-		</li>
-		<li>
-			<p>
-				<a
-					href="https://www.knoxnews.com/story/sports/college/university-of-tennessee/football/2022/12/19/tennessee-football-neyland-stadium-beer-sales-crime-data/69725142007/"
-					target="_blank"
-					rel="noreferrer"
-					>Neyland Stadium has always been rowdy, and data shows beer sales have little to do with
-					it</a
-				>
-				<br />
-				As the city debates keeping beer sales going at the University of Tennessee's Neyland Stadium,
-				a data dive to explain how little affect beer sales actually have on rowdy incidents.
 			</p>
 		</li>
 	</ul>
