@@ -26,6 +26,23 @@
 		<li>
 			<p>
 				<a
+					href="https://www.knoxnews.com/story/news/local/2025/01/17/university-of-tennessee-protest-leaders-hold-close-best-of-america-and-palestine/73839258007/"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Straddling two worlds, UT protest leaders hold close the best of America and Palestine
+				</a>
+				<br />
+				The Husain siblings were born in America and grew up in Knoxville, but their father is from Palestine.
+				They’ve visited family in Palestine several times and each time have felt at home instantly,
+				just as they do in East Tennessee, where they grew up with country neighbors whose accent sounds
+				similar to them to the accent of their Palestinian cousins – if you just replace English with
+				Arabic.
+			</p>
+		</li>
+		<li>
+			<p>
+				<a
 					href="https://www.knoxnews.com/story/news/education/2024/04/05/knox-county-schools-will-form-book-review-committees/73181096007/"
 					target="_blank"
 					rel="noreferrer"
