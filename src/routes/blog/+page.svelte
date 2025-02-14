@@ -5,5 +5,5 @@
 
 	<h3>🚧 This page is a work in progress! 🚧</h3>
 	<p>Stay tuned!</p>
-	<p>Last updated: August 4, 2024</p>
+	<p>Last updated: February 13, 2025</p>
 </div>
