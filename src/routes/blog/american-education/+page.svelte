@@ -2,6 +2,57 @@
 <div class="center-content">
 	<h1>On American public education</h1>
 	<p>
+		Americans care about public education in a way I hadn't fully comprehended 2½ years ago.
+		Americans also politicize education to an extent I couldn't have anticipated. My husband often
+		remarks I write almost equal parts about policies and politics as I do about the core tenets of
+		education − curriculum, testing and literacy.
+	</p>
+	<p>
+		I grew up in India and I hadn't been to an American public school before I was assigned to the
+		Knox News children's issues beat. Now, as I'm gearing up to move back home − Feb. 7 was my last
+		day at Knox News − I'm reflecting on what has surprised me most.
+	</p>
+	<p>
+		There is no national curriculum here. Common Core standards come close, but those too aren't
+		mandated and have not been universally liked or accepted. State standards differ and local
+		communities choose their academic priorities. In just my short time here, though, I've seen the
+		lines between local priorities and national political agendas blur.
+	</p>
+	<p>
+		Curriculum in India is a lot more consistent across the country, for private and public schools
+		alike. Religion doesn't enter the equation and isn't at odds with literacy and scientific
+		discovery. Faith is to be practiced at home.
+	</p>
+	<p>
+		When I first heard Tennessee's standard on sex education is abstinence, I remember thinking
+		"surely, there's no way that could be true." It goes against the idea to which I'd long
+		subscribed of a progressive, first world country.
+	</p>
+	<p>
+		Censorship of books was another topic I never thought I'd be writing about in the land of free
+		and brave ideas. While I see value in ensuring kids are exposed to age-appropriate content, the
+		wording of recent legislation is disingenuous in that regard. It instills fear in trained,
+		professional educators, rather than promoting healthy conversations around what's appropriate
+		and what isn't.
+	</p>
+	<p>There are, of course, ideas I want to steal and take back home with me.</p>
+	<p>
+		The teacher-student relationship in India is strictly academic, and teachers' involvement in
+		students' lives is limited. Here, I see teachers devote themselves to not just educating, but
+		also mentoring and going far above and beyond their prescribed duties.
+	</p>
+	<p>
+		When I see teachers here buying supplies for their classrooms and advocating before lawmakers
+		for their schools, I'm envious of their commitment to public education. That said, I'm also
+		confused by the lack of resources available to support public education that warrants this
+		advocacy in the first place.
+	</p>
+	<p>
+		Public education in India is seen as a last-resort option, reserved for those who need it. Here,
+		it's the backbone of the society.
+	</p>
+
+	<p>
 		It has therefore puzzled me to see lawmakers rallying behind directing funds to private schools,
 		draining public schools. There are 900,000 public school students in the state and by my
 		calculation, split evenly, the $447 million voucher program could have meant nearly $500 more
