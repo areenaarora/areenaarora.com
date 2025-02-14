@@ -64,10 +64,12 @@
 	<p>
 		I've seen admirable resilience from communities who will be rebuilding their schools for years
 		after the devasting Hurricane Helene. It has been truly rewarding, and hopefully someday (soon)
-		I'll write a book about it. Until then, I'll be watching keenly what the future holds for public
-		education in the U.S. and of course more closely for Knox County and East Tennessee. To the
-		parents and teachers who have trusted me with their stories, thank you − for your faith in me
-		and for your patience as I navigated the complex world of American public education as an
-		outsider.
+		I'll write a book about it.
+	</p>
+	<p>
+		Until then, I'll be watching keenly what the future holds for public education in the U.S. and
+		of course more closely for Knox County and East Tennessee. To the parents and teachers who have
+		trusted me with their stories, thank you − for your faith in me and for your patience as I
+		navigated the complex world of American public education as an outsider.
 	</p>
 </div>

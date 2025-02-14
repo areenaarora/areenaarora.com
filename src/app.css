@@ -17,6 +17,10 @@ body {
     align-items: center;
     margin: 0 auto;
     max-width: 600px;
+
+    &>p {
+        width: 100%;
+    }
 }
 
 h1 {
