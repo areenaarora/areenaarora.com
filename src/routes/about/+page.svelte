@@ -7,10 +7,8 @@
 		Gannett-owned local newspaper in Knoxville, Tennessee.
 	</p>
 	<p>
-		Americans care about public education in a way I hadn't fully comprehended two and a half years
-		ago. They also politicize education in a way I couldn't have anticipated. Covering public
-		schools has been truly rewarding, and hopefully, someday (soon), I'll write a book about how
-		America educates its kids and what I’ve learned, liked and wrestled with.
+		Covering public schools has been truly rewarding, and hopefully, someday (soon), I'll write a
+		book about how America educates its kids and what I’ve learned, liked and wrestled with.
 	</p>
 	<p>
 		Lately, I’ve also been diving into the evolution of the news and information industry, and the

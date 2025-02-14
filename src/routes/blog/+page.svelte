@@ -1,9 +1,16 @@
-<title>Experiments</title>
+<title>Blog</title>
 
 <div class="center-content">
-	<h3>Bare with me as I figure this space out🌻</h3>
-
-	<h3>🚧 This page is a work in progress! 🚧</h3>
-	<p>Stay tuned!</p>
-	<p>Last updated: February 13, 2025</p>
+	<h2>Figuring this space out still, but here are some thoughts!🌻</h2>
+	<h3>
+		<a href="/blog/american-education">
+			Observations on covering American public education as an outsider</a
+		>
+	</h3>
+	<p>
+		Two and a half years ago when I was entrusted with covering public education in Tennessee's
+		third largest district, I didn't think I'd write almost equal parts about politics as I would
+		about the core tenets of education - literacy, testing and curriculum. Here's what I’ve learned,
+		liked and wrestled with. <br /> February 14, 2025
+	</p>
 </div>
