@@ -1,7 +1,7 @@
 <title>Personal Projects</title>
 
 <div class="center-content">
-	<h2>Some of my select projects (work and personal)</h2>
+	<h2>Select projects</h2>
 	<ul>
 		<li>
 			<p>

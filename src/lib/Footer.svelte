@@ -15,7 +15,7 @@
 	}
 
 	footer a {
-		color: #02594c;
+		color: #6668f5;
 		text-align: center;
 		padding: 12px;
 		font-size: 18px;

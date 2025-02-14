@@ -16,7 +16,7 @@
 
 	.header a {
 		float: left;
-		color: #02594c;
+		color: #6668f5;
 		text-align: center;
 		padding: 16px;
 		font-size: 20px;
