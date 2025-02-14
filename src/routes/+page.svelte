@@ -1,6 +1,6 @@
 <title>Areena Arora</title>
 <div class="center-content">
-	<h1>Hi! I'm Areena 😅</h1>
+	<h1>Hi! I'm Areena 🙏🏻</h1>
 	<p>
 		I'm a data journalist, <a
 			href="https://www.instagram.com/feelin_gredient/"
