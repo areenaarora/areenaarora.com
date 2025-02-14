@@ -31,19 +31,20 @@ h1 {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 32px;
     margin-bottom: 10px;
     color: #E0607E;
 }
 
 h3 {
-    font-size: 24px;
+    font-size: 26px;
     color: #E0607E;
 }
 
 p {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.3;
+    color: black;
 }
 
 a:hover {
