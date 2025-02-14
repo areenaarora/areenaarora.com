@@ -4,7 +4,8 @@
 	<h2>Just a bit more...</h2>
 	<p>
 		I’m a Data and Investigative Reporter and was most recetly covering education for Knox News, a
-		Gannett-owned local newspaper in Knoxville, Tennessee.
+		Gannett-owned local newspaper in Knoxville, Tennessee. I'm available for hire in India, starting
+		March 20, 2025.
 	</p>
 	<p>
 		Covering public schools has been truly rewarding, and hopefully, someday (soon), I'll write a
