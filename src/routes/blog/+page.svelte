@@ -1,7 +1,8 @@
 <title>Blog</title>
 
 <div class="center-content">
-	<h2>Figuring this space out, for now, here are some thoughts!🌻</h2>
+	<h2>Figuring this space out.</h2>
+	<h3>For now, here are some thoughts!🌻</h3>
 	<h3>
 		<a href="/blog/american-education"> Observations on covering American public education</a>
 	</h3>
