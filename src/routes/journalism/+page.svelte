@@ -3,7 +3,7 @@
 <div class="center-content">
 	<h2>Here's some of my recent work!</h2>
 	<h3>
-		Find all my work on <a
+		Find all my work for <a
 			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
 			target="_blank">Knox News here!</a
 		>

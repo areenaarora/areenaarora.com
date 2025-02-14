@@ -9,7 +9,7 @@
 		> and 🪴house plant enthusiast!🪴
 	</p>
 	<p>
-		I'm new to the world of data-powered storytelling, and slowly paving my path at <a
+		I'm new to the world of data-powered storytelling, and was most recently at <a
 			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
 			target="_blank"
 			rel="noreferrer">Knox News.</a
