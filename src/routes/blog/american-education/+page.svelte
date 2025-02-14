@@ -1,6 +1,6 @@
 <title>Education in America</title>
 <div class="center-content">
-	<h1>On American public education</h1>
+	<h2>On American public education</h2>
 	<p>
 		Americans care about public education in a way I hadn't fully comprehended 2½ years ago.
 		Americans also politicize education to an extent I couldn't have anticipated.

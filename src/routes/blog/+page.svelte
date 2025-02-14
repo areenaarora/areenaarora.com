@@ -1,11 +1,9 @@
 <title>Blog</title>
 
 <div class="center-content">
-	<h2>Figuring this space out still, but here are some thoughts!🌻</h2>
+	<h2>Figuring this space out, for now, here are some thoughts!🌻</h2>
 	<h3>
-		<a href="/blog/american-education">
-			Observations on covering American public education as an outsider</a
-		>
+		<a href="/blog/american-education"> Observations on covering American public education</a>
 	</h3>
 	<p>
 		Two and a half years ago when I was entrusted with covering public education in Tennessee's
