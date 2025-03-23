@@ -1,7 +1,8 @@
 <script>
 	import MonoLc from '$lib/TheHindu/MonoLC.svelte';
 	import EngHindiLC from '$lib/TheHindu/EngHindiLC.svelte';
-	import ScrollText from '$lib/TheHindu/ScrollText.svelte';
+
+	let value;
 </script>
 
 <div class="fullscreen-text">
@@ -11,10 +12,10 @@
 <div class="centered-content">
 	<section id="scrolly">
 		<article>
-			<div class="step" data-step="1">
+			<div>
 				<h2>Once again, the language debate is in spotlight.</h2>
 			</div>
-			<div class="step" data-step="2">
+			<div>
 				<p>
 					Tamil Nadu is resisting the implementation of the New Language Policy 2020 calling it an
 					indirect way to impose Hindi on the state. The Center has refuted these allegations.
@@ -24,7 +25,7 @@
 					must teach students three languages, two of which must be native to India.
 				</p>
 			</div>
-			<div class="step" data-step="3">
+			<div>
 				For now, let's look at a larger issue at hand: Are southern states more resistent to
 				adapting Hindi? And, what should be the link language in India?
 			</div>
@@ -42,10 +43,12 @@
 	</div>
 </div>
 <div id="g-indian_states_lang-copy_svg-box" class="ai2html">
+	<!-- <ScrollText bind:value> -->
 	<!-- Artboard: hindi -->
 	<div
 		id="g-indian_states_lang-copy_svg-hindi"
-		class="g-artboard"
+		class="g-artboard step"
+		class:active={value === 0 || typeof value === 'undefined'}
 		style="max-width: 800px;height: auto"
 		data-aspect-ratio="1.333"
 		data-min-width="0"
@@ -55,7 +58,7 @@
 			id="g-indian_states_lang-copy_svg-hindi-img"
 			class="g-indian_states_lang-copy_svg-hindi-img g-aiImg"
 			alt=""
-			src="/the-hindu/indian_states_lang-copy_svg-hindi.png"
+			src="/the-hindu/indian_states_lang_NEW-hindi.png"
 		/>
 		<div id="g-ai0-1" class="g-Layer_1 g-aiAbs" style="top:39.7778%;left:6.4228%;width:20.1667%;">
 			<p class="g-pstyle0">Hindi belt</p>
@@ -71,7 +74,8 @@
 	<!-- Artboard: non-hindi-non-south -->
 	<div
 		id="g-indian_states_lang-copy_svg-non-hindi-non-south"
-		class="g-artboard"
+		class="g-artboard step"
+		class:active={value === 1}
 		style="max-width: 800px;height: auto"
 		data-aspect-ratio="1.333"
 		data-min-width="0"
@@ -81,7 +85,7 @@
 			id="g-indian_states_lang-copy_svg-non-hindi-non-south-img"
 			class="g-indian_states_lang-copy_svg-non-hindi-non-south-img g-aiImg"
 			alt=""
-			src="/the-hindu/indian_states_lang-copy_svg-non-hindi-non-south.png"
+			src="/the-hindu/indian_states_lang_NEW-non-hindi-non-south.png"
 		/>
 		<div id="g-ai1-1" class="g-Layer_1 g-aiAbs" style="top:31.1111%;left:7.5447%;width:25.6667%;">
 			<p class="g-pstyle0">Non-Hindi, non-South</p>
@@ -96,7 +100,8 @@
 	<!-- Artboard: non-hindi-south -->
 	<div
 		id="g-indian_states_lang-copy_svg-non-hindi-south"
-		class="g-artboard"
+		class="g-artboard step"
+		class:active={value === 2}
 		style="max-width: 800px;height: auto"
 		data-aspect-ratio="1.333"
 		data-min-width="0"
@@ -106,7 +111,7 @@
 			id="g-indian_states_lang-copy_svg-non-hindi-south-img"
 			class="g-indian_states_lang-copy_svg-non-hindi-south-img g-aiImg"
 			alt=""
-			src="/the-hindu/indian_states_lang-copy_svg-non-hindi-south.png"
+			src="/the-hindu/indian_states_lang_NEW-non-hindi-south.png"
 		/>
 		<div id="g-ai2-1" class="g-Layer_1 g-aiAbs" style="top:22%;left:6.2152%;width:28.8333%;">
 			<p class="g-pstyle0">Non-Hindi, southern</p>
@@ -115,13 +120,14 @@
 			<p class="g-pstyle1">Kerala</p>
 			<p class="g-pstyle1">Tamil Nadu</p>
 		</div>
-		<div id="g-ai2-2" class="g-Layer_1 g-aiAbs" style="top:70%;left:4%;width:33%;">
+		<div id="g-ai2-2" class="g-Layer_1 g-aiAbs" style="top:70%;left:60%;width:33%;">
 			<p class="g-pstyle2">
 				Andhra Pradesh and Telangana are considered one unit for this analysis because when the
 				census data was collected in 2011, the two states were one.
 			</p>
 		</div>
 	</div>
+	<!-- </ScrollText> -->
 </div>
 
 <div class="centered-content">
@@ -204,7 +210,11 @@
 		padding: 3px 0;
 	}
 
-	#g-indian_states_lang-copy_svg-box,
+	#g-indian_states_lang-copy_svg-box {
+		position: relative;
+		margin: 2rem auto 4rem auto;
+	}
+
 	#g-indian_states_lang-copy_svg-box .g-artboard {
 		margin: 0 auto;
 	}
@@ -294,10 +304,16 @@
 	}
 
 	.step {
-		margin: 2rem auto 4rem auto;
+		/* position: absolute;
+		inset: 0; */
+		/* opacity: 0%; */
 	}
 
-	.step p {
+	/* .step.active {
+		opacity: 100%;
+	} */
+
+	.step p:not(.g-pstyle1):not(.g-pstyle0) {
 		text-align: left;
 		padding: 1rem;
 		font-size: 22px;
