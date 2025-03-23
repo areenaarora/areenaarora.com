@@ -1,12 +1,38 @@
 <script>
 	import MonoLc from '$lib/TheHindu/MonoLC.svelte';
 	import EngHindiLC from '$lib/TheHindu/EngHindiLC.svelte';
+	import { onDestroy, onMount } from 'svelte';
 
-	let value;
+	let value, interval;
+
+	const debates = ['Debate', 'விவாதம்', 'बहस'];
+
+	onMount(() => {
+		console.log('mount');
+
+		const el = document.getElementById('debate');
+
+		interval = setInterval(() => {
+			const current = el.textContent;
+			const index = debates.findIndex((d) => d === current);
+			console.log({ current, index });
+
+			el.textContent = debates[(index + 1) % 3];
+		}, 1000);
+	});
+
+	onDestroy(() => {
+		console.log('clearing');
+
+		clearInterval(interval);
+	});
 </script>
 
 <div class="fullscreen-text">
-	<h1>The Great<br />Indian Language<br />Debate</h1>
+	<h1>
+		The Great<br />Indian Language<br />
+		<span id="debate">Debate</span>
+	</h1>
 </div>
 
 <div class="centered-content">
@@ -190,7 +216,7 @@
 		text-align: center;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		/* align-items: center; */
 		height: 80vh;
 		padding: 0 5vw;
 	}
@@ -302,16 +328,6 @@
 		margin: 0 auto;
 		width: 100%;
 	}
-
-	.step {
-		/* position: absolute;
-		inset: 0; */
-		/* opacity: 0%; */
-	}
-
-	/* .step.active {
-		opacity: 100%;
-	} */
 
 	.step p:not(.g-pstyle1):not(.g-pstyle0) {
 		text-align: left;
