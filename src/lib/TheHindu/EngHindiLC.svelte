@@ -4,9 +4,17 @@
 	// Data from Python processing
 
 	onMount(() => {
-		const width = 350,
-			height = 250;
-		const margin = { top: 40, right: 40, bottom: 60, left: 80 }; // Adjusted left margin for y-axis label
+		const isMobile = window.innerWidth < 900;
+
+		const width = isMobile
+				? document.getElementById('chart-container').getBoundingClientRect().width - 100
+				: 350,
+			height = isMobile
+				? document.getElementById('chart-container').getBoundingClientRect().height
+				: 250;
+		const margin = isMobile
+			? { top: 20, right: 15, bottom: 20, left: 55 }
+			: { top: 40, right: 40, bottom: 60, left: 80 }; // Adjusted left margin for y-axis label
 
 		const data = [
 			{
@@ -59,7 +67,7 @@
 			svg
 				.append('text')
 				.attr('transform', 'rotate(-90)')
-				.attr('y', -margin.left + 15)
+				.attr('y', -margin.left + (isMobile ? 10 : 15))
 				.attr('x', -height / 2)
 				.attr('dy', '1em')
 				.style('text-anchor', 'middle')
@@ -124,15 +132,17 @@
 	});
 </script>
 
-<div class="title">Change in English and Hindi Speakers by Region (1991-2011)</div>
-<div id="chart-container"></div>
+<div class="centered-content">
+	<div class="title">Change in English and Hindi Speakers by Region (1991-2011)</div>
+</div>
+<div id="chart-container" />
 <div class="legend">
 	<div>
-		<div class="legend-box" style="background-color: #1f77b4;"></div>
+		<div class="legend-box" style="background-color: #1f77b4;" />
 		English
 	</div>
 	<div>
-		<div class="legend-box" style="background-color: #ff7f0e;"></div>
+		<div class="legend-box" style="background-color: #ff7f0e;" />
 		Hindi
 	</div>
 </div>
@@ -153,12 +163,29 @@
 		justify-content: center;
 		gap: 20px;
 		margin-top: 20px;
+		margin: 0px;
+		flex-direction: column;
+		min-height: 250px;
+		max-width: 100vw;
+		height: auto;
+
+		@media screen and (min-width: 900px) {
+			flex-direction: row;
+		}
+	}
+
+	:global(#chart-container svg) {
+		display: block;
+		margin: auto;
+		width: 100%;
+		aspect-ratio: 350 / 250;
 	}
 
 	.title {
 		font-size: 20px;
 		font-weight: bold;
 		margin-bottom: 10px;
+		width: fit-content;
 	}
 
 	.legend {

@@ -142,7 +142,9 @@
 		To inspect, let's look at the change in the share of native language speakers in each region who
 		can also speak English and change in native language speakers who can speak Hindi.
 	</p>
-	<EngHindiLC />
+</div>
+<EngHindiLC />
+<div class="centered-content">
 	<p>
 		The states that don't speak Hindi had a higher rate of English adaptability with only a marginal
 		increase in the share of Hindi speakers. In the Hindi belt, on the contrary, the share of
@@ -186,7 +188,7 @@
 		height: 80vh;
 		padding: 0 5vw;
 	}
-	.centered-content {
+	:global(.centered-content) {
 		max-width: 800px;
 		margin: 100px auto;
 		line-height: 1.6;
@@ -303,8 +305,12 @@
 
 	/* FONT STYLES */
 	h1 {
-		font-size: 130px;
 		color: var(--color-heading);
+		font-size: 50px;
+
+		@media screen and (min-width: 850px) {
+			font-size: 130px;
+		}
 	}
 
 	h2 {

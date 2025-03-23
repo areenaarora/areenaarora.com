@@ -4,6 +4,8 @@
 	// Data from Python processing
 
 	onMount(() => {
+		const isMobile = window.innerWidth < 450;
+
 		const data = [
 			{
 				Region: 'Hindi Belt',
@@ -31,9 +33,9 @@
 			}
 		];
 
-		const width = 920,
-			height = 500,
-			margin = { top: 50, right: 170, bottom: 50, left: 80 };
+		const width = document.getElementById('mono').getBoundingClientRect().width,
+			height = document.getElementById('mono').getBoundingClientRect().height,
+			margin = { top: 50, right: isMobile ? 120 : 170, bottom: 50, left: 80 };
 
 		const svg = d3.select('svg#mono').attr('width', width).attr('height', height);
 
@@ -69,10 +71,10 @@
 			.append('text')
 			.attr('transform', `rotate(-90)`)
 			.attr('x', 0 - height / 2)
-			.attr('y', margin.left / 3)
-			.attr('dy', '1em')
+			.attr('y', margin.left / 2)
+			.attr('dy', '0em')
 			.style('text-anchor', 'middle')
-			.style('font-size', '14px')
+			.style('font-size', '12px')
 			.style('font-weight', 'bold')
 			.text('Share of population that only speaks native language');
 
@@ -92,8 +94,8 @@
 			.data(data)
 			.enter()
 			.append('text')
-			.attr('x', width - margin.right + 15) // Further inside to avoid cut-off
-			.attr('y', (d) => y(d.values[d.values.length - 1].value))
+			.attr('x', width - margin.right + 15 - (isMobile ? 55 : 0)) // Further inside to avoid cut-off
+			.attr('y', (d) => y(d.values[d.values.length - 1].value + (isMobile ? 2 : 0)))
 			.attr('dy', '0.35em')
 			.style('fill', (d, i) => color(i))
 			.style('font-size', '14px')
@@ -105,12 +107,29 @@
 <h2 class="chart-title">
 	Change in share of people who only speak their native language in each region
 </h2>
-<svg width="920" height="500" id="mono"></svg>
+<div class="svg-container">
+	<svg id="mono" />
+</div>
 
 <style>
+	.svg-container {
+		max-width: 100vw;
+		height: auto;
+		margin: 0 -25px;
+	}
+
 	svg {
 		display: block;
 		margin: auto;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 920 / 700;
+
+		@media screen and (min-width: 850px) {
+			aspect-ratio: 920 / 500;
+			width: 920px;
+			height: 500px;
+		}
 	}
 
 	:global(.line) {
