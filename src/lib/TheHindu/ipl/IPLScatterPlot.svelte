@@ -200,8 +200,8 @@
 </script>
 
 <div class="container">
-	<h2>Players' salaries vs their performance</h2>
-	<h3>A look at how many players performed above or below average and how well they were paid.</h3>
+	<h3>Players' salaries vs their performance</h3>
+	<p>A look at how many players performed above or below average and how well they were paid.</p>
 	<label for="season-filter">Select Season:</label>
 	<select id="season-filter" />
 	<div id="scatter-chart-container" />
