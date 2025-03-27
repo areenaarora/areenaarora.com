@@ -273,6 +273,10 @@
 
 <div id="scores-chart-container">
 	<h3>Top five IPL players by batting, bowling and overall score</h3>
+	<p>
+		The chart shows top five players ranked on three parameters- batting, bowling and overall score
+		and can be sorted by season and/or teams.
+	</p>
 	<svg id="scores-chart" />
 	<div class="filters">
 		<label for="teamFilter">Select Team:</label>
