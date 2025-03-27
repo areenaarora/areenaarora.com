@@ -103,7 +103,8 @@
 </script>
 
 <div class="container">
-	<h1 class="title">IPL players' salaries, teams and overall performance score</h1>
+	<h3 class="title">See for yourself</h3>
+	<p>Want to know more? Use this searchable database of IPL players' scores and salaries.</p>
 	<input type="text" id="search" placeholder="Search..." />
 	<div class="table-container">
 		<table>
