@@ -214,6 +214,7 @@
 
 		@media screen and (min-width: 850px) {
 			width: 80vw;
+			max-width: 900px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;

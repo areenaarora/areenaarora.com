@@ -7,7 +7,7 @@
 
 		const margin = isMobile
 			? { top: 50, right: 20, bottom: 50, left: 40 }
-			: { top: 50, right: 100, bottom: 50, left: 200 };
+			: { top: 0, right: 100, bottom: 50, left: 200 };
 		const width =
 				document.getElementById('scores-chart-container').getBoundingClientRect().width -
 				margin.left -
@@ -169,7 +169,7 @@
 					.attr('class', 'data-symbol')
 					.attr('x', (d) => xScale[d.type](d.score))
 					.attr('y', (d) => categoryY(d.type) + 5) // Adjust vertical alignment
-					.attr('font-size', '14px') // Emoji size
+					.attr('font-size', '26px') // Emoji size
 					.attr('text-anchor', 'middle')
 					.text(
 						(d) =>
@@ -242,9 +242,7 @@
 					.attr('class', 'category-label')
 					.attr('x', -margin.left + (isMobile ? 20 : 50))
 					.attr('y', (d) => categoryY(d) + (isMobile ? 25 : 5))
-					.text((d) => d)
-					.attr('font-size', '14px')
-					.attr('fill', 'black');
+					.text((d) => d);
 			}
 
 			teamFilter.on('change', updateChart);
@@ -288,8 +286,8 @@
 			<option value="all">All</option>
 		</select>
 	</div>
-	<div class="tooltip" id="tooltip" />
 </div>
+<div class="tooltip" id="tooltip" />
 
 <style>
 	#scores-chart-container {
@@ -323,8 +321,8 @@
 
 		@media screen and (min-width: 850px) {
 			position: absolute;
-			right: -150px;
-			top: 50px;
+			right: -100px;
+			top: 100px;
 		}
 		@media screen and (max-width: 850px) {
 			display: flex;
@@ -349,6 +347,9 @@
 			/* flex-direction: row; */
 		}
 	}
+	:global(.player-names > h3) {
+		font-size: 16px;
+	}
 
 	.filters {
 		display: flex;
@@ -364,10 +365,10 @@
 	.tooltip {
 		position: absolute;
 		text-align: center;
-		padding: 5px;
-		font-size: 12px;
-		background: lightgray;
-		border: 1px solid #ddd;
+		padding: 8px;
+		font-size: 16px;
+		background: white;
+		border: 1px solid black;
 		border-radius: 5px;
 		pointer-events: none;
 		opacity: 0;
