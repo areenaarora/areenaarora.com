@@ -200,7 +200,8 @@
 </script>
 
 <div class="container">
-	<h2>IPL Player Salaries vs Performance</h2>
+	<h2>Players' salaries vs their performance</h2>
+	<h3>A look at how many players performed above or below average and how well they were paid.</h3>
 	<label for="season-filter">Select Season:</label>
 	<select id="season-filter" />
 	<div id="scatter-chart-container" />
