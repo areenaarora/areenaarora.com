@@ -169,7 +169,7 @@
 					.attr('class', 'data-symbol')
 					.attr('x', (d) => xScale[d.type](d.score))
 					.attr('y', (d) => categoryY(d.type) + 5) // Adjust vertical alignment
-					.attr('font-size', '20px') // Emoji size
+					.attr('font-size', '14px') // Emoji size
 					.attr('text-anchor', 'middle')
 					.text(
 						(d) =>
