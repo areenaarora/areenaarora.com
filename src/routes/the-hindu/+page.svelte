@@ -8,22 +8,17 @@
 	const debates = ['Debate', 'விவாதம்', 'बहस'];
 
 	onMount(() => {
-		console.log('mount');
-
 		const el = document.getElementById('debate');
 
 		interval = setInterval(() => {
 			const current = el.textContent;
 			const index = debates.findIndex((d) => d === current);
-			console.log({ current, index });
 
 			el.textContent = debates[(index + 1) % 3];
 		}, 1000);
 	});
 
 	onDestroy(() => {
-		console.log('clearing');
-
 		clearInterval(interval);
 	});
 </script>
