@@ -272,7 +272,7 @@
 </script>
 
 <div id="scores-chart-container">
-	<h2>IPL Top Players by Score Category</h2>
+	<h3>Top five IPL players by batting, bowling and overall score</h3>
 	<svg id="scores-chart" />
 	<div class="filters">
 		<label for="teamFilter">Select Team:</label>
