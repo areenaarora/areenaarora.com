@@ -138,10 +138,6 @@
 					.attr('fill', 'black')
 					.attr('text-anchor', 'start');
 
-				const labelOffset = {}; // Track offsets per category to prevent overlap
-
-				const labelOffsets = {}; // Track y-offsets per category to prevent overlap
-
 				svg.selectAll('.player-label').remove();
 				svg
 					.selectAll('.player-number')
@@ -218,9 +214,6 @@
 					});
 				});
 
-				// .style("transform", "rotate(45deg)")
-				// .style("transform-origin", d => `${minScores[d.type]}px ${categoryY(d.type)}px`)
-
 				svg
 					.selectAll('.category-line')
 					.data(categories)
@@ -270,12 +263,12 @@
 </script>
 
 <div id="scores-chart-container">
+	<h1>How do IPL players perform, compared to how much they're paid?</h1>
 	<h3>Top five IPL players by batting, bowling and overall score</h3>
 	<p>
 		The chart shows top five players ranked on three parameters- batting, bowling and overall score
 		and can be sorted by season and/or teams.
 	</p>
-	<svg id="scores-chart" />
 	<div class="filters">
 		<label for="teamFilter">Select Team:</label>
 		<select id="teamFilter">
@@ -286,13 +279,14 @@
 			<option value="all">All</option>
 		</select>
 	</div>
+	<svg id="scores-chart" />
 </div>
 <div class="tooltip" id="tooltip" />
 
 <style>
 	#scores-chart-container {
 		position: relative;
-		margin-bottom: 100px;
+		margin-bottom: 40px;
 		margin-left: auto;
 		margin-right: auto;
 
@@ -305,10 +299,13 @@
 		}
 	}
 
-	#scores-chart {
-		aspect-ratio: 800 / 400;
+	label {
+		font-weight: bold;
+	}
 
+	#scores-chart {
 		@media screen and (max-width: 850px) {
+			aspect-ratio: 800 / 400;
 			margin: 0 -25px;
 			width: 100vw;
 		}
@@ -322,7 +319,7 @@
 		@media screen and (min-width: 850px) {
 			position: absolute;
 			right: -100px;
-			top: 100px;
+			bottom: 50px;
 		}
 		@media screen and (max-width: 850px) {
 			display: flex;
@@ -355,6 +352,7 @@
 		display: flex;
 		justify-content: center;
 		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 
 	.filters label,

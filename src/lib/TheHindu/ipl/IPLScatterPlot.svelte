@@ -202,10 +202,12 @@
 <div class="container">
 	<h3>Players' salaries vs their performance</h3>
 	<p>A look at how many players performed above or below average and how well they were paid.</p>
-	<label for="season-filter">Select Season:</label>
-	<select id="season-filter" />
-	<div id="scatter-chart-container" />
+	<div id="season-filter-container">
+		<label for="season-filter">Select Season:</label>
+		<select id="season-filter" />
+	</div>
 	<p id="summary" />
+	<div id="scatter-chart-container" />
 </div>
 
 <style>
@@ -226,6 +228,7 @@
 		width: 95vw;
 		height: auto;
 		aspect-ratio: 800 / 500;
+		padding-bottom: 100px;
 
 		@media screen and (min-width: 850px) {
 			width: 100%;
@@ -233,7 +236,9 @@
 	}
 
 	#summary {
-		padding-top: 40px;
+		padding-bottom: 40px;
+		font-size: 18px;
+		max-width: 80%;
 	}
 
 	:global(.tooltip) {
@@ -242,5 +247,14 @@
 		padding: 5px;
 		border-radius: 5px;
 		display: none;
+	}
+
+	#season-filter-container {
+		display: flex;
+		gap: 10px;
+	}
+
+	label {
+		font-weight: bold;
 	}
 </style>
