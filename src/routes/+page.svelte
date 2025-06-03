@@ -22,10 +22,6 @@
 		>
 	</p>
 	<p>
-		I'm also learning Svelte and working to improve my data visualization skills. This website is
-		where I showcase my best front-end work.
-	</p>
-	<p>
 		Having studied abroad for both my bachelor's and master's, I know firsthand how complicated the
 		process is and I've learned a few tricks along the way on navigating it. If you are, or know
 		someone, looking to study abroad soon (particularly the U.S.), I may be able to help. Watch this
