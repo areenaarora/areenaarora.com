@@ -1,6 +1,6 @@
 <footer>
 	<a href="https://github.com/areenaarora" target="_blank" rel="noreferrer">Github</a>
-	<a href="https://twitter.com/AreenaArora" target="_blank" rel="noreferrer">Twitter</a>
+	<a href="https://twitter.com/AreenaArora" target="_blank" rel="noreferrer">Twitter/X</a>
 	<p>areena [dot] arora [at] columbia [dot] edu</p>
 </footer>
 

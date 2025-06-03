@@ -10,7 +10,12 @@
 		<b>🪴serious house plant enthusiast!🪴</b>
 	</p>
 	<p>
-		I was most recently at <a
+		I'm the first-ever Editorial Coder at <a href="https://www.thehindu.com/" target="_blank"
+			>The Hindu.</a
+		> I made interactives for the data team!
+	</p>
+	<p>
+		Before this, I was at <a
 			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
 			target="_blank"
 			rel="noreferrer">Knox News.</a
