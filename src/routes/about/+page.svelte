@@ -3,9 +3,9 @@
 <div class="center-content">
 	<h2>Just a bit more...</h2>
 	<p>
-		I’m a Data and Investigative Reporter and was most recetly covering education for Knox News, a
-		Gannett-owned local newspaper in Knoxville, Tennessee. I'm available for hire in India, starting
-		March 20, 2025.
+		I’m the first-ever Editorial Coder at The Hindu, helping build interactives for the Data team.
+		Data and Investigative Reporter and was most recetly covering education for Knox News, a
+		Gannett-owned local newspaper in Knoxville, Tennessee.
 	</p>
 	<p>
 		Covering public schools has been truly rewarding, and hopefully, someday (soon), I'll write a
@@ -27,9 +27,8 @@
 		ready for breaking news, including databases for property ownership and crime stats.
 	</p>
 	<p>
-		A lot of Knox County and Tennessee’s data is made available in formats that are not machine
-		readable, and I’m constantly finding ways to navigate that, both by making connections with data
-		officers and through coding solutions.
+		A lot of Knox County and Tennessee’s data was made available in non-machine readable formats,
+		and navigated that, both by making connections with data officers and through coding solutions.
 	</p>
 	<p>
 		For visualization, I’m trained in making interactives with Python libraires such as Altair and
