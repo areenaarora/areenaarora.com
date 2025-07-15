@@ -4,10 +4,8 @@
 	<h2>Just a bit more...</h2>
 	<p>
 		I’m the first-ever Editorial Coder at The Hindu, helping build interactives for the data team.
-		Until a few months ago, I was a <a
-			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
-			>data and investigative reporter</a
-		> covering public education at Knox News, a Gannett-owned local newspaper in Knoxville, Tennessee.
+		Until a few months ago, I was a data and investigative reporter covering public education at
+		Knox News, a Gannett-owned local newspaper in Knoxville, Tennessee.
 	</p>
 	<p>
 		Covering public schools was truly rewarding, and hopefully, someday (soon), I'll write a book
@@ -43,7 +41,7 @@
 		situations!
 	</p>
 	<br />
-	<a href="/Areena_Arora_Resume.pdf" target="_blank"> Download my resume</a>
+	<a href="/Areena_Arora_Resume.pdf" target="_blank"> Download my resume!</a>
 </div>
 
 <style>
