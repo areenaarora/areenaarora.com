@@ -3,13 +3,15 @@
 <div class="center-content">
 	<h2>Just a bit more...</h2>
 	<p>
-		I’m the first-ever Editorial Coder at The Hindu, helping build interactives for the Data team.
-		Data and Investigative Reporter and was most recetly covering education for Knox News, a
-		Gannett-owned local newspaper in Knoxville, Tennessee.
+		I’m the first-ever Editorial Coder at The Hindu, helping build interactives for the data team.
+		Until a few months ago, I was a <a
+			href="https://www.knoxnews.com/staff/8034861001/areena-arora/"
+			>data and investigative reporter</a
+		> covering public education at Knox News, a Gannett-owned local newspaper in Knoxville, Tennessee.
 	</p>
 	<p>
-		Covering public schools has been truly rewarding, and hopefully, someday (soon), I'll write a
-		book about how America educates its kids and what I’ve learned, liked and wrestled with.
+		Covering public schools was truly rewarding, and hopefully, someday (soon), I'll write a book
+		about how America educates its kids and what I’ve learned, liked and wrestled with.
 	</p>
 	<p>
 		Lately, I’ve also been diving into the evolution of the news and information industry, and the
@@ -27,8 +29,8 @@
 		ready for breaking news, including databases for property ownership and crime stats.
 	</p>
 	<p>
-		A lot of Knox County and Tennessee’s data was made available in non-machine readable formats,
-		and navigated that, both by making connections with data officers and through coding solutions.
+		A lot of Knox County and Tennessee’s data was available in non-machine readable formats, and
+		navigated that, both by making connections with data officers and through coding solutions.
 	</p>
 	<p>
 		For visualization, I’m trained in making interactives with Python libraires such as Altair and
