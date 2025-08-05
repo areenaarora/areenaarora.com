@@ -27,8 +27,4 @@
 		someone, looking to study abroad soon (particularly the U.S.), I may be able to help. Watch this
 		space for some exciting announcements soon!
 	</p>
-	<p>
-		I'm also looking for freelance opportunities in India and I'm available for commission for
-		writing, editing, data collection and analysis and data visualization!
-	</p>
 </div>
