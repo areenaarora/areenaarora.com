@@ -11,8 +11,8 @@
 	</p>
 	<p>
 		I'm the first-ever Editorial Coder at <a href="https://www.thehindu.com/" target="_blank"
-			>The Hindu.</a
-		> I made interactives for the data team!
+			>The Hindu,</a
+		> meaning I make interactives for the data team.
 	</p>
 	<p>
 		Before this, I was at <a
@@ -24,7 +24,6 @@
 	<p>
 		Having studied abroad for both my bachelor's and master's, I know firsthand how complicated the
 		process is and I've learned a few tricks along the way on navigating it. If you are, or know
-		someone, looking to study abroad soon (particularly the U.S.), I may be able to help. Watch this
-		space for some exciting announcements soon!
+		someone, looking to study abroad soon (particularly the U.S.), I may be able to help.
 	</p>
 </div>
