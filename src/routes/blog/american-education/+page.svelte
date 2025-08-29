@@ -54,8 +54,8 @@
 
 	<p>
 		When I first heard Tennessee's standard on sex education is abstinence, I remember thinking
-		"surely, there's no way that could be true." It goes against the idea of a progress, first world
-		country to which I'd long subscribed to.
+		"surely, there's no way that could be true." It goes against the idea of a progressive, first
+		world country to which I'd long subscribed to.
 	</p>
 
 	<p>
