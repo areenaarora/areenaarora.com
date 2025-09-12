@@ -1,15 +1,17 @@
-<title>Blog</title>
+<script lang="ts">
+	export let data: {
+		posts: { slug: string; title: string; date: string }[];
+	};
+</script>
 
-<div class="center-content">
-	<h2>Figuring this space out.</h2>
-	<h3>For now, here are some thoughts!🌻</h3>
-	<h3>
-		<a href="/blog/american-education"> Observations on covering American public education</a>
-	</h3>
-	<p>
-		Two and a half years ago when I was entrusted with covering public education in Tennessee's
-		third largest district, I didn't think I'd write almost equal parts about politics as I would
-		about the core tenets of education - literacy, testing and curriculum. Here's what I’ve learned,
-		liked and wrestled with. <br /> February 14, 2025
-	</p>
+<div class="pane">
+	<h3>Recent posts</h3>
+	<ul class="posts">
+		{#each data.posts as p}
+			<li>
+				<time>{p.date}</time>
+				<a href={`/blog/${p.slug}`}>{p.title}</a>
+			</li>
+		{/each}
+	</ul>
 </div>

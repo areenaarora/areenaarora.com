@@ -1,28 +1,7 @@
 <script>
-	import { dev } from '$app/environment';
-	import Footer from '../lib/Footer.svelte';
-	import Header from '../lib/Header.svelte';
-	import '../app.css';
+	import "../styles.css";
+	import Header from "$lib/components/Header.svelte";
 </script>
 
-<svelte:head>
-	{#if !dev}
-		<script
-			data-api="/stats/api/event"
-			data-domain="areenaarora.com"
-			src="/stats/js/script.js"
-		></script>
-	{/if}
-</svelte:head>
-
 <Header />
-<main>
-	<slot />
-</main>
-<Footer />
-
-<style>
-	main {
-		padding: 0 25px;
-	}
-</style>
+<slot />

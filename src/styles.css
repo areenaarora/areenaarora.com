@@ -1,0 +1,45 @@
+/* ---------- Base ---------- */
+:root {
+	--serif: "EB Garamond", Garamond, Georgia, serif;
+	--text: #111;
+	--muted: #303030;
+	--link-underline: #000dff;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--serif);
+	color: var(--text);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+}
+
+/* ---------- Reveal underline styling ---------- */
+.reveal button.reveal-link,
+.reveal .frozen-link {
+	background: none;
+	border: 0;
+	padding: 0;
+	font: inherit;
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: var(--link-underline);
+	text-underline-offset: 3px;
+}
+
+.reveal button.reveal-link {
+	cursor: pointer;
+}
+.reveal .frozen-link {
+	cursor: default;
+}

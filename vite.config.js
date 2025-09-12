@@ -1,8 +1,8 @@
-import { sveltekit } from '@sveltejs/kit/vite';
+import devtoolsJson from "vite-plugin-devtools-json";
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
 
-/** @type {import('vite').UserConfig} */
-const config = {
-	plugins: [sveltekit()]
-};
-
-export default config;
+export default defineConfig({
+	plugins: [sveltekit(), devtoolsJson()],
+	assetsInclude: ["**/*.md"],
+});
