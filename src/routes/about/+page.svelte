@@ -1,38 +1,38 @@
 <script lang="ts">
 	// Toggle between views
-	let view: "about" | "resume" = "about";
-	import { base } from "$app/paths";
-	import { onDestroy } from "svelte";
+	let view: 'about' | 'resume' = 'about';
+	import { base } from '$app/paths';
+	import { onDestroy } from 'svelte';
 
 	// Colors / tokens
-	const BLUE = "#000dff";
+	const BLUE = '#000dff';
 
 	// External links (open in new tab everywhere)
 	const links = {
-		emailHref: "mailto:areena.arora@columbia.edu",
-		emailTextObfuscated: "areena [dot] arora [at] columbia [dot] edu",
-		github: "https://github.com/areenaarora",
-		linkedin: "https://www.linkedin.com/in/areena-arora/",
-		twitter: "https://x.com/AreenaArora",
+		emailHref: 'mailto:areena.arora@columbia.edu',
+		emailTextObfuscated: 'areena [dot] arora [at] columbia [dot] edu',
+		github: 'https://github.com/areenaarora',
+		linkedin: 'https://www.linkedin.com/in/areena-arora/',
+		twitter: 'https://x.com/AreenaArora'
 	};
 
 	// Selected projects (resume)
 	const projects = [
 		{
-			title: "Heat stress in Chennai",
-			url: "https://www.thehindu.com/infographics/2025-07-12/heat-stress-in-chennai/index.html",
-			dek: "Interactive on how heat & humidity affect people differently.",
+			title: 'Heat stress in Chennai',
+			url: 'https://www.thehindu.com/infographics/2025-07-12/heat-stress-in-chennai/index.html',
+			dek: 'Interactive on how heat & humidity affect people differently.'
 		},
 		{
-			title: "Private fundraising makes public schools unequal",
-			url: "https://www.knoxnews.com/story/news/education/2024/04/23/knox-county-schools-foundations-boost-some-but-others-are-left-out/73417988007/",
-			dek: "Used nonprofit data to quantify gaps.",
+			title: 'Private fundraising makes public schools unequal',
+			url: 'https://www.knoxnews.com/story/news/education/2024/04/23/knox-county-schools-foundations-boost-some-but-others-are-left-out/73417988007/',
+			dek: 'Used nonprofit data to quantify gaps.'
 		},
 		{
-			title: "Police chief searches: digging past the claim",
-			url: "https://www.knoxnews.com/story/news/local/2022/11/16/knoxville-police-chief-data-blows-up-claim-about-secret-searches/69614670007/",
-			dek: "Built a database disproving an official statement.",
-		},
+			title: 'Police chief searches: digging past the claim',
+			url: 'https://www.knoxnews.com/story/news/local/2022/11/16/knoxville-police-chief-data-blows-up-claim-about-secret-searches/69614670007/',
+			dek: 'Built a database disproving an official statement.'
+		}
 	];
 
 	/* ---- copy-to-clipboard for email ---- */
@@ -40,20 +40,20 @@
 	let copyTimer: ReturnType<typeof setTimeout> | null = null;
 
 	async function copyEmail() {
-		const addr = links.emailHref.replace(/^mailto:/, "");
+		const addr = links.emailHref.replace(/^mailto:/, '');
 
 		try {
 			await navigator.clipboard.writeText(addr);
 		} catch {
 			// fallback for older/iOS Safari
-			const ta = document.createElement("textarea");
+			const ta = document.createElement('textarea');
 			ta.value = addr;
-			ta.setAttribute("readonly", "");
-			ta.style.position = "fixed";
-			ta.style.top = "-1000px";
+			ta.setAttribute('readonly', '');
+			ta.style.position = 'fixed';
+			ta.style.top = '-1000px';
 			document.body.appendChild(ta);
 			ta.select();
-			document.execCommand("copy");
+			document.execCommand('copy');
 			document.body.removeChild(ta);
 		}
 
@@ -74,22 +74,22 @@
 		<div class="tabs">
 			<button
 				class="tab {view === 'about' ? 'is-active' : ''}"
-				on:click={() => (view = "about")}
-				aria-pressed={view === "about"}
+				on:click={() => (view = 'about')}
+				aria-pressed={view === 'about'}
 			>
 				About
 			</button>
 			<button
 				class="tab {view === 'resume' ? 'is-active' : ''}"
-				on:click={() => (view = "resume")}
-				aria-pressed={view === "resume"}
+				on:click={() => (view = 'resume')}
+				aria-pressed={view === 'resume'}
 			>
 				View résumé
 			</button>
 		</div>
 	</header>
 
-	{#if view === "about"}
+	{#if view === 'about'}
 		<!-- ABOUT VIEW -->
 		<div class="about-grid">
 			<div class="about-copy">
@@ -141,13 +141,13 @@
 				<h2>A note of thanks :')</h2>
 				<p>
 					This website was made possible thanks to a bunch of people and wonderful resources on the
-					internet. Here's naming a few tools/resources I used:
+					internet. Here's naming a few tools/resources I used. Thanks to:
 				</p>
 				<ul>
 					<li>
 						My husband <a href="https://sreetamdas.com/" target="_blank" class="blue_links"
 							>Sreetam Das'</a
-						> consistent badgering me to actually make it.
+						> consistent badgering me to actually make the website.
 					</li>
 					<li>I vibe coded a lot of it, so thanks to the good folks at OpenAI.</li>
 					<li>Adobe Illustrator, where I sketched out the minimal design bits.</li>
@@ -189,7 +189,7 @@
 							type="button"
 							class="copy-btn {copied ? 'is-copied' : ''}"
 							on:click={copyEmail}
-							aria-label={copied ? "Email copied to clipboard" : "Copy email to clipboard"}
+							aria-label={copied ? 'Email copied to clipboard' : 'Copy email to clipboard'}
 						>
 							<svg class="clip" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
 								<path
@@ -200,7 +200,7 @@
 								/>
 								<rect x="8" y="3" width="8" height="4" rx="1.5" fill="currentColor" opacity=".15" />
 							</svg>
-							<span>{copied ? "Copied!" : "Click to copy"}</span>
+							<span>{copied ? 'Copied!' : 'Click to copy'}</span>
 						</button>.
 					</p>
 				</div>
@@ -433,7 +433,7 @@
 	}
 
 	.tab::after {
-		content: "";
+		content: '';
 		position: absolute;
 		left: 0;
 		right: 0;
