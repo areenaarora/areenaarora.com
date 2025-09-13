@@ -98,9 +98,8 @@
 						href="https://www.thehindu.com/"
 						target="_blank"
 						class="blue_links">The Hindu.</a
-					> ’m the first-ever Editorial Coder at The Hindu. I clean and shape messy datasets to uncover
-					patterns that add context to the news, then design interactives that make those stories engaging,
-					without distracting from the core narrative.
+					> I clean and shape messy datasets to uncover patterns that add context to the news, then design
+					interactives that make those stories engaging, without distracting from the core narrative.
 				</p>
 
 				<p>
