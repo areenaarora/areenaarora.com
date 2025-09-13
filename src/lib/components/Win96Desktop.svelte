@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { onMount, onDestroy } from "svelte";
-	import { getAllPosts } from "$lib/posts";
+	import { onMount, onDestroy } from 'svelte';
+	import { getAllPosts } from '$lib/posts';
 
 	// Minimal shape we need for rendering
 	type PostListItem = { slug: string; title: string; date: string };
 
 	// wallpaper toggle
-	onMount(() => document.body.classList.add("win96-wallpaper"));
-	onDestroy(() => document.body.classList.remove("win96-wallpaper"));
+	onMount(() => document.body.classList.add('win96-wallpaper'));
+	onDestroy(() => document.body.classList.remove('win96-wallpaper'));
 
 	// blog posts
 	let allPosts: PostListItem[] = [];
@@ -15,7 +15,7 @@
 		try {
 			allPosts = await getAllPosts();
 		} catch (e) {
-			console.error("Failed to load posts", e);
+			console.error('Failed to load posts', e);
 			allPosts = [];
 		}
 	});
@@ -27,7 +27,7 @@
 
 	/* ---------------- Window model ---------------- */
 	type Win = {
-		id: "projects" | "blog" | "terminal";
+		id: 'projects' | 'blog' | 'terminal';
 		title: string;
 		minimized: boolean;
 		maximized: boolean;
@@ -38,47 +38,47 @@
 		h: number;
 		prevBounds?: { x: number; y: number; w: number; h: number };
 	};
-	type Wins = Partial<Record<Win["id"], Win>>;
+	type Wins = Partial<Record<Win['id'], Win>>;
 
 	let zCounter = 10;
 
-	function makeWinDefaults(id: Win["id"]): Win {
-		if (id === "projects") {
+	function makeWinDefaults(id: Win['id']): Win {
+		if (id === 'projects') {
 			return {
-				id: "projects",
-				title: "Projects",
+				id: 'projects',
+				title: 'Projects',
 				minimized: false,
 				maximized: false,
 				z: ++zCounter,
 				x: SAFE_LEFT + 20,
 				y: 96,
 				w: 520,
-				h: 360,
+				h: 360
 			};
 		}
-		if (id === "blog") {
+		if (id === 'blog') {
 			return {
-				id: "blog",
-				title: "Blog",
+				id: 'blog',
+				title: 'Blog',
 				minimized: false,
 				maximized: false,
 				z: ++zCounter,
 				x: 600,
 				y: 160,
 				w: 560,
-				h: 420,
+				h: 420
 			};
 		}
 		return {
-			id: "terminal",
-			title: "Terminal",
+			id: 'terminal',
+			title: 'Terminal',
 			minimized: false,
 			maximized: false,
 			z: ++zCounter,
 			x: 300,
 			y: 200,
 			w: 600,
-			h: 400,
+			h: 400
 		};
 	}
 
@@ -88,12 +88,12 @@
 	}
 
 	/* ---------------- Z-order helpers ---------------- */
-	function topId(): Win["id"] | null {
+	function topId(): Win['id'] | null {
 		const arr = Object.values(wins as Record<string, Win>);
 		if (arr.length === 0) return null;
 		return arr.reduce((a, b) => (a.z > b.z ? a : b)).id;
 	}
-	function bringToFront(id: Win["id"]) {
+	function bringToFront(id: Win['id']) {
 		const w = wins[id];
 		if (!w) return;
 		w.z = ++zCounter;
@@ -101,14 +101,14 @@
 	}
 
 	/* ---------------- Window actions ---------------- */
-	function toggleMin(id: Win["id"]) {
+	function toggleMin(id: Win['id']) {
 		const w = wins[id];
 		if (!w) return;
 		w.minimized = !w.minimized;
 		if (w.minimized) w.maximized = false;
 		wins = { ...wins };
 	}
-	function toggleMax(id: Win["id"]) {
+	function toggleMax(id: Win['id']) {
 		const w = wins[id];
 		if (!w) return;
 		if (!w.maximized) {
@@ -141,7 +141,7 @@
       transform: translate3d(${w.x}px, ${w.y}px, 0); z-index: ${w.z};
     `;
 	}
-	function closeWindow(id: Win["id"]) {
+	function closeWindow(id: Win['id']) {
 		if (wins[id]) {
 			delete wins[id];
 			wins = { ...wins };
@@ -149,25 +149,25 @@
 	}
 
 	// Handle the "Address" bar like a simple command box
-	function onAddressSubmit(currentId: Win["id"], ev: Event) {
+	function onAddressSubmit(currentId: Win['id'], ev: Event) {
 		const form = ev.currentTarget as HTMLFormElement;
-		const input = form.querySelector(".address") as HTMLInputElement | null;
-		const raw = (input?.value || "").trim().toLowerCase();
+		const input = form.querySelector('.address') as HTMLInputElement | null;
+		const raw = (input?.value || '').trim().toLowerCase();
 
-		if (raw === "projects" || raw === "blog" || raw === "terminal") {
-			openFromIcon(raw as Win["id"]);
-			bringToFront(raw as Win["id"]);
+		if (raw === 'projects' || raw === 'blog' || raw === 'terminal') {
+			openFromIcon(raw as Win['id']);
+			bringToFront(raw as Win['id']);
 			return;
 		}
-		if (raw === "areena" || raw === "home" || raw === "/") {
-			window.location.href = "/";
+		if (raw === 'areena' || raw === 'home' || raw === '/') {
+			window.location.href = '/';
 			return;
 		}
-		if (raw === "close" || raw === "x") {
+		if (raw === 'close' || raw === 'x') {
 			closeWindow(currentId);
 			return;
 		}
-		if (raw.startsWith("http://") || raw.startsWith("https://") || raw.startsWith("/")) {
+		if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('/')) {
 			window.location.href = raw;
 		}
 	}
@@ -175,10 +175,10 @@
 	/* ---------------- MOBILE single-window mode ---------------- */
 	let isMobile = false;
 	function updateIsMobile() {
-		isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 820px)").matches;
+		isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 820px)').matches;
 	}
 	function closeAllWindows() {
-		for (const k of Object.keys(wins) as Win["id"][]) delete wins[k];
+		for (const k of Object.keys(wins) as Win['id'][]) delete wins[k];
 	}
 	function placeNicelyMobile(w: Win) {
 		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -194,7 +194,7 @@
 		w.y = Math.max(6, Math.round((vh - pad - targetH) / 2));
 	}
 
-	function openFromIcon(id: Win["id"]) {
+	function openFromIcon(id: Win['id']) {
 		// On mobile: allow only one window at a time (replace any open one)
 		if (isMobile) {
 			closeAllWindows();
@@ -212,16 +212,16 @@
 		wins = { ...wins };
 	}
 	function openTerminal() {
-		openFromIcon("terminal");
+		openFromIcon('terminal');
 	}
 
 	/* ---------------- Window dragging ---------------- */
 	let desktopEl: HTMLDivElement;
-	const winEl: Record<Win["id"], HTMLElement> = {} as Record<Win["id"], HTMLElement>;
-	function storeRef(node: HTMLElement, params: { id: Win["id"] }) {
+	const winEl: Record<Win['id'], HTMLElement> = {} as Record<Win['id'], HTMLElement>;
+	function storeRef(node: HTMLElement, params: { id: Win['id'] }) {
 		winEl[params.id] = node;
 		return {
-			update(next: { id: Win["id"] }) {
+			update(next: { id: Win['id'] }) {
 				if (next.id !== params.id) {
 					delete winEl[params.id];
 					winEl[next.id] = node;
@@ -230,11 +230,11 @@
 			},
 			destroy() {
 				delete winEl[params.id];
-			},
+			}
 		};
 	}
 	type Drag = {
-		id: Win["id"];
+		id: Win['id'];
 		startX: number;
 		startY: number;
 		startWinX: number;
@@ -251,10 +251,10 @@
 	const THRESHOLD = 3;
 	const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
-	function onTitlebarPointerDown(id: Win["id"], ev: PointerEvent) {
+	function onTitlebarPointerDown(id: Win['id'], ev: PointerEvent) {
 		if (ev.button !== 0) return;
 		const target = ev.target as HTMLElement;
-		if (target.closest(".buttons")) return;
+		if (target.closest('.buttons')) return;
 
 		const w = wins[id];
 		if (!w || w.maximized || w.minimized) return;
@@ -275,12 +275,12 @@
 			maxX,
 			maxY,
 			moved: false,
-			pointerId: ev.pointerId,
+			pointerId: ev.pointerId
 		};
 
 		(ev.currentTarget as HTMLElement).setPointerCapture(ev.pointerId);
-		document.body.style.userSelect = "none";
-		document.body.classList.add("dragging");
+		document.body.style.userSelect = 'none';
+		document.body.classList.add('dragging');
 		ev.preventDefault();
 	}
 	function onPointerMove(ev: PointerEvent) {
@@ -307,8 +307,8 @@
 			wins = { ...wins };
 		}
 		drag = null;
-		document.body.style.userSelect = "";
-		document.body.classList.remove("dragging");
+		document.body.style.userSelect = '';
+		document.body.classList.remove('dragging');
 	}
 
 	/* ---------------- Taskbar / Start ---------------- */
@@ -320,11 +320,11 @@
 		startOpen = false;
 	}
 	function startOpenProjects() {
-		openFromIcon("projects");
+		openFromIcon('projects');
 		startOpen = false;
 	}
 	function startOpenBlog() {
-		openFromIcon("blog");
+		openFromIcon('blog');
 		startOpen = false;
 	}
 	function startOpenTerminal() {
@@ -334,14 +334,14 @@
 
 	function onDesktopClick(e: MouseEvent) {
 		const target = e.target as HTMLElement;
-		if (!target.closest(".taskbar") && !target.closest(".start-menu")) startOpen = false;
+		if (!target.closest('.taskbar') && !target.closest('.start-menu')) startOpen = false;
 	}
 
 	/* ---------------- Task buttons ---------------- */
-	function onTaskClick(id: Win["id"]) {
+	function onTaskClick(id: Win['id']) {
 		const w = wins[id];
 		if (!w) {
-			if (id === "terminal") openTerminal();
+			if (id === 'terminal') openTerminal();
 			return;
 		}
 		if (w.minimized) {
@@ -356,15 +356,15 @@
 	}
 
 	/* ---------------- Clock ---------------- */
-	let time = "";
+	let time = '';
 	let clockTimer: ReturnType<typeof setInterval> | undefined;
 	function updateClock() {
 		const d = new Date();
-		time = `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+		time = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 	}
 
 	/* =================== DRAGGABLE DESKTOP ICONS (free drop; NO persistence) =================== */
-	type IconId = "projects" | "blog" | "terminal" | "areena";
+	type IconId = 'projects' | 'blog' | 'terminal' | 'areena';
 	type Icon = { id: IconId; label: string; img: string; x: number; y: number };
 
 	const ICON_W = 82;
@@ -374,10 +374,10 @@
 	// Initial positions (single left column), in raw pixels
 	function defaultIcons(): Icon[] {
 		return [
-			{ id: "projects", label: "Projects", img: "/briefcase.png", x: 0, y: 0 },
-			{ id: "blog", label: "Blog", img: "/notepad.png", x: 0, y: 132 }, // 82 + 26 + ~24 gap
-			{ id: "terminal", label: "Terminal", img: "/console.png", x: 0, y: 264 },
-			{ id: "areena", label: "Areena", img: "/computer.png", x: 0, y: 396 },
+			{ id: 'projects', label: 'Projects', img: '/briefcase.png', x: 0, y: 0 },
+			{ id: 'blog', label: 'Blog', img: '/notepad.png', x: 0, y: 132 }, // 82 + 26 + ~24 gap
+			{ id: 'terminal', label: 'Terminal', img: '/console.png', x: 0, y: 264 },
+			{ id: 'areena', label: 'Areena', img: '/computer.png', x: 0, y: 396 }
 		];
 	}
 
@@ -390,7 +390,7 @@
 		return {
 			destroy() {
 				delete iconEl[id];
-			},
+			}
 		};
 	}
 
@@ -410,8 +410,8 @@
 	let iconDrag: IconDrag = null;
 
 	function activateIcon(id: IconId) {
-		if (id === "areena") window.location.href = "/";
-		else if (id === "terminal") openTerminal();
+		if (id === 'areena') window.location.href = '/';
+		else if (id === 'terminal') openTerminal();
 		else openFromIcon(id);
 	}
 
@@ -430,10 +430,10 @@
 			maxX,
 			maxY,
 			moved: false,
-			pointerId: ev.pointerId,
+			pointerId: ev.pointerId
 		};
 		(ev.currentTarget as HTMLElement).setPointerCapture(ev.pointerId);
-		document.body.style.userSelect = "none";
+		document.body.style.userSelect = 'none';
 		ev.preventDefault();
 	}
 
@@ -462,7 +462,7 @@
 		const y = clamp(iconDrag.curY, 0, iconDrag.maxY);
 
 		// commit to state
-		const idx = icons.findIndex(i => i.id === iconDrag!.id);
+		const idx = icons.findIndex((i) => i.id === iconDrag!.id);
 		if (idx !== -1) {
 			icons[idx] = { ...icons[idx], x, y };
 			icons = [...icons];
@@ -476,38 +476,38 @@
 		if (!iconDrag.moved) activateIcon(iconDrag.id);
 
 		iconDrag = null;
-		document.body.style.userSelect = "";
+		document.body.style.userSelect = '';
 	}
 
 	/* ---------------- Terminal state & commands ---------------- */
-	let termInput = "";
+	let termInput = '';
 	let termHistory: string[] = [];
 	function escapeHtml(s: string) {
-		return s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		return s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 	}
 	function runCommand() {
 		const cmd = termInput.trim();
 		termHistory = [...termHistory, `$ ${escapeHtml(cmd)}`];
-		if (cmd === "ls") termHistory = [...termHistory, "projects  blog"];
+		if (cmd === 'ls') termHistory = [...termHistory, 'projects  blog'];
 		else if (/^print\s*\(.+\)$/.test(cmd)) {
 			const m = cmd.match(/^print\s*\((.*)\)$/);
-			termHistory = [...termHistory, escapeHtml(m ? m[1] : "")];
-		} else if (cmd === "cd blog") {
-			openFromIcon("blog");
-			bringToFront("blog");
-			termHistory = [...termHistory, "Opened blog window"];
-		} else if (cmd === "cd project" || cmd === "cd projects") {
-			openFromIcon("projects");
-			bringToFront("projects");
-			termHistory = [...termHistory, "Opened projects window"];
+			termHistory = [...termHistory, escapeHtml(m ? m[1] : '')];
+		} else if (cmd === 'cd blog') {
+			openFromIcon('blog');
+			bringToFront('blog');
+			termHistory = [...termHistory, 'Opened blog window'];
+		} else if (cmd === 'cd project' || cmd === 'cd projects') {
+			openFromIcon('projects');
+			bringToFront('projects');
+			termHistory = [...termHistory, 'Opened projects window'];
 		} else if (cmd.length === 0) {
 			// noop
 		} else {
 			termHistory = [...termHistory, `Command not found: ${escapeHtml(cmd)}`];
 		}
-		termInput = "";
+		termInput = '';
 		requestAnimationFrame(() => {
-			const container = document.querySelector(".terminal") as HTMLElement | null;
+			const container = document.querySelector('.terminal') as HTMLElement | null;
 			if (container) container.scrollTop = container.scrollHeight;
 		});
 	}
@@ -515,35 +515,35 @@
 	/* ---------------- Mount/Unmount listeners ---------------- */
 	onMount(() => {
 		updateIsMobile();
-		window.addEventListener("resize", updateIsMobile);
+		window.addEventListener('resize', updateIsMobile);
 
 		updateClock();
 		clockTimer = setInterval(updateClock, 15_000);
 
 		// window dragging
-		window.addEventListener("pointermove", onPointerMove);
-		window.addEventListener("pointerup", onPointerUp);
+		window.addEventListener('pointermove', onPointerMove);
+		window.addEventListener('pointerup', onPointerUp);
 
 		// icon dragging
-		window.addEventListener("pointermove", iconPointerMove);
-		window.addEventListener("pointerup", iconPointerUp);
+		window.addEventListener('pointermove', iconPointerMove);
+		window.addEventListener('pointerup', iconPointerUp);
 
 		// start menu closer
-		window.addEventListener("click", onDesktopClick);
+		window.addEventListener('click', onDesktopClick);
 	});
 
 	onDestroy(() => {
 		if (clockTimer) clearInterval(clockTimer);
 
-		window.removeEventListener("resize", updateIsMobile);
+		window.removeEventListener('resize', updateIsMobile);
 
-		window.removeEventListener("pointermove", onPointerMove);
-		window.removeEventListener("pointerup", onPointerUp);
+		window.removeEventListener('pointermove', onPointerMove);
+		window.removeEventListener('pointerup', onPointerUp);
 
-		window.removeEventListener("pointermove", iconPointerMove);
-		window.removeEventListener("pointerup", iconPointerUp);
+		window.removeEventListener('pointermove', iconPointerMove);
+		window.removeEventListener('pointerup', iconPointerUp);
 
-		window.removeEventListener("click", onDesktopClick);
+		window.removeEventListener('click', onDesktopClick);
 	});
 </script>
 
@@ -592,7 +592,7 @@
 				aria-label="Drag window"
 				tabindex="0"
 				on:keydown={(e: KeyboardEvent) => {
-					if (e.key === "Enter" || e.key === " ") toggleMax(w.id);
+					if (e.key === 'Enter' || e.key === ' ') toggleMax(w.id);
 				}}
 			>
 				<div class="title">
@@ -630,8 +630,8 @@
 					</button>
 					<button
 						class="btn"
-						aria-label={w.maximized ? "Restore" : "Maximize"}
-						title={w.maximized ? "Restore" : "Maximize"}
+						aria-label={w.maximized ? 'Restore' : 'Maximize'}
+						title={w.maximized ? 'Restore' : 'Maximize'}
 						on:click|stopPropagation={() => toggleMax(w.id)}
 					>
 						{#if w.maximized}
@@ -683,7 +683,7 @@
 							<button type="button" class="tool-btn" title="Copy">📄</button>
 						</div>
 
-						<form class="addr-bar" on:submit|preventDefault={e => onAddressSubmit(w.id, e)}>
+						<form class="addr-bar" on:submit|preventDefault={(e) => onAddressSubmit(w.id, e)}>
 							<label class="addr-label" for={`address-${w.id}`}>Address</label>
 							<input
 								class="address addr-input"
@@ -698,9 +698,9 @@
 					</div>
 				</div>
 
-				{#if w.id === "projects"}
+				{#if w.id === 'projects'}
 					<div class="pane"><h3>COMING SOON.</h3></div>
-				{:else if w.id === "blog"}
+				{:else if w.id === 'blog'}
 					<div class="pane">
 						<h3>Recent posts</h3>
 						{#if allPosts.length}
@@ -794,14 +794,14 @@
 			tabindex="0"
 			on:click|self={closeStart}
 			on:keydown={(e: KeyboardEvent) => {
-				if (e.key === "Escape") closeStart();
+				if (e.key === 'Escape') closeStart();
 			}}
 			aria-label="Start menu"
 		>
 			<aside class="start-sidebar">not windows</aside>
 			<ul class="start-items">
 				<li>
-					<button type="button" role="menuitem" on:click={() => (window.location.href = "/")}>
+					<button type="button" role="menuitem" on:click={() => (window.location.href = '/')}>
 						<span class="micon">💻</span> Areena
 					</button>
 				</li>
@@ -829,7 +829,7 @@
 	/* Wallpaper */
 	:global(body.win96-wallpaper) {
 		margin: 0;
-		background: url("/bliss.webp") no-repeat center center fixed;
+		background: url('/bliss.webp') no-repeat center center fixed;
 		background-size: cover;
 	}
 
@@ -902,7 +902,7 @@
 	.icon span {
 		margin-top: 4px;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		color: #000;
@@ -920,9 +920,11 @@
 		background: var(--w95-face);
 		border-radius: 0;
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+		display: flex;
+		flex-direction: column;
 	}
 	.window::before {
-		content: "";
+		content: '';
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
@@ -938,7 +940,7 @@
 		pointer-events: none;
 	}
 	.window:not(.maximized)::after {
-		content: "";
+		content: '';
 		position: absolute;
 		right: 6px;
 		bottom: 6px;
@@ -974,7 +976,7 @@
 		align-items: center;
 		gap: 6px;
 		font:
-			700 13px/1 "MS Sans Serif",
+			700 13px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 	}
@@ -1031,7 +1033,7 @@
 	.pane h3 {
 		margin: 0 0 6px;
 		font:
-			700 13px/1 "MS Sans Serif",
+			700 13px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 	}
@@ -1053,23 +1055,26 @@
 		height: 100%;
 		padding: 10px;
 		font:
-			600 14px/1.4 "Courier New",
+			600 14px/1.4 'Courier New',
 			ui-monospace,
 			monospace;
-		overflow: auto;
+		overflow: auto; /* scroll the terminal, not the whole window */
 	}
+
 	.term-header {
 		color: #00e5ff;
-		margin: 0 4 4px;
+		margin: 0 0 4px; /* FIX: was `0 4 4px` (invalid) */
 		font-style: italic;
 		white-space: pre-wrap;
 		overflow-wrap: anywhere;
 		word-break: break-word;
 	}
+
 	.term-line {
 		color: #00e5ff;
+		margin: 0 0 2px; /* slight breathing room between lines */
 		font:
-			600 14px/1.4 "Courier New",
+			600 14px/1.4 'Courier New',
 			ui-monospace,
 			monospace;
 		white-space: pre-wrap;
@@ -1082,19 +1087,25 @@
 		gap: 6px;
 		margin-top: 2px;
 	}
+
 	.prompt {
 		color: #00e5ff;
 	}
+
 	.term-field {
 		background: transparent;
 		border: none;
 		outline: none;
 		color: #00e5ff;
+		caret-color: #00e5ff; /* caret visible on black bg */
 		font:
-			600 14px/1.4 "Courier New",
+			600 14px/1.4 'Courier New',
 			ui-monospace,
 			monospace;
 		flex: 1;
+	}
+	.term-field::selection {
+		background: rgba(0, 229, 255, 0.25);
 	}
 
 	/* Taskbar */
@@ -1114,7 +1125,7 @@
 			inset 1px 1px #fff,
 			inset -1px -1px #404040;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		z-index: 9999;
@@ -1130,7 +1141,7 @@
 		border-right-color: #404040;
 		border-bottom-color: #404040;
 		font:
-			700 18px/1 "MS Sans Serif",
+			700 18px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 	}
@@ -1215,7 +1226,7 @@
 		background: #004080;
 		color: #fff;
 		font:
-			700 14px/1 "MS Sans Serif",
+			700 14px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		white-space: nowrap;
@@ -1246,7 +1257,7 @@
 		background: #dcdcdc;
 		color: #000;
 		font:
-			700 15px/1.2 "MS Sans Serif",
+			700 15px/1.2 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		border: 2px solid #fff;
@@ -1283,7 +1294,7 @@
 		gap: 14px;
 		padding: 4px 8px;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		color: #000;
@@ -1319,7 +1330,7 @@
 		min-width: 24px;
 		height: 22px;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		background: #c0c0c0;
@@ -1346,7 +1357,7 @@
 	.addr-label {
 		padding: 0 6px;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 	}
@@ -1354,7 +1365,7 @@
 		height: 24px;
 		padding: 0 6px;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		color: #000;
@@ -1373,7 +1384,7 @@
 		height: 24px;
 		min-width: 30px;
 		font:
-			700 12px/1 "MS Sans Serif",
+			700 12px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 		background: #c0c0c0;
@@ -1412,7 +1423,7 @@
 	.titlebar,
 	.icon span,
 	.start-items li {
-		font-family: "MS Sans Serif", Tahoma, sans-serif;
+		font-family: 'MS Sans Serif', Tahoma, sans-serif;
 		font-size: 13px;
 		letter-spacing: 0;
 		line-height: 1.2;
@@ -1441,7 +1452,7 @@
 		touch-action: manipulation;
 	}
 	.icon::before {
-		content: "";
+		content: '';
 		position: absolute;
 		inset: -10px;
 	} /* enlarge hitbox */
