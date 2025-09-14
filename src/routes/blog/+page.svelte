@@ -34,10 +34,7 @@
 		<section class="card">
 			<h2 class="tab">About this blog</h2>
 			<div class="card-body">
-				<p>
-					Occasional posts on reporting with code, data viz, and the messy bits that don’t make it
-					into the final pieces.
-				</p>
+				<p>Occasional posts coding and journalism, data viz, and other miscellany!</p>
 			</div>
 		</section>
 
