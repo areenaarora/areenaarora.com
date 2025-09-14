@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import { base } from "$app/paths";
+	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 
 	// ------------- Types -------------
 	type Row = {
@@ -17,7 +17,7 @@
 
 	// ------------- State -------------
 	let rows: Row[] = [];
-	let loadError = "";
+	let loadError = '';
 
 	// CSV headers (original labels) + normalized keys, IN CSV ORDER
 	let colLabels: string[] = [];
@@ -33,42 +33,42 @@
 		s
 			.trim()
 			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, "_");
+			.replace(/[^a-z0-9]+/g, '_');
 
-	const TYPE_KEYS = new Set(["project_type", "type", "kind", "category"]);
-	const TOPIC_KEYS = new Set(["topics", "tags", "keywords"]);
-	const STACK_KEYS = new Set(["tech_stack", "techstack", "tech", "stack", "tools", "technology"]);
-	const EXCLUDE_COLS = new Set(["role", "tags", "publication"]);
+	const TYPE_KEYS = new Set(['project_type', 'type', 'kind', 'category']);
+	const TOPIC_KEYS = new Set(['topics', 'tags', 'keywords']);
+	const STACK_KEYS = new Set(['tech_stack', 'techstack', 'tech', 'stack', 'tools', 'technology']);
+	const EXCLUDE_COLS = new Set(['role', 'tags', 'publication']);
 
 	const shouldHide = (k: string) =>
 		EXCLUDE_COLS.has(k) || TYPE_KEYS.has(k) || TOPIC_KEYS.has(k) || STACK_KEYS.has(k);
 
 	const isDateKey = (k: string) =>
-		["pub_date", "Date", "date", "published", "publish_date"].includes(k);
-	const isUrlKey = (k: string) => ["url", "link", "href"].includes(k);
+		['pub_date', 'Date', 'date', 'published', 'publish_date'].includes(k);
+	const isUrlKey = (k: string) => ['url', 'link', 'href'].includes(k);
 	const isPdfKey = (k: string) =>
-		["pdf", "pdf_url", "pdf_download", "download_pdf", "download", "file"].includes(k);
+		['pdf', 'pdf_url', 'pdf_download', 'download_pdf', 'download', 'file'].includes(k);
 
 	// wrap these columns
 	const WRAP_KEYS = new Set([
-		"headline",
-		"title",
-		"name",
-		"summary",
-		"deck",
-		"description",
-		"abstract",
-		"subhead",
+		'headline',
+		'title',
+		'name',
+		'summary',
+		'deck',
+		'description',
+		'abstract',
+		'subhead'
 	]);
 	const isWrapKey = (k: string) => WRAP_KEYS.has(k);
 
-	const fmtDate = (d: string) => (d ? d.replace(/-/g, ".") : "");
+	const fmtDate = (d: string) => (d ? d.replace(/-/g, '.') : '');
 	const shortUrl = (u: string) => {
 		try {
 			const { hostname } = new URL(u);
-			return hostname.replace(/^www\./, "");
+			return hostname.replace(/^www\./, '');
 		} catch {
-			return "Open";
+			return 'Open';
 		}
 	};
 
@@ -79,15 +79,15 @@
 	};
 
 	// summary helpers (mobile under-headline)
-	const SUMMARY_KEYS = ["summary", "deck", "description", "abstract", "subhead"];
+	const SUMMARY_KEYS = ['summary', 'deck', 'description', 'abstract', 'subhead'];
 	const isSummaryKey = (k: string) => SUMMARY_KEYS.includes(k);
-	const isHeadlineKey = (k: string) => ["headline", "title", "name"].includes(k);
+	const isHeadlineKey = (k: string) => ['headline', 'title', 'name'].includes(k);
 	const firstSummaryText = (raw: Record<string, string>) => {
 		for (const k of SUMMARY_KEYS) {
-			const v = (raw[k] || "").trim();
+			const v = (raw[k] || '').trim();
 			if (v) return v;
 		}
-		return "";
+		return '';
 	};
 
 	// ------------- Parse CSV -------------
@@ -98,7 +98,7 @@
 		const headerCells =
 			(lines.shift() as string)
 				.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)
-				?.map(s => s.replace(/^"(.*)"$/, "$1")) ?? [];
+				?.map((s) => s.replace(/^"(.*)"$/, '$1')) ?? [];
 		const headersNorm = headerCells.map(norm);
 
 		colLabels = headerCells;
@@ -106,14 +106,14 @@
 
 		const getCell = (cells: string[], key: string) => {
 			const i = headersNorm.indexOf(key);
-			return i >= 0 ? (cells[i] ?? "").trim() : "";
+			return i >= 0 ? (cells[i] ?? '').trim() : '';
 		};
 		const getAny = (cells: string[], keys: string[]) => {
 			for (const k of keys) {
 				const v = getCell(cells, k);
 				if (v) return v;
 			}
-			return "";
+			return '';
 		};
 
 		const out: Row[] = [];
@@ -121,59 +121,59 @@
 		for (const line of lines) {
 			if (!line.trim()) continue;
 			const cells =
-				line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)?.map(s => s.replace(/^"(.*)"$/, "$1")) ?? [];
+				line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)?.map((s) => s.replace(/^"(.*)"$/, '$1')) ?? [];
 
 			const raw: Record<string, string> = {};
-			headersNorm.forEach((k, i) => (raw[k] = (cells[i] ?? "").trim()));
+			headersNorm.forEach((k, i) => (raw[k] = (cells[i] ?? '').trim()));
 
-			const project_type = getAny(cells, ["project_type", "type", "kind", "category"]);
+			const project_type = getAny(cells, ['project_type', 'type', 'kind', 'category']);
 
-			const topicsStr = getAny(cells, ["topics", "tags", "keywords"]);
+			const topicsStr = getAny(cells, ['topics', 'tags', 'keywords']);
 			const topics = topicsStr
 				? topicsStr
-						.split(";")
-						.map(t => t.trim())
+						.split(';')
+						.map((t) => t.trim())
 						.filter(Boolean)
 				: [];
 
 			const stackRaw =
-				getAny(cells, ["tech_stack", "techstack", "tech", "stack", "tools", "technology"]) || "";
-			const stackClean = stackRaw.replace(/\bN\s*\/\s*A\b/gi, "").replace(/\bN\.?\s*A\.?\b/gi, "");
+				getAny(cells, ['tech_stack', 'techstack', 'tech', 'stack', 'tools', 'technology']) || '';
+			const stackClean = stackRaw.replace(/\bN\s*\/\s*A\b/gi, '').replace(/\bN\.?\s*A\.?\b/gi, '');
 			let stacks = stackClean
 				.split(/[;,/]+/)
-				.map(s => s.trim())
+				.map((s) => s.trim())
 				.filter(Boolean)
-				.filter(s => {
-					const p = s.replace(/[.\s]/g, "").toLowerCase();
-					return p && p !== "na" && p !== "n" && p !== "a" && p !== "none" && p !== "-";
+				.filter((s) => {
+					const p = s.replace(/[.\s]/g, '').toLowerCase();
+					return p && p !== 'na' && p !== 'n' && p !== 'a' && p !== 'none' && p !== '-';
 				});
-			if (stacks.length === 1 && stacks[0].includes(",")) {
+			if (stacks.length === 1 && stacks[0].includes(',')) {
 				stacks = stacks[0]
-					.split(",")
-					.map(s => s.trim())
+					.split(',')
+					.map((s) => s.trim())
 					.filter(Boolean)
-					.filter(s => {
-						const p = s.replace(/[.\s]/g, "").toLowerCase();
-						return p && p !== "na" && p !== "n" && p !== "a" && p !== "none" && p !== "-";
+					.filter((s) => {
+						const p = s.replace(/[.\s]/g, '').toLowerCase();
+						return p && p !== 'na' && p !== 'n' && p !== 'a' && p !== 'none' && p !== '-';
 					});
 			}
 
 			out.push({
-				headline: getAny(cells, ["headline", "title", "name"]),
-				publication: getCell(cells, "publication"),
+				headline: getAny(cells, ['headline', 'title', 'name']),
+				publication: getCell(cells, 'publication'),
 				pub_date: getAny(cells, [
-					"pub_date",
-					"publication_date",
-					"date",
-					"published",
-					"publish_date",
+					'pub_date',
+					'publication_date',
+					'date',
+					'published',
+					'publish_date'
 				]),
-				url: getAny(cells, ["url", "link", "href"]) || "",
+				url: getAny(cells, ['url', 'link', 'href']) || '',
 				project_type,
 				topics,
 				stacks,
-				pdf: getAny(cells, ["pdf", "pdf_url", "pdf_download", "download", "file"]) || "",
-				raw,
+				pdf: getAny(cells, ['pdf', 'pdf_url', 'pdf_download', 'download', 'file']) || '',
+				raw
 			});
 		}
 
@@ -199,30 +199,33 @@
 			parseCSV(await res.text());
 		} catch (e) {
 			loadError = String(e);
-			console.error("CSV load failed:", e);
+			console.error('CSV load failed:', e);
 		}
 	});
 
 	// ------------- Filters & search -------------
-	const TYPE_COLUMN_KEY = "project_type";
+	const TYPE_COLUMN_KEY = 'project_type';
 
 	$: ALL_TYPES = Array.from(
-		new Set(rows.map(r => (r.raw[TYPE_COLUMN_KEY] || "").trim()).filter(Boolean)),
+		new Set(rows.map((r) => (r.raw[TYPE_COLUMN_KEY] || '').trim()).filter(Boolean))
 	).sort((a, b) => a.localeCompare(b));
 
-	$: ALL_STACKS = Array.from(new Set(rows.flatMap(r => r.stacks))).sort((a, b) =>
-		a.localeCompare(b),
+	$: ALL_STACKS = Array.from(new Set(rows.flatMap((r) => r.stacks))).sort((a, b) =>
+		a.localeCompare(b)
 	);
 
 	$: typeCounts = Object.fromEntries(
-		ALL_TYPES.map(t => [t, rows.filter(r => (r.raw[TYPE_COLUMN_KEY] || "").trim() === t).length]),
+		ALL_TYPES.map((t) => [
+			t,
+			rows.filter((r) => (r.raw[TYPE_COLUMN_KEY] || '').trim() === t).length
+		])
 	) as Record<string, number>;
 
 	$: stackCounts = Object.fromEntries(
-		ALL_STACKS.map(s => [s, rows.filter(r => r.stacks.includes(s)).length]),
+		ALL_STACKS.map((s) => [s, rows.filter((r) => r.stacks.includes(s)).length])
 	) as Record<string, number>;
 
-	let search = "";
+	let search = '';
 	let typeSet = new Set<string>();
 	let stackSet = new Set<string>();
 
@@ -235,37 +238,37 @@
 	const clearFilters = () => {
 		typeSet = new Set();
 		stackSet = new Set();
-		search = "";
+		search = '';
 	};
 
 	$: filtered = rows
-		.filter(r => (typeSet.size ? typeSet.has((r.raw[TYPE_COLUMN_KEY] || "").trim()) : true))
-		.filter(r => (stackSet.size ? r.stacks.some(s => stackSet.has(s)) : true))
-		.filter(r => {
+		.filter((r) => (typeSet.size ? typeSet.has((r.raw[TYPE_COLUMN_KEY] || '').trim()) : true))
+		.filter((r) => (stackSet.size ? r.stacks.some((s) => stackSet.has(s)) : true))
+		.filter((r) => {
 			if (!search.trim()) return true;
 			const hay = (
 				r.headline +
-				" " +
-				(r.publication ?? "") +
-				" " +
-				r.stacks.join(" ") +
-				" " +
-				Object.values(r.raw).join(" ")
+				' ' +
+				(r.publication ?? '') +
+				' ' +
+				r.stacks.join(' ') +
+				' ' +
+				Object.values(r.raw).join(' ')
 			).toLowerCase();
 			return hay.includes(search.toLowerCase());
 		});
 
 	// ------------- Column sizing (desktop) -------------
 	const trackForKey = (k: string) => {
-		if (isDateKey(k)) return "minmax(90px, 0.6fr)";
-		if (isUrlKey(k)) return "minmax(120px, 0.7fr)";
-		if (isSummaryKey(k)) return "minmax(420px, 3fr)";
-		if (isHeadlineKey(k)) return "minmax(280px, 2fr)";
-		if (isPdfKey(k)) return "minmax(120px, 0.6fr)";
-		return "minmax(150px, 1fr)";
+		if (isDateKey(k)) return 'minmax(90px, 0.6fr)';
+		if (isUrlKey(k)) return 'minmax(120px, 0.7fr)';
+		if (isSummaryKey(k)) return 'minmax(420px, 3fr)';
+		if (isHeadlineKey(k)) return 'minmax(280px, 2fr)';
+		if (isPdfKey(k)) return 'minmax(120px, 0.6fr)';
+		return 'minmax(150px, 1fr)';
 	};
 
-	$: gridCols = `${visibleKeys.map(trackForKey).join(" ")}`;
+	$: gridCols = `${visibleKeys.map(trackForKey).join(' ')}`;
 </script>
 
 <section class="work">
@@ -432,7 +435,7 @@
 		cursor: pointer;
 		text-decoration: underline;
 		text-underline-offset: 2px;
-		font-size: 14px;
+		font-size: 12px;
 	}
 	details {
 		margin: 10px 0 18px;
@@ -521,7 +524,7 @@
 	.pill {
 		display: inline-block;
 		padding: 4px 8px;
-		border: 1px solid #ddd;
+		border: 1px solid #000000;
 		border-radius: 999px;
 		text-decoration: none;
 		color: inherit;
@@ -537,13 +540,13 @@
 
 	.work {
 		color: #000000;
-		font-size: 21px;
+		font-size: 20px;
 		font-weight: 450;
 		line-height: 1.5;
 	}
 	.cell.head {
 		color: #000dff;
-		font-size: 18px;
+		font-size: 16px;
 		opacity: 1;
 		font-weight: bold;
 	}
@@ -608,15 +611,15 @@
 
 		/* Only show two columns: headline + date(→ URL/PDF) */
 		/* Hide any cell/header that is NOT headline/title/name and NOT date */
-		.cell[data-key]:not([data-key="headline"]):not([data-key="title"]):not([data-key="name"]):not(
-				[data-key="pub_date"]
-			):not([data-key="date"]):not([data-key="published"]):not([data-key="publish_date"]) {
+		.cell[data-key]:not([data-key='headline']):not([data-key='title']):not([data-key='name']):not(
+				[data-key='pub_date']
+			):not([data-key='date']):not([data-key='published']):not([data-key='publish_date']) {
 			display: none;
 		}
-		.cell.head[data-key]:not([data-key="headline"]):not([data-key="title"]):not(
-				[data-key="name"]
-			):not([data-key="pub_date"]):not([data-key="date"]):not([data-key="published"]):not(
-				[data-key="publish_date"]
+		.cell.head[data-key]:not([data-key='headline']):not([data-key='title']):not(
+				[data-key='name']
+			):not([data-key='pub_date']):not([data-key='date']):not([data-key='published']):not(
+				[data-key='publish_date']
 			) {
 			display: none;
 		}
