@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import { onMount } from "svelte";
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	const links = [
-		{ href: "/", label: "home" },
-		{ href: "/work", label: "work" },
-		{ href: "/fun", label: "fun projects" },
-		{ href: "/about", label: "about" },
+		{ href: '/', label: 'home' },
+		{ href: '/work', label: 'work' },
+		{ href: '/fun', label: 'fun projects' },
+		{ href: '/about', label: 'about' }
 	];
 
 	let el: HTMLElement;
@@ -15,17 +15,17 @@
 	onMount(() => {
 		const update = () => {
 			const h = el?.offsetHeight ?? 0;
-			document.documentElement.style.setProperty("--header-h", `${h}px`);
+			document.documentElement.style.setProperty('--header-h', `${h}px`);
 		};
 		update();
 
 		const ro = new ResizeObserver(update);
 		if (el) ro.observe(el);
-		window.addEventListener("resize", update, { passive: true });
+		window.addEventListener('resize', update, { passive: true });
 
 		return () => {
 			ro.disconnect();
-			window.removeEventListener("resize", update);
+			window.removeEventListener('resize', update);
 		};
 	});
 </script>
@@ -35,7 +35,7 @@
 		<ul class="nav">
 			{#each links as l, i}
 				<li>
-					<a href={l.href} aria-current={$page.url.pathname === l.href ? "page" : undefined}
+					<a href={l.href} aria-current={$page.url.pathname === l.href ? 'page' : undefined}
 						>{l.label}</a
 					>
 					{#if i < links.length - 1}<span class="sep">|</span>{/if}
@@ -68,8 +68,8 @@
 	.nav a {
 		text-decoration: none;
 		color: #303030;
-		font-size: 20px;
-		font-weight: 800;
+		font-size: 18px;
+		font-weight: 500;
 		line-height: 1;
 	}
 
@@ -77,7 +77,7 @@
 		text-decoration: underline;
 	}
 
-	.nav a[aria-current="page"] {
+	.nav a[aria-current='page'] {
 		text-decoration: underline;
 		text-underline-offset: 3px;
 	}
