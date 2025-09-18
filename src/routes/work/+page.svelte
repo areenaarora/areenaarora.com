@@ -73,9 +73,11 @@
 	};
 
 	const pdfHref = (v: string) => {
-		const val = v.trim();
+		if (!v) return null;
+		const val = v.replace(/[\u200B-\u200D\uFEFF]/g, '').trim();
+		if (!val || val === '-') return null;
 		if (/^https?:\/\//i.test(val)) return val;
-		return `${base}/downloads/${val}`;
+		return `${base}/downloads/${encodeURIComponent(val)}`;
 	};
 
 	// summary helpers (mobile under-headline)
