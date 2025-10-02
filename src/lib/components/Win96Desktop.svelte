@@ -699,7 +699,17 @@
 				</div>
 
 				{#if w.id === 'projects'}
-					<div class="pane"><h3>COMING SOON.</h3></div>
+					<div class="pane">
+						<h3>Projects</h3>
+						<ul>
+							<li>
+								<a href="/fun/jackpot" target="_blank" rel="noopener">
+									🎲 Play Shut the Box (Jackpot)
+								</a>
+							</li>
+							<!-- add more projects here later -->
+						</ul>
+					</div>
 				{:else if w.id === 'blog'}
 					<div class="pane">
 						<h3>Recent posts</h3>

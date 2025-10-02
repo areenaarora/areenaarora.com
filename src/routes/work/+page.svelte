@@ -527,7 +527,7 @@
 		display: inline-block;
 		padding: 4px 8px;
 		border: 1px solid #000000;
-		border-radius: 999px;
+		border-radius: 5px;
 		text-decoration: none;
 		color: inherit;
 		font-size: 16px;
