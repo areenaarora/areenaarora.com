@@ -1,6 +1,6 @@
 <!-- src/routes/fun/+page.svelte -->
 <script lang="ts">
-	import Win96Desktop from "$lib/components/Win96Desktop.svelte";
+	import Win96Desktop from '$lib/components/Win96Desktop.svelte';
 </script>
 
 <Win96Desktop />
