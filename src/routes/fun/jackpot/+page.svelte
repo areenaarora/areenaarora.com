@@ -82,10 +82,10 @@
 			return res.sort((a, b) => a.length - b.length || sum(a) - sum(b));
 		}
 
-		function legalSelection() {
-			if (!state.dice.length) return false;
-			const total = sum(state.dice);
-			const s = sum(state.selected);
+		// small helper for dice layout reused in template
+		function getPips(d: number): [number, number][] {
+			const pos: Record<string, [number, number]> = {
+
 			if (s === 0) return false;
 			return s === total;
 		}
