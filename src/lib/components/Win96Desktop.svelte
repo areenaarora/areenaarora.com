@@ -5,25 +5,25 @@
 	// Minimal shape we need for rendering
 	type PostListItem = { slug: string; title: string; date: string };
 
+	/* ---------------- Layout constants ---------------- */
+	const SAFE_LEFT = 120;
+	const EDGE_PAD = 12;
+
+	// taskbar height needs to match CSS; mobile differs
+	let isMobile = false;
+	let taskbarH = 44;
+
+	function updateIsMobile() {
+		isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 820px)').matches;
+		taskbarH = isMobile ? 48 : 44;
+	}
+
 	// wallpaper toggle
 	onMount(() => document.body.classList.add('win96-wallpaper'));
 	onDestroy(() => document.body.classList.remove('win96-wallpaper'));
 
-	// blog posts
+	/* ---------------- Blog posts ---------------- */
 	let allPosts: PostListItem[] = [];
-	onMount(async () => {
-		try {
-			allPosts = await getAllPosts();
-		} catch (e) {
-			console.error('Failed to load posts', e);
-			allPosts = [];
-		}
-	});
-
-	/* ---------------- Layout constants ---------------- */
-	const SAFE_LEFT = 120;
-	const TASKBAR_H = 44;
-	const EDGE_PAD = 12;
 
 	/* ---------------- Window model ---------------- */
 	type Win = {
@@ -83,9 +83,6 @@
 	}
 
 	let wins: Wins = {}; // none open by default
-	function bumpWins() {
-		wins = { ...wins };
-	}
 
 	/* ---------------- Z-order helpers ---------------- */
 	function topId(): Win['id'] | null {
@@ -173,17 +170,14 @@
 	}
 
 	/* ---------------- MOBILE single-window mode ---------------- */
-	let isMobile = false;
-	function updateIsMobile() {
-		isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 820px)').matches;
-	}
 	function closeAllWindows() {
 		for (const k of Object.keys(wins) as Win['id'][]) delete wins[k];
+		wins = { ...wins };
 	}
 	function placeNicelyMobile(w: Win) {
 		const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 		const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-		const pad = TASKBAR_H + 16;
+		const pad = taskbarH + 16;
 
 		const targetW = Math.round(Math.min(vw * 0.96, 520));
 		const targetH = Math.round(Math.min(vh * 0.6, 560));
@@ -262,7 +256,7 @@
 		bringToFront(id);
 
 		const maxX = Math.max(SAFE_LEFT, desktopEl.clientWidth - w.w);
-		const maxY = Math.max(0, desktopEl.clientHeight - TASKBAR_H - w.h);
+		const maxY = Math.max(0, desktopEl.clientHeight - taskbarH - w.h);
 
 		drag = {
 			id,
@@ -364,38 +358,48 @@
 	}
 
 	/* =================== DRAGGABLE DESKTOP ICONS (free drop; NO persistence) =================== */
-	type IconId = 'projects' | 'blog' | 'terminal' | 'areena';
-	type Icon = { id: IconId; label: string; img: string; x: number; y: number };
+	type Icon =
+		| {
+				kind: 'app';
+				id: 'projects' | 'blog' | 'terminal' | 'areena';
+				label: string;
+				img: string;
+				x: number;
+				y: number;
+		  }
+		| { kind: 'post'; slug: string; label: string; img: string; x: number; y: number };
+
+	const iconKey = (ic: Icon) => (ic.kind === 'app' ? `app:${ic.id}` : `post:${ic.slug}`);
 
 	const ICON_W = 82;
 	const ICON_H = 82;
 	const LABEL_H = 26;
 
-	// Initial positions (single left column), in raw pixels
 	function defaultIcons(): Icon[] {
 		return [
-			{ id: 'projects', label: 'Projects', img: '/briefcase.png', x: 0, y: 0 },
-			{ id: 'blog', label: 'Blog', img: '/notepad.png', x: 0, y: 132 }, // 82 + 26 + ~24 gap
-			{ id: 'terminal', label: 'Terminal', img: '/console.png', x: 0, y: 264 },
-			{ id: 'areena', label: 'Areena', img: '/computer.png', x: 0, y: 396 }
+			{ kind: 'app', id: 'projects', label: 'Projects', img: '/briefcase.png', x: 0, y: 0 },
+			{ kind: 'app', id: 'blog', label: 'Blog', img: '/notepad.png', x: 0, y: 132 },
+			{ kind: 'app', id: 'terminal', label: 'Terminal', img: '/console.png', x: 0, y: 264 },
+			{ kind: 'app', id: 'areena', label: 'Areena', img: '/computer.png', x: 0, y: 396 }
 		];
 	}
 
 	// No localStorage: always reset to defaults on refresh
 	let icons: Icon[] = defaultIcons();
 
-	const iconEl: Record<IconId, HTMLElement> = {} as Record<IconId, HTMLElement>;
-	function iconRef(node: HTMLElement, id: IconId) {
-		iconEl[id] = node;
+	// icon DOM refs by key
+	const iconEl: Record<string, HTMLElement> = {};
+	function iconRef(node: HTMLElement, key: string) {
+		iconEl[key] = node;
 		return {
 			destroy() {
-				delete iconEl[id];
+				delete iconEl[key];
 			}
 		};
 	}
 
 	type IconDrag = {
-		id: IconId;
+		key: string;
 		startX: number;
 		startY: number;
 		startIconX: number;
@@ -407,20 +411,29 @@
 		moved: boolean;
 		pointerId: number;
 	} | null;
+
 	let iconDrag: IconDrag = null;
 
-	function activateIcon(id: IconId) {
-		if (id === 'areena') window.location.href = '/';
-		else if (id === 'terminal') openTerminal();
-		else openFromIcon(id);
+	function activateIcon(ic: Icon) {
+		if (ic.kind === 'post') {
+			window.location.href = `/blog/${ic.slug}`;
+			return;
+		}
+		if (ic.id === 'areena') window.location.href = '/';
+		else if (ic.id === 'terminal') openTerminal();
+		else openFromIcon(ic.id);
 	}
 
 	function iconPointerDown(ic: Icon, ev: PointerEvent) {
 		if (ev.button !== 0) return;
+
 		const maxX = Math.max(0, desktopEl.clientWidth - ICON_W - 4);
-		const maxY = Math.max(0, desktopEl.clientHeight - TASKBAR_H - (ICON_H + LABEL_H) - 4);
+		const maxY = Math.max(0, desktopEl.clientHeight - taskbarH - (ICON_H + LABEL_H) - 4);
+
+		const key = iconKey(ic);
+
 		iconDrag = {
-			id: ic.id,
+			key,
 			startX: ev.clientX,
 			startY: ev.clientY,
 			startIconX: ic.x,
@@ -432,6 +445,7 @@
 			moved: false,
 			pointerId: ev.pointerId
 		};
+
 		(ev.currentTarget as HTMLElement).setPointerCapture(ev.pointerId);
 		document.body.style.userSelect = 'none';
 		ev.preventDefault();
@@ -444,36 +458,34 @@
 		if (!iconDrag.moved && Math.abs(dx) < THRESHOLD && Math.abs(dy) < THRESHOLD) return;
 		iconDrag.moved = true;
 
-		// clamp within desktop bounds
 		const nx = clamp(iconDrag.startIconX + dx, 0, iconDrag.maxX);
 		const ny = clamp(iconDrag.startIconY + dy, 0, iconDrag.maxY);
 		iconDrag.curX = nx;
 		iconDrag.curY = ny;
 
-		const el = iconEl[iconDrag.id];
+		const el = iconEl[iconDrag.key];
 		if (el) el.style.transform = `translate3d(${nx}px, ${ny}px, 0)`;
 	}
 
 	function iconPointerUp() {
 		if (!iconDrag) return;
 
-		// final position = exactly where the cursor ended (clamped)
 		const x = clamp(iconDrag.curX, 0, iconDrag.maxX);
 		const y = clamp(iconDrag.curY, 0, iconDrag.maxY);
 
-		// commit to state
-		const idx = icons.findIndex((i) => i.id === iconDrag!.id);
+		const idx = icons.findIndex((i) => iconKey(i) === iconDrag!.key);
 		if (idx !== -1) {
-			icons[idx] = { ...icons[idx], x, y };
+			icons[idx] = { ...icons[idx], x, y } as Icon;
 			icons = [...icons];
 		}
 
-		// ensure the element ends exactly there
-		const el = iconEl[iconDrag.id];
+		const el = iconEl[iconDrag.key];
 		if (el) el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
 
-		// treat as a click only if there was no drag
-		if (!iconDrag.moved) activateIcon(iconDrag.id);
+		if (!iconDrag.moved) {
+			const ic = icons.find((i) => iconKey(i) === iconDrag!.key);
+			if (ic) activateIcon(ic);
+		}
 
 		iconDrag = null;
 		document.body.style.userSelect = '';
@@ -512,8 +524,8 @@
 		});
 	}
 
-	/* ---------------- Mount/Unmount listeners ---------------- */
-	onMount(() => {
+	/* ---------------- Mount/Unmount listeners + data load ---------------- */
+	onMount(async () => {
 		updateIsMobile();
 		window.addEventListener('resize', updateIsMobile);
 
@@ -530,6 +542,37 @@
 
 		// start menu closer
 		window.addEventListener('click', onDesktopClick);
+
+		// load posts + create post icons
+		try {
+			allPosts = await getAllPosts();
+
+			const startX = 120; // first post column X
+			const startY = 0; // first post row Y
+			const colGap = 220; // horizontal gap between post columns (tweak)
+			const rowGap = 160; // vertical gap between post rows (tweak)
+			const cols = 2; // how many columns of post icons
+
+			const postIcons: Icon[] = allPosts.slice(0, 12).map((p, i) => {
+				const col = i % cols;
+				const row = Math.floor(i / cols);
+
+				return {
+					kind: 'post',
+					slug: p.slug,
+					label: p.title,
+					img: '/blog_icon.png',
+					x: startX + col * colGap,
+					y: startY + row * rowGap
+				};
+			});
+
+			icons = [...defaultIcons(), ...postIcons];
+		} catch (e) {
+			console.error('Failed to load posts', e);
+			allPosts = [];
+			icons = defaultIcons();
+		}
 	});
 
 	onDestroy(() => {
@@ -551,15 +594,15 @@
 <div
 	class="desktop"
 	bind:this={desktopEl}
-	style={`--taskbar-h:${TASKBAR_H}px; --edge-pad:${EDGE_PAD}px`}
+	style={`--taskbar-h:${taskbarH}px; --edge-pad:${EDGE_PAD}px`}
 	role="application"
 >
 	<!-- Draggable desktop icons (free drop; reset on refresh) -->
 	<div class="icons-layer">
-		{#each icons as ic (ic.id)}
+		{#each icons as ic (iconKey(ic))}
 			<button
 				class="icon"
-				use:iconRef={ic.id}
+				use:iconRef={iconKey(ic)}
 				style={`transform: translate3d(${ic.x}px, ${ic.y}px, 0)`}
 				on:pointerdown={(e: PointerEvent) => iconPointerDown(ic, e)}
 				aria-label={`Open ${ic.label}`}
@@ -883,10 +926,10 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		bottom: var(--taskbar-h); /* keep icons above the taskbar without increasing layout height */
+		bottom: var(--taskbar-h);
 		left: 0;
 		pointer-events: auto;
-		padding-left: 15px; /* left gutter for icons */
+		padding-left: 15px;
 		box-sizing: border-box;
 		max-width: 100%;
 	}
@@ -1068,12 +1111,12 @@
 			600 14px/1.4 'Courier New',
 			ui-monospace,
 			monospace;
-		overflow: auto; /* scroll the terminal, not the whole window */
+		overflow: auto;
 	}
 
 	.term-header {
 		color: #00e5ff;
-		margin: 0 0 4px; /* FIX: was `0 4 4px` (invalid) */
+		margin: 0 0 4px;
 		font-style: italic;
 		white-space: pre-wrap;
 		overflow-wrap: anywhere;
@@ -1082,7 +1125,7 @@
 
 	.term-line {
 		color: #00e5ff;
-		margin: 0 0 2px; /* slight breathing room between lines */
+		margin: 0 0 2px;
 		font:
 			600 14px/1.4 'Courier New',
 			ui-monospace,
@@ -1107,7 +1150,7 @@
 		border: none;
 		outline: none;
 		color: #00e5ff;
-		caret-color: #00e5ff; /* caret visible on black bg */
+		caret-color: #00e5ff;
 		font:
 			600 14px/1.4 'Courier New',
 			ui-monospace,
@@ -1445,16 +1488,16 @@
 	}
 	.icons-layer {
 		z-index: 10;
-	} /* icons */
+	}
 	.window {
 		z-index: 20;
-	} /* app windows */
+	}
 	.start-menu {
 		z-index: 30;
-	} /* start menu over windows */
+	}
 	.taskbar {
 		z-index: 40;
-	} /* taskbar on top */
+	}
 
 	/* --- make icon tap targets reliable on touch --- */
 	.icon {
@@ -1465,29 +1508,31 @@
 		content: '';
 		position: absolute;
 		inset: -10px;
-	} /* enlarge hitbox */
+	}
 	.icons-layer,
 	.icon {
 		pointer-events: auto;
 	}
 
+	/* Blog post icon label wrapping */
+	.icon span {
+		max-width: 200px;
+		white-space: normal;
+		word-break: break-word;
+		text-align: center;
+	}
+
 	/* --- mobile tweaks --- */
 	@media (max-width: 820px) {
-		:root {
-			--taskbar-h: 48px;
-		}
-
 		.desktop {
-			height: calc(100svh - var(--site-header-h)); /* header accounted for */
-			overflow: clip; /* no vertical scroll */
+			height: calc(100svh - var(--site-header-h));
+			overflow: clip;
 		}
 
-		/* keep icons above taskbar + safe area on mobile */
 		.icons-layer {
 			bottom: calc(var(--taskbar-h) + env(safe-area-inset-bottom, 0px));
 		}
 
-		/* smaller icons on mobile */
 		.icon-img {
 			width: 64px;
 			height: 64px;
@@ -1500,13 +1545,11 @@
 			padding: 6px 8px;
 		}
 
-		/* belt & suspenders: no horizontal scroll */
 		:global(html),
 		:global(body) {
 			overflow-x: hidden;
 		}
 
-		/* keep windows usable on small screens */
 		.window {
 			max-width: 96vw;
 			max-height: calc(100vh - var(--taskbar-h) - 20px);

@@ -88,6 +88,7 @@
 		line-height: 1.1;
 		margin: 0 0 0.75rem 0;
 	}
+
 	.dek {
 		font-size: 1.125rem;
 		margin: 0 0 2rem 0;

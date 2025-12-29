@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { marked, type Tokens } from "marked";
+	import { marked, type Tokens } from 'marked';
 
 	export let data: {
 		slug: string;
@@ -12,7 +12,7 @@
 	// Marked v12+ signature; note the `this` typing.
 	renderer.link = function (this: any, { href, title, tokens }: Tokens.Link) {
 		const text = this.parser.parseInline(tokens ?? []);
-		const t = title ? ` title="${title}"` : "";
+		const t = title ? ` title="${title}"` : '';
 		return `<a href="${href}"${t} target="_blank" rel="noopener noreferrer">${text}</a>`;
 	};
 
@@ -55,7 +55,7 @@
 		padding: 0.75rem 1rem;
 		border-left: 4px solid #ddd;
 		background: #fafafa;
-		color: #555;
+		color: #222222;
 	}
 	.content :global(img),
 	.content :global(video) {
@@ -75,17 +75,17 @@
 	}
 
 	.title {
-		font-size: clamp(2.25rem, 5vw, 3.5rem);
+		font-size: 2.3rem;
 		font-weight: 800;
 		letter-spacing: 0.02em;
 		text-align: center;
 		margin: 0 0 0.5rem 0;
-		color: #484848;
+		color: #242424;
 	}
 
 	.date {
 		text-align: center;
-		color: #666;
+		color: #000000;
 		font-size: 0.95rem;
 		margin: 0 0 2.5rem 0;
 	}
