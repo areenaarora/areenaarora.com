@@ -20,8 +20,15 @@
 	let taskbarH = 44;
 
 	function updateIsMobile() {
-		isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 820px)').matches;
+		const next = typeof window !== 'undefined' && window.matchMedia('(max-width: 820px)').matches;
+		const wasMobile = isMobile;
+
+		isMobile = next;
 		taskbarH = isMobile ? 48 : 44;
+
+		if (!wasMobile && isMobile) {
+			closeAllWindows();
+		}
 	}
 
 	/* ---------------- Blog posts ---------------- */
@@ -197,10 +204,9 @@
 		w.y = Math.max(6, Math.round((vh - pad - targetH) / 2));
 	}
 
-	/* ---------------- SINGLE openFromIcon (NO DUPES) ---------------- */
 	function openFromIcon(id: Win['id']) {
 		if (isMobile) {
-			// single window mode
+			// mobile: allow only one window at a time
 			closeAllWindows();
 			wins[id] = makeWinDefaults(id);
 			placeNicelyMobile(wins[id]!);
@@ -611,22 +617,9 @@
 		// start menu closer
 		window.addEventListener('click', onDesktopClick);
 
-		// ✅ OPEN BY DEFAULT (desktop: projects+blog, mobile: blog)
 		if (isMobile) {
-			wins = { blog: makeWinDefaults('blog') };
-			placeNicelyMobile(wins.blog!);
-			wins.blog!.z = ++zCounter;
-		} else {
-			wins = {
-				projects: makeWinDefaults('projects'),
-				blog: makeWinDefaults('blog')
-			};
-		}
-
-		if (isMobile) {
-			wins = { blog: makeWinDefaults('blog') };
-			placeNicelyMobile(wins.blog!);
-			wins.blog!.z = ++zCounter;
+			// mobile default: icons only, no windows
+			closeAllWindows();
 		} else {
 			const p = makeWinDefaults('projects');
 			const b = makeWinDefaults('blog');
@@ -634,8 +627,8 @@
 			placeNicelyDesktop(p, b);
 
 			wins = { projects: p, blog: b };
+			wins = { ...wins };
 		}
-		wins = { ...wins };
 
 		// load posts
 		try {
