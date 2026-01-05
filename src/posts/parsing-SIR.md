@@ -41,13 +41,15 @@ Doing it this way allowed the script to probe beyond the real endpoint and avoid
 
 Effectively, coding the stopping logic in this way helped me discover the right range of polling booths from the data uploaded by CEO Tamil Nadu’s website itself.
 
-<b>How the 404-based stopping logic worked</b>
+**How the 404-based stopping logic worked**
+
 In practice, the script behaved like this:
-•	Start with polling booth 1 for a constituency
-•	Download PDFs sequentially (PS 1, PS 2, PS 3, …)
-•	Reset the error counter every time a valid PDF was found
-•	Increment the counter only when a 404 occurred
-•	Exit only after three 404s in a row
+
+- Start with polling booth 1 for a constituency
+- Download PDFs sequentially (PS 1, PS 2, PS 3, …)
+- Reset the error counter every time a valid PDF was found
+- Increment the counter only when a 404 occurred
+- Exit only after three 404s in a row
 
 Even after downloading everything, I didn’t assume success. In a few cases, instead of PDFs, corrupt “pdf.part” extension files got downloaded. To check this, I wrote code to go through all 234 assembly constituencies’ folders and check if:
 a.	They in fact contained the right number of files – inferred and logged from our downloading logic.

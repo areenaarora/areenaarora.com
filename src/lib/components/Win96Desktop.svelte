@@ -9,6 +9,12 @@
 	const SAFE_LEFT = 120;
 	const EDGE_PAD = 12;
 
+	// Soft grid (desktop icon snapping)
+	const GRID_ORIGIN_X = 16;
+	const GRID_ORIGIN_Y = 16;
+	const GRID_COL_W = 140; // “soft” grid column width
+	const GRID_ROW_H = 140; // “soft” grid row height
+
 	// taskbar height needs to match CSS; mobile differs
 	let isMobile = false;
 	let taskbarH = 44;
@@ -18,12 +24,15 @@
 		taskbarH = isMobile ? 48 : 44;
 	}
 
-	// wallpaper toggle
-	onMount(() => document.body.classList.add('win96-wallpaper'));
-	onDestroy(() => document.body.classList.remove('win96-wallpaper'));
-
 	/* ---------------- Blog posts ---------------- */
 	let allPosts: PostListItem[] = [];
+
+	/* ---------------- Blog view mode (power user affordance) ---------------- */
+	type BlogViewMode = 'icons' | 'list';
+	let blogView: BlogViewMode = 'list';
+	function setBlogView(v: BlogViewMode) {
+		blogView = v;
+	}
 
 	/* ---------------- Window model ---------------- */
 	type Win = {
@@ -66,7 +75,7 @@
 				x: 600,
 				y: 160,
 				w: 560,
-				h: 420
+				h: 460
 			};
 		}
 		return {
@@ -82,7 +91,7 @@
 		};
 	}
 
-	let wins: Wins = {}; // none open by default
+	let wins: Wins = {};
 
 	/* ---------------- Z-order helpers ---------------- */
 	function topId(): Win['id'] | null {
@@ -180,7 +189,7 @@
 		const pad = taskbarH + 16;
 
 		const targetW = Math.round(Math.min(vw * 0.96, 520));
-		const targetH = Math.round(Math.min(vh * 0.6, 560));
+		const targetH = Math.round(Math.min(vh * 0.65, 600));
 
 		w.w = targetW;
 		w.h = targetH;
@@ -188,9 +197,10 @@
 		w.y = Math.max(6, Math.round((vh - pad - targetH) / 2));
 	}
 
+	/* ---------------- SINGLE openFromIcon (NO DUPES) ---------------- */
 	function openFromIcon(id: Win['id']) {
-		// On mobile: allow only one window at a time (replace any open one)
 		if (isMobile) {
+			// single window mode
 			closeAllWindows();
 			wins[id] = makeWinDefaults(id);
 			placeNicelyMobile(wins[id]!);
@@ -199,34 +209,40 @@
 			return;
 		}
 
-		// Desktop behavior unchanged
+		// desktop: open/restore only that window
 		if (!wins[id]) wins[id] = makeWinDefaults(id);
 		else wins[id]!.minimized = false;
-		if (wins[id]) wins[id]!.z = ++zCounter;
+
+		wins[id]!.z = ++zCounter;
 		wins = { ...wins };
 	}
+
 	function openTerminal() {
 		openFromIcon('terminal');
 	}
 
 	/* ---------------- Window dragging ---------------- */
 	let desktopEl: HTMLDivElement;
-	const winEl: Record<Win['id'], HTMLElement> = {} as Record<Win['id'], HTMLElement>;
+	const winEl: Partial<Record<Win['id'], HTMLElement>> = {};
+
 	function storeRef(node: HTMLElement, params: { id: Win['id'] }) {
-		winEl[params.id] = node;
+		let cur = params;
+		winEl[cur.id] = node;
+
 		return {
 			update(next: { id: Win['id'] }) {
-				if (next.id !== params.id) {
-					delete winEl[params.id];
+				if (next.id !== cur.id) {
+					delete winEl[cur.id];
 					winEl[next.id] = node;
-					params = next;
+					cur = next;
 				}
 			},
 			destroy() {
-				delete winEl[params.id];
+				delete winEl[cur.id];
 			}
 		};
 	}
+
 	type Drag = {
 		id: Win['id'];
 		startX: number;
@@ -357,7 +373,7 @@
 		time = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 	}
 
-	/* =================== DRAGGABLE DESKTOP ICONS (free drop; NO persistence) =================== */
+	/* =================== DESKTOP ICONS (soft grid snap + free drop; NO persistence) =================== */
 	type Icon =
 		| {
 				kind: 'app';
@@ -375,25 +391,62 @@
 	const ICON_H = 82;
 	const LABEL_H = 26;
 
+	function snapToGrid(x: number, y: number) {
+		const gx = Math.round((x - GRID_ORIGIN_X) / GRID_COL_W) * GRID_COL_W + GRID_ORIGIN_X;
+		const gy = Math.round((y - GRID_ORIGIN_Y) / GRID_ROW_H) * GRID_ROW_H + GRID_ORIGIN_Y;
+		return { x: gx, y: gy };
+	}
+
 	function defaultIcons(): Icon[] {
+		const baseX = GRID_ORIGIN_X;
+		const baseY = GRID_ORIGIN_Y;
+
 		return [
-			{ kind: 'app', id: 'projects', label: 'Projects', img: '/briefcase.png', x: 0, y: 0 },
-			{ kind: 'app', id: 'blog', label: 'Blog', img: '/notepad.png', x: 0, y: 132 },
-			{ kind: 'app', id: 'terminal', label: 'Terminal', img: '/console.png', x: 0, y: 264 },
-			{ kind: 'app', id: 'areena', label: 'Areena', img: '/computer.png', x: 0, y: 396 }
+			{ kind: 'app', id: 'projects', label: 'Projects', img: '/briefcase.png', x: baseX, y: baseY },
+			{
+				kind: 'app',
+				id: 'blog',
+				label: 'Blog',
+				img: '/notepad.png',
+				x: baseX,
+				y: baseY + GRID_ROW_H
+			},
+			{
+				kind: 'app',
+				id: 'terminal',
+				label: 'Terminal',
+				img: '/console.png',
+				x: baseX,
+				y: baseY + GRID_ROW_H * 2
+			},
+			{
+				kind: 'app',
+				id: 'areena',
+				label: 'Areena',
+				img: '/computer.png',
+				x: baseX,
+				y: baseY + GRID_ROW_H * 3
+			}
 		];
 	}
 
-	// No localStorage: always reset to defaults on refresh
 	let icons: Icon[] = defaultIcons();
 
 	// icon DOM refs by key
 	const iconEl: Record<string, HTMLElement> = {};
 	function iconRef(node: HTMLElement, key: string) {
-		iconEl[key] = node;
+		let curKey = key;
+		iconEl[curKey] = node;
 		return {
+			update(nextKey: string) {
+				if (nextKey !== curKey) {
+					delete iconEl[curKey];
+					curKey = nextKey;
+					iconEl[curKey] = node;
+				}
+			},
 			destroy() {
-				delete iconEl[key];
+				delete iconEl[curKey];
 			}
 		};
 	}
@@ -470,8 +523,9 @@
 	function iconPointerUp() {
 		if (!iconDrag) return;
 
-		const x = clamp(iconDrag.curX, 0, iconDrag.maxX);
-		const y = clamp(iconDrag.curY, 0, iconDrag.maxY);
+		const snapped = snapToGrid(iconDrag.curX, iconDrag.curY);
+		const x = clamp(snapped.x, 0, iconDrag.maxX);
+		const y = clamp(snapped.y, 0, iconDrag.maxY);
 
 		const idx = icons.findIndex((i) => iconKey(i) === iconDrag!.key);
 		if (idx !== -1) {
@@ -524,8 +578,22 @@
 		});
 	}
 
-	/* ---------------- Mount/Unmount listeners + data load ---------------- */
+	function placeNicelyDesktop(projects: Win, blog: Win) {
+		const vw = window.innerWidth;
+
+		projects.x = SAFE_LEFT + 60;
+		projects.y = 100;
+
+		const GAP = 130;
+		const maxBlogX = Math.max(SAFE_LEFT, vw - blog.w - EDGE_PAD);
+		blog.x = Math.min(projects.x + projects.w + GAP, maxBlogX);
+		blog.y = 120;
+	}
+
 	onMount(async () => {
+		// wallpaper
+		document.body.classList.add('win96-wallpaper');
+
 		updateIsMobile();
 		window.addEventListener('resize', updateIsMobile);
 
@@ -543,39 +611,44 @@
 		// start menu closer
 		window.addEventListener('click', onDesktopClick);
 
-		// load posts + create post icons
+		// ✅ OPEN BY DEFAULT (desktop: projects+blog, mobile: blog)
+		if (isMobile) {
+			wins = { blog: makeWinDefaults('blog') };
+			placeNicelyMobile(wins.blog!);
+			wins.blog!.z = ++zCounter;
+		} else {
+			wins = {
+				projects: makeWinDefaults('projects'),
+				blog: makeWinDefaults('blog')
+			};
+		}
+
+		if (isMobile) {
+			wins = { blog: makeWinDefaults('blog') };
+			placeNicelyMobile(wins.blog!);
+			wins.blog!.z = ++zCounter;
+		} else {
+			const p = makeWinDefaults('projects');
+			const b = makeWinDefaults('blog');
+
+			placeNicelyDesktop(p, b);
+
+			wins = { projects: p, blog: b };
+		}
+		wins = { ...wins };
+
+		// load posts
 		try {
 			allPosts = await getAllPosts();
-
-			const startX = 120; // first post column X
-			const startY = 0; // first post row Y
-			const colGap = 220; // horizontal gap between post columns (tweak)
-			const rowGap = 160; // vertical gap between post rows (tweak)
-			const cols = 2; // how many columns of post icons
-
-			const postIcons: Icon[] = allPosts.slice(0, 12).map((p, i) => {
-				const col = i % cols;
-				const row = Math.floor(i / cols);
-
-				return {
-					kind: 'post',
-					slug: p.slug,
-					label: p.title,
-					img: '/blog_icon.png',
-					x: startX + col * colGap,
-					y: startY + row * rowGap
-				};
-			});
-
-			icons = [...defaultIcons(), ...postIcons];
 		} catch (e) {
 			console.error('Failed to load posts', e);
 			allPosts = [];
-			icons = defaultIcons();
 		}
 	});
 
 	onDestroy(() => {
+		document.body.classList.remove('win96-wallpaper');
+
 		if (clockTimer) clearInterval(clockTimer);
 
 		window.removeEventListener('resize', updateIsMobile);
@@ -597,7 +670,7 @@
 	style={`--taskbar-h:${taskbarH}px; --edge-pad:${EDGE_PAD}px`}
 	role="application"
 >
-	<!-- Draggable desktop icons (free drop; reset on refresh) -->
+	<!-- Draggable desktop icons (soft grid snap; reset on refresh) -->
 	<div class="icons-layer">
 		{#each icons as ic (iconKey(ic))}
 			<button
@@ -606,6 +679,7 @@
 				style={`transform: translate3d(${ic.x}px, ${ic.y}px, 0)`}
 				on:pointerdown={(e: PointerEvent) => iconPointerDown(ic, e)}
 				aria-label={`Open ${ic.label}`}
+				title={ic.label}
 			>
 				<img class="icon-img" width="32" height="32" src={ic.img} alt="" />
 				<span>{ic.label}</span>
@@ -755,16 +829,58 @@
 					</div>
 				{:else if w.id === 'blog'}
 					<div class="pane">
-						<h3>Recent posts</h3>
+						<div class="pane-head">
+							<h3>Blog</h3>
+							<div class="view-toggle" aria-label="Blog view toggle">
+								<button
+									type="button"
+									class="view-btn {blogView === 'list' ? 'active' : ''}"
+									on:click={() => setBlogView('list')}
+								>
+									View as list
+								</button>
+								<button
+									type="button"
+									class="view-btn {blogView === 'icons' ? 'active' : ''}"
+									on:click={() => setBlogView('icons')}
+								>
+									View as icons
+								</button>
+							</div>
+						</div>
+
 						{#if allPosts.length}
-							<ul class="posts">
-								{#each allPosts as p}
-									<li>
-										<time>{p.date}</time>
-										<a href={`/blog/${p.slug}`} target="_blank" rel="noopener">{p.title}</a>
-									</li>
-								{/each}
-							</ul>
+							{#if blogView === 'list'}
+								<ul class="posts">
+									{#each allPosts as p}
+										<li>
+											<time>{p.date}</time>
+											<a href={`/blog/${p.slug}`} target="_blank" rel="noopener">{p.title}</a>
+										</li>
+									{/each}
+								</ul>
+							{:else}
+								<div class="post-grid" role="list">
+									{#each allPosts as p (p.slug)}
+										<a
+											class="post-icon"
+											href={`/blog/${p.slug}`}
+											target="_blank"
+											rel="noopener"
+											role="listitem"
+										>
+											<img
+												class="post-icon-img"
+												width="48"
+												height="48"
+												src="/blog_icon.png"
+												alt=""
+											/>
+											<span class="post-icon-label" title={p.title}>{p.title}</span>
+										</a>
+									{/each}
+								</div>
+							{/if}
 						{:else}
 							<p>No posts found.</p>
 						{/if}
@@ -914,7 +1030,6 @@
 	}
 
 	.desktop {
-		/* subtract header so the page height = viewport height */
 		min-height: calc(100vh - var(--site-header-h));
 		background: transparent;
 		image-rendering: pixelated;
@@ -952,6 +1067,8 @@
 		image-rendering: pixelated;
 		filter: saturate(0.95) contrast(1.02);
 	}
+
+	/* === Two-line clamp for desktop icon labels === */
 	.icon span {
 		margin-top: 4px;
 		font:
@@ -965,6 +1082,14 @@
 			0 0 0 1px var(--w95-light) inset,
 			0 0 0 2px var(--w95-highlight) inset,
 			0 0 0 3px var(--w95-shadow) inset;
+
+		max-width: 160px;
+		text-align: center;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		word-break: break-word;
 	}
 
 	/* Windows */
@@ -1084,12 +1209,46 @@
 			0 0 0 3px var(--w95-shadow) inset;
 	}
 	.pane h3 {
-		margin: 0 0 6px;
+		margin: 0;
 		font:
 			700 13px/1 'MS Sans Serif',
 			Tahoma,
 			system-ui;
 	}
+
+	/* Blog pane head + toggle */
+	.pane-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		margin-bottom: 8px;
+	}
+	.view-toggle {
+		display: flex;
+		gap: 6px;
+	}
+	.view-btn {
+		height: 24px;
+		padding: 0 10px;
+		font:
+			700 12px/1 'MS Sans Serif',
+			Tahoma,
+			system-ui;
+		background: #c0c0c0;
+		border: 2px solid #fff;
+		border-right-color: #404040;
+		border-bottom-color: #404040;
+		cursor: pointer;
+	}
+	.view-btn:active,
+	.view-btn.active {
+		border: 2px solid #404040;
+		border-right-color: #fff;
+		border-bottom-color: #fff;
+		background: #dfdfdf;
+	}
+
 	.list,
 	.posts {
 		margin: 0;
@@ -1099,6 +1258,53 @@
 	.posts time {
 		font-weight: 700;
 		margin-right: 8px;
+	}
+
+	/* Blog icons view (inside window) */
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		gap: 12px;
+	}
+	.post-icon {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		padding: 8px;
+		text-decoration: none;
+		color: #000;
+		background: #fff;
+		border: 1px solid transparent;
+	}
+	.post-icon:hover {
+		border-color: #9c9c9c;
+		background: #fafafa;
+	}
+	.post-icon-img {
+		width: 64px;
+		height: 64px;
+		image-rendering: pixelated;
+	}
+	.post-icon-label {
+		font:
+			700 12px/1 'MS Sans Serif',
+			Tahoma,
+			system-ui;
+		background: var(--w95-face);
+		padding: 6px 8px;
+		box-shadow:
+			0 0 0 1px var(--w95-light) inset,
+			0 0 0 2px var(--w95-highlight) inset,
+			0 0 0 3px var(--w95-shadow) inset;
+
+		max-width: 160px;
+		text-align: center;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		word-break: break-word;
 	}
 
 	/* Terminal */
@@ -1514,14 +1720,6 @@
 		pointer-events: auto;
 	}
 
-	/* Blog post icon label wrapping */
-	.icon span {
-		max-width: 200px;
-		white-space: normal;
-		word-break: break-word;
-		text-align: center;
-	}
-
 	/* --- mobile tweaks --- */
 	@media (max-width: 820px) {
 		.desktop {
@@ -1540,9 +1738,11 @@
 		.icon {
 			gap: 4px;
 		}
+
 		.icon span {
 			font-size: 12px;
 			padding: 6px 8px;
+			max-width: 140px;
 		}
 
 		:global(html),
@@ -1556,6 +1756,13 @@
 		}
 		.content {
 			overflow: auto;
+		}
+
+		.post-grid {
+			grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+		}
+		.post-icon-label {
+			max-width: 140px;
 		}
 	}
 </style>
