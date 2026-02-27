@@ -4,8 +4,30 @@ export type PostListItem = {
   slug: string;
   title: string;
   date: string;
+  excerpt?: string;
 };
 
+
+function stripMarkdown(md: string): string {
+  return md
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[[^\]]+\]\([^)]*\)/g, "$1")
+    .replace(/^>+/gm, "")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/[\*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getExcerpt(raw: string, maxLen = 180): string {
+  const body = raw.replace(/^---\s*[\r\n]+[\s\S]*?\r?\n---\s*/, "").trim();
+  const firstParagraph = body.split(/\n\s*\n/).find((p) => p.trim()) ?? body;
+  const plain = stripMarkdown(firstParagraph);
+  if (plain.length <= maxLen) return plain;
+  return `${plain.slice(0, maxLen).trimEnd()}…`;
+}
 /** Very small front-matter parser for `--- ... ---` blocks */
 function parseFrontmatter(raw: string): Record<string, string> {
   const m = /^---\s*[\r\n]+([\s\S]*?)\r?\n---\s*/.exec(raw);
@@ -42,6 +64,7 @@ export function getAllPosts(): PostListItem[] {
       slug,
       title: data.title ?? slug,
       date: data.date ?? "",
+      excerpt: data.excerpt ?? getExcerpt(raw || ""),
     };
   });
 
