@@ -86,6 +86,26 @@
 		</div>
 	</section>
 
+	<section class="about-box card" aria-label="What is this">
+		<h2>What is this?</h2>
+		<p>
+			Tidbits Tracker is a systemic way of organizing fragments of information I consume here and
+			there. On any typical day, I read a few newsletters, a handful of articles from various
+			sources, and listen to a podcast episode or two. In between, I often find gems or tidbits of
+			interesting information that could grow into a story later. So instead of relying on my
+			scattered brain to keep track of these bits, or texting them to myself and forgetting later,
+			I built a tool to help myself. The tidbits are tagged for geography, category, sector, and
+			theme, and collated so I can scan for patterns.
+			<br /><br />
+			The best part? I can trust the quality of the data I gather because it’s all mine.
+		</p>
+		<p>
+			This web version is a static, read-only snapshot of the pipeline. It shows the latest
+			labeled tidbits and summaries. Think of it as a public window into how I track trend shifts
+			over time to inform what deserves deeper reporting.
+		</p>
+	</section>
+
 	<section class="heat-grid">
 		<div class="heat-col">
 			<div class="heat-head">
@@ -310,6 +330,26 @@
 		font-weight: 600;
 		margin: 0 0 10px;
 		color: var(--text);
+	}
+
+	.about-box {
+		padding: 16px 18px;
+		border-radius: 0;
+	}
+
+	.about-box h2 {
+		margin-bottom: 8px;
+	}
+
+	.about-box p {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.65;
+		color: #1f2937;
+	}
+
+	.about-box p + p {
+		margin-top: 12px;
 	}
 
 	.panel {
