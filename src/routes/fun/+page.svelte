@@ -109,6 +109,18 @@
 
 	const kindList: Kind[] = ['game', 'ui', 'story', 'tool'];
 
+
+	const preferredOrder = [
+		'Tidbits Tracker',
+		'Refusing to let the dead rest in pursuit of curated feeds',
+		'Shut the Box: Jackpot',
+		'Handling large data: Special Intensive Revision of voters in Tamil Nadu, India',
+		'Education in America',
+		'Fun Desktop Playground'
+	];
+
+	const preferredOrderIndex = new Map(preferredOrder.map((title, idx) => [title, idx]));
+
 	let selectedKinds = new Set<Kind>();
 	let selectedTech = new Set<string>();
 	let bookCoverMissing = false;
@@ -198,7 +210,16 @@
 		.filter((exp) => (selectedKinds.size ? selectedKinds.has(exp.kind) : true))
 		.filter((exp) => (selectedTech.size ? exp.tech.some((t) => selectedTech.has(t)) : true));
 
-	$: chronological = [...filtered].sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+	$: chronological = [...filtered].sort((a, b) => {
+		const ai = preferredOrderIndex.get(a.title);
+		const bi = preferredOrderIndex.get(b.title);
+		if (ai !== undefined || bi !== undefined) {
+			if (ai === undefined) return 1;
+			if (bi === undefined) return -1;
+			return ai - bi;
+		}
+		return b.year - a.year || a.title.localeCompare(b.title);
+	});
 
 	$: if (isbnDigits(currentBook.isbn) !== activeBookIsbn) {
 		activeBookIsbn = isbnDigits(currentBook.isbn);
