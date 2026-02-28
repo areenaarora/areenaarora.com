@@ -1,0 +1,137 @@
+{
+  "lastUpdated": "2026-02-28T11:53:03.826890+00:00",
+  "sourceLastSignalAt": "2026-02-28T11:32:51.044599+00:00",
+  "totalSignals": 7,
+  "topGeographies": [
+    {
+      "label": "United States",
+      "count": 4
+    },
+    {
+      "label": "India",
+      "count": 3
+    }
+  ],
+  "topCategories": [
+    {
+      "label": "Markets",
+      "count": 4
+    },
+    {
+      "label": "Politics",
+      "count": 2
+    },
+    {
+      "label": "Business",
+      "count": 1
+    }
+  ],
+  "topSectors": [
+    {
+      "label": "Infrastructure",
+      "count": 2
+    },
+    {
+      "label": "Semiconductors",
+      "count": 2
+    },
+    {
+      "label": "Trade",
+      "count": 2
+    },
+    {
+      "label": "Tech (General)",
+      "count": 1
+    }
+  ],
+  "topThemes": [
+    {
+      "label": "Funding",
+      "count": 3
+    },
+    {
+      "label": "Elections",
+      "count": 2
+    },
+    {
+      "label": "SupplyChain",
+      "count": 1
+    },
+    {
+      "label": "Tariffs",
+      "count": 1
+    }
+  ],
+  "signals": [
+    {
+      "id": 9,
+      "created_at": "2026-02-28T11:32:51.044599+00:00",
+      "text": "Musk asked Epstein for ‘the wildest party.’ Now he claims to stand up for victims",
+      "url": null,
+      "geography": "United States",
+      "category": "Politics",
+      "sector": "Semiconductors",
+      "theme": "Elections"
+    },
+    {
+      "id": 8,
+      "created_at": "2026-02-27T08:10:50.485268+00:00",
+      "text": "Trump, seeking executive power over elections, is urged to declare emergency",
+      "url": "https://www.washingtonpost.com/politics/2026/02/26/trump-elections-executive-order-activists/",
+      "geography": "United States",
+      "category": "Politics",
+      "sector": "Infrastructure",
+      "theme": "Elections"
+    },
+    {
+      "id": 7,
+      "created_at": "2026-02-27T07:56:52.266343+00:00",
+      "text": "Education outlay in Haryana shows downward trend as debt and welfare expenditures rise.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Infrastructure",
+      "theme": "Funding"
+    },
+    {
+      "id": 6,
+      "created_at": "2026-02-27T03:10:21.859592+00:00",
+      "text": "Bharat Electronics: secured defence orders worth Rs 733 crore, including TR modules, communication equipment, radars, jammers and related systems.",
+      "url": null,
+      "geography": "India",
+      "category": "Business",
+      "sector": "Semiconductors",
+      "theme": "SupplyChain"
+    },
+    {
+      "id": 5,
+      "created_at": "2026-02-27T03:07:26.769505+00:00",
+      "text": "Netflix announced Thursday that it will not raise its bid to acquire Warner Bros. Discovery, potentially paving the way for Paramount Skydance to swoop in and buy the company after a tense war between two media mega-corporations. Netflix struck an $83 billion deal in December to buy most of WBD, positioning the streaming giant to absorb HBO and its streaming service HBO Max, while also acquiring the famed Warner Bros. film and television studios. That deal would have seen cable networks including CNN spin off into an independent company.",
+      "url": null,
+      "geography": "United States",
+      "category": "Markets",
+      "sector": "Tech (General)",
+      "theme": "Funding"
+    },
+    {
+      "id": 4,
+      "created_at": "2026-02-27T03:01:06.694779+00:00",
+      "text": "New data from the Bureau of Economic Analysis shows that economic growth slowed to an annual rate of 1.4% in the final months of 2025.",
+      "url": null,
+      "geography": "United States",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Funding"
+    },
+    {
+      "id": 1,
+      "created_at": "2026-02-26T11:58:26.090296+00:00",
+      "text": "The US has imposed preliminary 126% tariffs on solar imports from India, citing unfair subsidies for domestic manufacturing.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Tariffs"
+    }
+  ]
+}
