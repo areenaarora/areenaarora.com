@@ -1,11 +1,11 @@
 {
   "lastUpdated": "2026-02-28T11:53:03.826890+00:00",
-  "sourceLastSignalAt": "2026-02-28T11:32:51.044599+00:00",
-  "totalSignals": 7,
+  "sourceLastSignalAt": "2026-02-27T08:10:50.485268+00:00",
+  "totalSignals": 6,
   "topGeographies": [
     {
       "label": "United States",
-      "count": 4
+      "count": 3
     },
     {
       "label": "India",
@@ -19,7 +19,7 @@
     },
     {
       "label": "Politics",
-      "count": 2
+      "count": 1
     },
     {
       "label": "Business",
@@ -32,12 +32,12 @@
       "count": 2
     },
     {
-      "label": "Semiconductors",
+      "label": "Trade",
       "count": 2
     },
     {
-      "label": "Trade",
-      "count": 2
+      "label": "Semiconductors",
+      "count": 1
     },
     {
       "label": "Tech (General)",
@@ -51,7 +51,7 @@
     },
     {
       "label": "Elections",
-      "count": 2
+      "count": 1
     },
     {
       "label": "SupplyChain",
@@ -63,16 +63,6 @@
     }
   ],
   "signals": [
-    {
-      "id": 9,
-      "created_at": "2026-02-28T11:32:51.044599+00:00",
-      "text": "Musk asked Epstein for ‘the wildest party.’ Now he claims to stand up for victims",
-      "url": null,
-      "geography": "United States",
-      "category": "Politics",
-      "sector": "Semiconductors",
-      "theme": "Elections"
-    },
     {
       "id": 8,
       "created_at": "2026-02-27T08:10:50.485268+00:00",
