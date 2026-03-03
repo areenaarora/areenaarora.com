@@ -1,21 +1,29 @@
 {
-  "lastUpdated": "2026-02-28T11:53:03.826890+00:00",
-  "sourceLastSignalAt": "2026-02-27T08:10:50.485268+00:00",
-  "totalSignals": 6,
+  "lastUpdated": "2026-03-03T10:43:14.630345+00:00",
+  "sourceLastSignalAt": "2026-03-03T10:41:05.683849+00:00",
+  "totalSignals": 10,
   "topGeographies": [
+    {
+      "label": "India",
+      "count": 6
+    },
     {
       "label": "United States",
       "count": 3
     },
     {
-      "label": "India",
-      "count": 3
+      "label": "China",
+      "count": 1
     }
   ],
   "topCategories": [
     {
       "label": "Markets",
-      "count": 4
+      "count": 7
+    },
+    {
+      "label": "International",
+      "count": 1
     },
     {
       "label": "Politics",
@@ -28,11 +36,11 @@
   ],
   "topSectors": [
     {
-      "label": "Infrastructure",
-      "count": 2
+      "label": "Trade",
+      "count": 6
     },
     {
-      "label": "Trade",
+      "label": "Infrastructure",
       "count": 2
     },
     {
@@ -46,15 +54,19 @@
   ],
   "topThemes": [
     {
+      "label": "SupplyChain",
+      "count": 4
+    },
+    {
       "label": "Funding",
       "count": 3
     },
     {
-      "label": "Elections",
+      "label": "Earnings",
       "count": 1
     },
     {
-      "label": "SupplyChain",
+      "label": "Elections",
       "count": 1
     },
     {
@@ -63,6 +75,46 @@
     }
   ],
   "signals": [
+    {
+      "id": 13,
+      "created_at": "2026-03-03T10:41:05.683849+00:00",
+      "text": "India and Canada on Monday agreed to a $1.9 billion, 10-year uranium supply deal for Indian nuclear power reactors.",
+      "url": null,
+      "geography": "India",
+      "category": "International",
+      "sector": "Trade",
+      "theme": "SupplyChain"
+    },
+    {
+      "id": 12,
+      "created_at": "2026-03-03T10:41:05.621403+00:00",
+      "text": "India’s industrial activity slowed to a three-month low of 4.8% in January 2026.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "SupplyChain"
+    },
+    {
+      "id": 11,
+      "created_at": "2026-03-03T10:40:59.137790+00:00",
+      "text": "Freight rates for very large crude carriers (VLCCs) transporting 2 million barrels of oil from the Middle East to China surged to a record high March 2, with the TD3 route climbing to W419 on the Worldscale index — equivalent to about $423,736 per day, according to LSEG data.",
+      "url": null,
+      "geography": "China",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "SupplyChain"
+    },
+    {
+      "id": 10,
+      "created_at": "2026-03-01T10:06:05.789323+00:00",
+      "text": "India’s real GDP grew 7.8% year-on-year in the Oct-Dec quarter (vs 8.4% in the previous quarter). GDP estimate for FY26 has been revised to 7.6%.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Earnings"
+    },
     {
       "id": 8,
       "created_at": "2026-02-27T08:10:50.485268+00:00",
