@@ -1,15 +1,23 @@
 {
-  "lastUpdated": "2026-03-03T10:43:14.630345+00:00",
-  "sourceLastSignalAt": "2026-03-03T10:41:05.683849+00:00",
-  "totalSignals": 10,
+  "lastUpdated": "2026-03-29T13:45:43.537342+00:00",
+  "sourceLastSignalAt": "2026-03-29T13:28:51.543769+00:00",
+  "totalSignals": 29,
   "topGeographies": [
     {
       "label": "India",
-      "count": 6
+      "count": 22
     },
     {
       "label": "United States",
       "count": 3
+    },
+    {
+      "label": "Unknown",
+      "count": 2
+    },
+    {
+      "label": "US",
+      "count": 1
     },
     {
       "label": "China",
@@ -19,62 +27,284 @@
   "topCategories": [
     {
       "label": "Markets",
-      "count": 7
-    },
-    {
-      "label": "International",
-      "count": 1
-    },
-    {
-      "label": "Politics",
-      "count": 1
+      "count": 17
     },
     {
       "label": "Business",
+      "count": 6
+    },
+    {
+      "label": "International",
+      "count": 3
+    },
+    {
+      "label": "Policy",
+      "count": 2
+    },
+    {
+      "label": "Politics",
       "count": 1
     }
   ],
   "topSectors": [
     {
       "label": "Trade",
-      "count": 6
-    },
-    {
-      "label": "Infrastructure",
-      "count": 2
+      "count": 10
     },
     {
       "label": "Semiconductors",
-      "count": 1
+      "count": 4
     },
     {
       "label": "Tech (General)",
+      "count": 4
+    },
+    {
+      "label": "Defence",
+      "count": 3
+    },
+    {
+      "label": "Energy",
+      "count": 3
+    },
+    {
+      "label": "Infrastructure",
+      "count": 3
+    },
+    {
+      "label": "AI",
+      "count": 1
+    },
+    {
+      "label": "Banking",
       "count": 1
     }
   ],
   "topThemes": [
     {
+      "label": "Price fluctuations",
+      "count": 6
+    },
+    {
+      "label": "Funding",
+      "count": 6
+    },
+    {
+      "label": "Tariffs",
+      "count": 5
+    },
+    {
+      "label": "Earnings",
+      "count": 4
+    },
+    {
       "label": "SupplyChain",
       "count": 4
     },
     {
-      "label": "Funding",
-      "count": 3
+      "label": "Layoffs",
+      "count": 2
     },
     {
-      "label": "Earnings",
+      "label": "Regulation",
       "count": 1
     },
     {
       "label": "Elections",
       "count": 1
-    },
-    {
-      "label": "Tariffs",
-      "count": 1
     }
   ],
   "signals": [
+    {
+      "id": 36,
+      "created_at": "2026-03-29T13:28:51.543769+00:00",
+      "text": "Adani Enterprises: completed acquisition of the remaining stake, via a company subsidiary, in IANS India for Rs 4.7 crore, making it a wholly owned subsidiary.",
+      "url": null,
+      "geography": "India",
+      "category": "Business",
+      "sector": "Semiconductors",
+      "theme": "Earnings"
+    },
+    {
+      "id": 35,
+      "created_at": "2026-03-29T13:16:56.281841+00:00",
+      "text": "India’s composite PMI (manufacturing + services) fell to almost a 3 year low of 56.5 in March (vs 58.9 in Feb) as per preliminary estimates. Manufacturing PMI fell to 53.8 (vs 56.9 in Feb). Services PMI fell to 57.2 (vs 58.1 in Feb). This means economic activity grew significantly less in March than in Feb.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Tech (General)",
+      "theme": "Price fluctuations"
+    },
+    {
+      "id": 34,
+      "created_at": "2026-03-29T13:13:38.043569+00:00",
+      "text": "JSW Steel: completed acquisition of a 92.19% stake in Minas de Revuboe (a coal mining company in Mozambique) for $74.24 million.",
+      "url": null,
+      "geography": "Unknown",
+      "category": "Business",
+      "sector": "Trade",
+      "theme": "Earnings"
+    },
+    {
+      "id": 33,
+      "created_at": "2026-03-29T13:06:58.434204+00:00",
+      "text": "OECD (Organisation for Economic Co-operation and Development) has trimmed India’s FY27 growth forecast to 6.1%, down from 6.2% earlier, a revision due to rising global uncertainties.",
+      "url": null,
+      "geography": "India",
+      "category": "Policy",
+      "sector": "AI",
+      "theme": "Earnings"
+    },
+    {
+      "id": 32,
+      "created_at": "2026-03-29T12:51:23.191785+00:00",
+      "text": "Adani Ports: operationalized India’s first “Port of Refuge” to enhance maritime safety and emergency response infrastructure. It provides designated safe zones where distressed ships can seek shelter and receive emergency support like firefighting, salvage, and pollution control.",
+      "url": null,
+      "geography": "India",
+      "category": "International",
+      "sector": "Defence",
+      "theme": "Tariffs"
+    },
+    {
+      "id": 31,
+      "created_at": "2026-03-29T12:51:22.917257+00:00",
+      "text": "Coal India: plans to invest Rs 3,300 crore to set up 8 new coking coal washeries by FY30 to improve coal quality and reduce imports. It has also formed a 50:50 joint venture with Damodar Valley Corporation for power generation and related businesses",
+      "url": null,
+      "geography": "India",
+      "category": "Business",
+      "sector": "Trade",
+      "theme": "Funding"
+    },
+    {
+      "id": 30,
+      "created_at": "2026-03-29T12:51:22.825174+00:00",
+      "text": "The Indian Rupee reached a record low, slipping past the Rs 93 per US$ mark for the first time.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Tech (General)",
+      "theme": "Price fluctuations"
+    },
+    {
+      "id": 29,
+      "created_at": "2026-03-29T12:51:18.060104+00:00",
+      "text": "The UK’s annual inflation rate stayed at 3% in Feb (same as Jan)",
+      "url": null,
+      "geography": "Unknown",
+      "category": "Markets",
+      "sector": "Banking",
+      "theme": "Price fluctuations"
+    },
+    {
+      "id": 28,
+      "created_at": "2026-03-20T12:30:07.119147+00:00",
+      "text": "Nestle India: will invest around Rs 225 crore to add a new Munch production line at its Sanand plant with approximately 8,300 tonnes annual capacity.",
+      "url": null,
+      "geography": "India",
+      "category": "Business",
+      "sector": "Semiconductors",
+      "theme": "Funding"
+    },
+    {
+      "id": 27,
+      "created_at": "2026-03-20T12:30:00.878692+00:00",
+      "text": "India, the World Bank, and the Haryana government have signed a $300 million agreement to improve air quality in the state through policy reforms, investments, and stronger pollution monitoring systems.",
+      "url": null,
+      "geography": "India",
+      "category": "Policy",
+      "sector": "Energy",
+      "theme": "Regulation"
+    },
+    {
+      "id": 26,
+      "created_at": "2026-03-16T12:30:05.787198+00:00",
+      "text": "The Indian Rupee fell to a record low, weakening beyond Rs 92.35 against the US Dollar, due to rising tensions due to the West Asia conflict and rising global crude oil prices.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Tech (General)",
+      "theme": "Price fluctuations"
+    },
+    {
+      "id": 25,
+      "created_at": "2026-03-16T12:30:05.687158+00:00",
+      "text": "India's natural gas comes from a much more concentrated list of sources: Qatar ~50%, USA ~8%, UAE ~8%, etc.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Energy",
+      "theme": "Tariffs"
+    },
+    {
+      "id": 24,
+      "created_at": "2026-03-16T12:30:01.173659+00:00",
+      "text": "India's crude oil comes from various sources: Russia ~35%, Iraq ~20%, Saudi Arabia ~13%, UAE ~8%, etc.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Energy",
+      "theme": "Tariffs"
+    },
+    {
+      "id": 21,
+      "created_at": "2026-03-13T17:51:43.740462+00:00",
+      "text": "The government has eased foreign direct investment (FDI) rules for countries sharing land borders with India, including China, so that certain investments no longer require government approval",
+      "url": null,
+      "geography": "India",
+      "category": "International",
+      "sector": "Defence",
+      "theme": "Tariffs"
+    },
+    {
+      "id": 20,
+      "created_at": "2026-03-13T17:51:43.638891+00:00",
+      "text": "India’s forex reserves fell by $11.68 billion to $716.81 billion in the week that ended on 6 March.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Semiconductors",
+      "theme": "Price fluctuations"
+    },
+    {
+      "id": 19,
+      "created_at": "2026-03-13T17:51:38.491828+00:00",
+      "text": "India’s passenger vehicle sales grew 10.6% year-on-year to 4.18 lakh units in Feb: SIAM",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Price fluctuations"
+    },
+    {
+      "id": 18,
+      "created_at": "2026-03-06T12:46:02.927514+00:00",
+      "text": "As of December 2025, the price per square foot for housing in Mumbai varies widely across neighbourhoods: Borivali West ₹25,443; Borivali East ₹25,570; Goregaon West ₹26,706; Goregaon East ₹37,687; Andheri West ₹41,733; Andheri East ₹26,059; Powai ₹35,643; Kurla ₹18,745; Bandra East ₹45,601; Dharavi ₹17,000; Wadala ₹39,046; Marine Lines ₹85,031; Colaba ₹46,444; Malabar Hill ₹1,17,725; Lower Parel ₹66,251; Worli ₹1,02,169; Dadar ₹39,007; Bandra West ₹88,422; Khar ₹51,697; and Juhu ₹83,238 per square foot.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Infrastructure",
+      "theme": "Layoffs"
+    },
+    {
+      "id": 16,
+      "created_at": "2026-03-06T12:37:40.468179+00:00",
+      "text": "The median U.S. home price now tops $405,000. The Urban Institute found that home sales prices have risen 80 percent since 2017, while wages have grown 38 percent.",
+      "url": null,
+      "geography": "US",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Layoffs"
+    },
+    {
+      "id": 15,
+      "created_at": "2026-03-06T12:30:00.779721+00:00",
+      "text": "The Ministry of Defence signed contracts worth Rs 5,083 crore for acquiring six Advanced Light Helicopters Mk-III for the Indian Coast Guard and Surface-to-Air Vertical Launch - Shtil missiles for the Indian Navy.",
+      "url": null,
+      "geography": "India",
+      "category": "Business",
+      "sector": "Defence",
+      "theme": "Funding"
+    },
     {
       "id": 13,
       "created_at": "2026-03-03T10:41:05.683849+00:00",
