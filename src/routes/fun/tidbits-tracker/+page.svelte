@@ -36,10 +36,12 @@
 	function fmtDate(value: string): string {
 		const d = new Date(value);
 		if (Number.isNaN(d.getTime())) return value;
-		return d.toLocaleDateString('en-US', {
+		return d.toLocaleString(undefined, {
 			month: 'long',
 			day: 'numeric',
-			year: 'numeric'
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit'
 		});
 	}
 
