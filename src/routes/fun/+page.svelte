@@ -78,9 +78,8 @@
 	const currentBook: BookShowcase = {
 		title: "Don't Make Me Think",
 		author: 'Steve Krug',
-		isbn: '9781324123798',
-		link: 'https://www.goodreads.com/book/show/209455846-shattered-lands',
-		coverImage: '/books/shattered-lands.jpg'
+		isbn: '9780321965516',
+		link: 'https://www.goodreads.com/book/show/18197267-don-t-make-me-think-revisited'
 	};
 
 	const heroSlabs: HeroSlab[] = [
