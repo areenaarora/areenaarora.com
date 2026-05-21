@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-03-29T13:45:43.537342+00:00",
-  "sourceLastSignalAt": "2026-03-29T13:28:51.543769+00:00",
-  "totalSignals": 29,
+  "lastUpdated": "2026-05-21T12:15:59.674729+00:00",
+  "sourceLastSignalAt": "2026-05-21T12:09:10.152253+00:00",
+  "totalSignals": 34,
   "topGeographies": [
     {
       "label": "India",
-      "count": 22
+      "count": 24
+    },
+    {
+      "label": "Unknown",
+      "count": 4
     },
     {
       "label": "United States",
       "count": 3
     },
     {
-      "label": "Unknown",
-      "count": 2
-    },
-    {
       "label": "US",
-      "count": 1
+      "count": 2
     },
     {
       "label": "China",
@@ -27,7 +27,7 @@
   "topCategories": [
     {
       "label": "Markets",
-      "count": 17
+      "count": 20
     },
     {
       "label": "Business",
@@ -36,6 +36,10 @@
     {
       "label": "International",
       "count": 3
+    },
+    {
+      "label": "Technology",
+      "count": 2
     },
     {
       "label": "Policy",
@@ -49,7 +53,11 @@
   "topSectors": [
     {
       "label": "Trade",
-      "count": 10
+      "count": 12
+    },
+    {
+      "label": "Defence",
+      "count": 4
     },
     {
       "label": "Semiconductors",
@@ -60,7 +68,7 @@
       "count": 4
     },
     {
-      "label": "Defence",
+      "label": "AI",
       "count": 3
     },
     {
@@ -72,15 +80,15 @@
       "count": 3
     },
     {
-      "label": "AI",
-      "count": 1
-    },
-    {
       "label": "Banking",
       "count": 1
     }
   ],
   "topThemes": [
+    {
+      "label": "Tariffs",
+      "count": 6
+    },
     {
       "label": "Price fluctuations",
       "count": 6
@@ -90,16 +98,16 @@
       "count": 6
     },
     {
-      "label": "Tariffs",
+      "label": "Earnings",
       "count": 5
     },
     {
-      "label": "Earnings",
-      "count": 4
+      "label": "SupplyChain",
+      "count": 5
     },
     {
-      "label": "SupplyChain",
-      "count": 4
+      "label": "Crypto",
+      "count": 2
     },
     {
       "label": "Layoffs",
@@ -115,6 +123,56 @@
     }
   ],
   "signals": [
+    {
+      "id": 41,
+      "created_at": "2026-05-21T12:09:10.152253+00:00",
+      "text": "India’s merchandise exports fell 7.4% year-on-year in March. Imports fell 6.5%. The trade deficit narrowed to $20.67 billion.",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Tariffs"
+    },
+    {
+      "id": 40,
+      "created_at": "2026-05-21T12:09:09.984916+00:00",
+      "text": "India’s passenger vehicle sales in FY25-26 grew 7.9% year-on-year to 46.43 lakh units, the highest in a financial year. Sales in March rose 16% to 4.42 lakh units: SIAM",
+      "url": null,
+      "geography": "India",
+      "category": "Markets",
+      "sector": "Trade",
+      "theme": "Earnings"
+    },
+    {
+      "id": 39,
+      "created_at": "2026-05-21T12:09:09.795847+00:00",
+      "text": "Employees could use their workplace retirement plans to invest in cryptocurrencies, private equity and other “alternative assets” under a proposal released by the Trump administration.",
+      "url": null,
+      "geography": "US",
+      "category": "Markets",
+      "sector": "Defence",
+      "theme": "Crypto"
+    },
+    {
+      "id": 38,
+      "created_at": "2026-05-21T12:09:02.885435+00:00",
+      "text": "latency check item",
+      "url": null,
+      "geography": "Unknown",
+      "category": "Technology",
+      "sector": "AI",
+      "theme": "SupplyChain"
+    },
+    {
+      "id": 37,
+      "created_at": "2026-05-21T12:08:38.411336+00:00",
+      "text": "probe from agent",
+      "url": null,
+      "geography": "Unknown",
+      "category": "Technology",
+      "sector": "AI",
+      "theme": "Crypto"
+    },
     {
       "id": 36,
       "created_at": "2026-03-29T13:28:51.543769+00:00",
