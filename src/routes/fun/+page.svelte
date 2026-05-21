@@ -76,8 +76,8 @@
 	];
 
 	const currentBook: BookShowcase = {
-		title: 'Shattered Lands: Five Partitions and the Making of Modern Asia',
-		author: 'Sam Dalrymple',
+		title: "Don't Make Me Think",
+		author: 'Steve Krug',
 		isbn: '9781324123798',
 		link: 'https://www.goodreads.com/book/show/209455846-shattered-lands',
 		coverImage: '/books/shattered-lands.jpg'
