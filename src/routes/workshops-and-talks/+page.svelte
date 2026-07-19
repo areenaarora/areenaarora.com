@@ -116,11 +116,7 @@
 			</div>
 		</section>
 
-		<section class="section-heading" id="workshops" aria-labelledby="workshops-title">
-			<h2 id="workshops-title">Workshops</h2>
-		</section>
-
-		<section class="workshop-list" aria-label="Current workshops">
+		<section class="workshop-list" id="workshops" aria-label="Current workshops">
 			{#each workshops as workshop, i}
 				{@const viewLink = workshop.links[0]}
 				<article class="workshop-row {workshop.id}" id={workshop.id}>
@@ -237,8 +233,8 @@
 		grid-template-columns: minmax(0, 7fr) minmax(280px, 4fr);
 		gap: var(--inner-gap);
 		align-items: end;
-		min-height: min(60vh, 580px);
-		padding: clamp(3rem, 8vw, 7rem) 0 clamp(2rem, 5vw, 4rem);
+		min-height: calc(100svh - var(--header-h, 58px) - 40px);
+		padding: clamp(3rem, 8vw, 7rem) 0 clamp(3rem, 7vw, 5.5rem);
 	}
 
 	h1 {
@@ -263,10 +259,6 @@
 		font-weight: 600;
 		line-height: 0.96;
 		letter-spacing: 0;
-	}
-
-	#workshops-title {
-		font-size: 34px;
 	}
 
 	h3 {
