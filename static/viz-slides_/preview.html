@@ -21,7 +21,7 @@
       --accent:#111;
       --max:1120px;
       --side:clamp(22px,6vw,88px);
-      --h1:clamp(3.1rem,9vw,8.5rem);
+      --h1:clamp(2.975rem,calc(9vw - 2px),8.375rem);
       --h2:clamp(2.2rem,6vw,5.8rem);
       --h3:clamp(1.45rem,3.2vw,3rem);
       --body:clamp(1.05rem,1.6vw,1.55rem);
@@ -45,7 +45,7 @@
     .intro-copy .body{line-height:1.4}
     .small{font-size:var(--small);line-height:1.35;color:var(--muted);max-width:64ch}
     .huge{font-size:clamp(4.4rem,18vw,16rem);font-weight:850;line-height:.75;letter-spacing:-.1em}
-    .wordmark{font-size:clamp(.95rem,1.2vw,1.2rem);letter-spacing:.02em;color:#555}
+    .wordmark{font-size:clamp(.95rem,1.2vw,1.2rem);letter-spacing:.02em;color:#050505;font-weight:800}
     .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:clamp(28px,5vw,70px);align-items:center}
     .split.equal{grid-template-columns:1fr 1fr}
     .list{list-style:none;padding:0;display:grid;gap:.5em;font-size:clamp(1.35rem,2.6vw,2.6rem);line-height:1.02;letter-spacing:-.045em;font-weight:720;max-width:23ch}
@@ -106,7 +106,7 @@
     .slide-lock-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     .slide-lock-actions a,.slide-lock-actions button{appearance:none;border:1px solid #111;background:#fff;color:#111;padding:.62rem .82rem;font:inherit;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer}
     @media (max-width:760px){
-      :root{--side:22px;--h1:clamp(3rem,16vw,4.8rem);--h2:clamp(2.4rem,12vw,4rem)}
+      :root{--side:22px;--h1:clamp(2.875rem,calc(16vw - 2px),4.675rem);--h2:clamp(2.4rem,12vw,4rem)}
       .slide{padding:18px var(--side) 22px;min-height:100svh}.inner{gap:26px}.split,.split.equal,.image-strip{grid-template-columns:1fr;align-items:start}.agenda{grid-template-columns:1fr}.flow{grid-template-columns:1fr;gap:10px}.arrow{display:none}.matrix{grid-template-columns:1fr;font-size:.92rem}.matrix div{border-right:0}.matrix .head:not(:first-child){display:none}.matrix div:nth-last-child(-n+4){border-bottom:1px solid var(--line)}.matrix div:last-child{border-bottom:0}.phone{max-width:280px}.controls{display:none}.number{display:none}.footer{font-size:10px}.list{font-size:clamp(1.8rem,8vw,2.8rem)}.list.small-list{font-size:clamp(1.05rem,4.6vw,1.35rem)}
     }
     @media print{html{scroll-snap-type:none}.slide{page-break-after:always;min-height:100vh}.controls,.number,.progress,.slide-lock{display:none}}
@@ -116,7 +116,7 @@
   <div class="progress" id="progress"></div>
   <div class="number" id="slideNumber">1 / 31</div>
   <main>
-    <section class="slide" data-kicker="VizChitra 2026"><div class="inner"><h1>Designing data stories for small screens</h1><p class="dek">A workshop on making stories survive real mobile reading conditions.</p><p class="wordmark">Areena Arora · The Hindu</p></div></section>
+    <section class="slide" data-kicker=""><div class="inner"><h1>Designing data stories for small screens</h1><p class="dek">A workshop on making stories survive real mobile reading conditions.</p><p class="wordmark">Areena Arora</p></div></section>
 
     <section class="slide" data-kicker="01"><div class="inner split"><div class="intro-copy"><h2>Who am I?</h2><p class="body">Editorial coder. Data journalist. Often stuck between reporting, code, design, and the tiny angry rectangle where readers actually meet our work.</p></div><ul class="list small-list"><li>Interactive storytelling</li><li>Data journalism</li><li>Information design</li><li>Mobile-first public interest work</li></ul></div></section>
 
