@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Climate Data Journalism workshop slides by Areena Arora" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
+  <link rel="shortcut icon" href="../favicon/favicon.ico" />
+  <link rel="manifest" href="../favicon/site.webmanifest" />
+  <title>Climate Data Journalism</title>
+  <style>
+    :root{
+      --bg:#fff;
+      --fg:#050505;
+      --muted:#666;
+      --line:#dedede;
+      --soft:#f7f7f7;
+      --accent:#111;
+      --green:#6b8f71;
+      --max:1120px;
+      --side:clamp(22px,6vw,88px);
+      --h1:clamp(3.1rem,9vw,8.5rem);
+      --h2:clamp(2.2rem,6vw,5.8rem);
+      --h3:clamp(1.45rem,3.2vw,3rem);
+      --body:clamp(1.05rem,1.6vw,1.55rem);
+      --small:clamp(.85rem,1vw,1rem);
+    }
+    *{box-sizing:border-box}
+    html{scroll-snap-type:y mandatory;scroll-behavior:smooth;background:var(--bg);color:var(--fg)}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--fg);line-height:1.18;overflow-x:hidden}
+    a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.18em}
+    .slide{min-height:100svh;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(18px,3vw,34px) var(--side);position:relative;border-bottom:1px solid var(--line)}
+    .slide::before{content:attr(data-kicker);font-size:var(--small);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);align-self:start}
+    .inner{width:100%;max-width:var(--max);align-self:center;margin:0 auto;display:grid;gap:clamp(22px,3vw,42px)}
+    .number{position:fixed;top:18px;right:22px;font-size:12px;color:#777;background:rgba(255,255,255,.78);backdrop-filter:blur(8px);padding:5px 8px;border:1px solid var(--line);border-radius:999px;z-index:20}
+    h1,h2,h3,p,ul,ol{margin:0}
+    h1{font-size:var(--h1);line-height:.88;letter-spacing:-.045em;font-weight:800;max-width:12ch}
+    h1.title-line{max-width:none;color:#1a428a;font-size:clamp(2.8rem,7vw,6.5rem);letter-spacing:0}
+    .title-slide .inner{justify-items:start}
+    h2{font-size:var(--h2);line-height:.9;letter-spacing:-.01em;font-weight:800;max-width:13ch}
+    h3{font-size:var(--h3);line-height:1;letter-spacing:-.015em;font-weight:760;max-width:18ch}
+    .dek{font-size:clamp(1.25rem,2.4vw,2.35rem);line-height:1.08;letter-spacing:-.04em;max-width:28ch;color:#161616}
+    .body{font-size:var(--body);line-height:1.3;max-width:48ch;color:#202020}
+    .curly-quote{font-family:"EB Garamond",Georgia,serif;font-size:1.12em;line-height:0}
+    .body.spaced{margin-top:clamp(24px,3vw,42px)}
+    .nowrap{max-width:none;white-space:nowrap}
+    .two-line{max-width:none}
+    .small{font-size:var(--small);line-height:1.35;color:var(--muted);max-width:64ch}
+    .wordmark{font-size:clamp(.95rem,1.2vw,1.2rem);letter-spacing:.02em;color:#555}
+    .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:clamp(28px,5vw,70px);align-items:center}
+    .split.top-align{align-items:start}
+    .split.equal{grid-template-columns:1fr 1fr}
+    .list{list-style:none;padding:0;display:grid;gap:.5em;font-size:clamp(1.35rem,2.6vw,2.6rem);line-height:1.02;letter-spacing:-.045em;font-weight:720;max-width:25ch}
+    .list.small-list{font-size:clamp(1.05rem,1.65vw,1.55rem);font-weight:520;letter-spacing:0;line-height:1.22;max-width:42ch;gap:.7em}
+    .list li{position:relative;padding-left:1.25em}
+    .list li::before{content:"—";position:absolute;left:0;color:#999}
+    .quote{font-size:clamp(2.15rem,5vw,5.4rem);line-height:.94;letter-spacing:-.035em;font-weight:820;max-width:16ch}
+    .quote.wide{max-width:20ch}
+    .label{display:inline-flex;border:1px solid var(--fg);border-radius:999px;padding:.28em .62em;font-size:var(--small);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+    .pink{color:#F2414F}
+    .temperature-copy{display:grid;gap:clamp(30px,4vw,58px)}
+    .agenda{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .agenda div{border-top:1px solid #111;padding-top:14px;display:grid;gap:10px}
+    .agenda strong{font-size:clamp(1.4rem,2.4vw,2.2rem);line-height:1;letter-spacing:-.05em}
+    .agenda span{font-size:calc(var(--small) + 3px);color:#1B428A;line-height:1.35}
+    .matrix{display:grid;grid-template-columns:1fr 1.25fr;border:1px solid #111;font-size:clamp(.88rem,1.15vw,1.05rem)}
+    .matrix div{padding:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:62px;line-height:1.25}
+    .matrix div:nth-child(2n){border-right:0}.matrix div:nth-last-child(-n+2){border-bottom:0}
+    .matrix .head{font-weight:760;background:#111;color:#fff}.matrix .rowhead{font-weight:760;background:#fafafa}
+    .four-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .mini-card{border-top:1px solid #111;padding-top:12px;display:grid;gap:10px}
+    .mini-card strong{font-size:clamp(1.2rem,2vw,1.85rem);line-height:1;letter-spacing:-.04em}
+    .mini-card span{font-size:var(--small);line-height:1.35;color:#333}
+    .flow{display:grid;grid-template-columns:repeat(5,auto);align-items:center;justify-content:start;gap:18px;font-size:clamp(1.1rem,2.3vw,1.9rem);letter-spacing:-.04em;font-weight:760}
+    .verbs-slide .inner{justify-items:center}
+    .verbs-slide .flow{justify-content:center}
+    .verbs-slide h2{max-width:none;font-size:clamp(2.3rem,5vw,4.8rem);line-height:.9}
+    .verbs-slide .arrow{font-size:clamp(2.3rem,5vw,4.8rem);line-height:.9}
+    .arrow{color:#999;font-weight:400}
+    .example-list{display:grid;gap:18px}
+    .example{display:grid;grid-template-columns:minmax(160px,.55fr) minmax(0,1fr);gap:22px;border-top:1px solid var(--line);padding-top:16px}
+    .example strong{font-size:clamp(1.2rem,2vw,1.8rem);letter-spacing:-.04em;line-height:1}
+    .example p{font-size:var(--small);line-height:1.35;color:#333}
+    .image-quote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:clamp(24px,4vw,56px);align-items:center}
+    .image-quote img{width:100%;border:1px solid var(--line);box-shadow:0 16px 42px rgba(0,0,0,.08)}
+    .image-quote blockquote{margin:0;font-size:clamp(1.25rem,2.2vw,2.15rem);line-height:1.16;letter-spacing:-.035em;font-weight:720;color:#1B428A}
+    .article-study{display:grid;grid-template-columns:minmax(0,.9fr) minmax(360px,1fr);gap:clamp(24px,4vw,54px);align-items:center;max-width:1240px}
+    .article-study img{width:100%;border:1px solid var(--line);box-shadow:0 16px 42px rgba(0,0,0,.08)}
+    .article-notes{display:grid;gap:clamp(18px,2.2vw,28px);font-size:clamp(1rem,1.45vw,1.45rem);line-height:1.25;color:#F2414F}
+    .article-notes p{margin:0}
+    .article-notes ul{margin:0;padding-left:1.1em;display:grid;gap:.8em;font-style:italic}
+    .mark{background:linear-gradient(transparent 44%,rgba(242,65,79,.28) 44%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+    .section-divider .inner{justify-items:center;text-align:center}
+    .section-divider h2{max-width:none;color:#1B428A}
+    .slide.locked .inner{filter:blur(10px);user-select:none;pointer-events:none}
+    .slide-lock{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:24px;background:rgba(255,255,255,.1);backdrop-filter:blur(7px)}
+    .slide-lock[hidden]{display:none}
+    .slide-lock-card{width:max-content;max-width:calc(100vw - 48px);display:grid;gap:18px;border:1px solid #111;background:#fff;padding:24px;box-shadow:0 18px 60px rgba(0,0,0,.12)}
+    .slide-lock-card p{font-size:clamp(1.35rem,2.4vw,2rem);line-height:1.05;letter-spacing:-.035em;font-weight:780;white-space:nowrap}
+    .slide-lock-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .slide-lock-actions a,.slide-lock-actions button{appearance:none;border:1px solid #111;background:#fff;color:#111;padding:.62rem .82rem;font:inherit;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+    .controls{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:30}
+    .controls button{appearance:none;border:1px solid #111;background:#fff;color:#111;border-radius:999px;width:38px;height:38px;font-size:17px;cursor:pointer}
+    .controls button:active{transform:translateY(1px)}
+    .progress{position:fixed;left:0;top:0;height:3px;background:#111;width:0%;z-index:40;transition:width .2s ease}
+    @media (max-width:760px){
+      :root{--side:22px;--h1:clamp(3rem,16vw,4.8rem);--h2:clamp(2.4rem,12vw,4rem)}
+      .slide{padding:18px var(--side) 22px;min-height:100svh}.inner{gap:26px}.split,.split.equal,.agenda,.four-grid,.example,.image-quote,.article-study{grid-template-columns:1fr;align-items:start}.flow{grid-template-columns:1fr;gap:10px}.arrow{display:none}.matrix{grid-template-columns:1fr;font-size:.92rem}.matrix div{border-right:0}.matrix .head:not(:first-child){display:none}.matrix div:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.matrix div:last-child{border-bottom:0}.controls{display:none}.number{display:none}.list{font-size:clamp(1.8rem,8vw,2.8rem)}.list.small-list{font-size:clamp(1.05rem,4.6vw,1.35rem)}
+    }
+    @media print{html{scroll-snap-type:none}.slide{page-break-after:always;min-height:100vh}.controls,.number,.progress,.slide-lock{display:none}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="number" id="slideNumber">1 / 29</div>
+  <main>
+    <section class="slide title-slide" data-kicker=""><div class="inner"><h1 class="title-line">Climate +<br>data journalism</h1><p class="dek">Using data to recognise evidence, question it, and sharpen climate stories.</p><p class="wordmark">Areena Arora</p></div></section>
+
+    <section class="slide" data-kicker="01"><div class="inner"><h2>Who am I?</h2><p class="body">Editorial coder and data journalist working across reporting, code, information design, and visual storytelling.</p></div></section>
+
+    <section class="slide section-divider" data-kicker="02"><div class="inner"><h2>SESSION ONE</h2></div></section>
+
+    <section class="slide" data-kicker="03"><div class="inner"><p class="quote wide">Data is not a software skill first. It is a reporting skill.</p><p class="body nowrap">Journalistic judgement and inquiry matter more than software know-how.</p></div></section>
+
+    <section class="slide" data-kicker="04"><div class="inner"><h2>Start with what the number means.</h2><ul class="list small-list"><li>What is being counted?</li><li>Who is missing?</li><li>Who benefits from the official definition?</li></ul></div></section>
+
+    <section class="slide" data-kicker="05"><div class="inner split"><div class="temperature-copy"><h2>Climate data is not just <span class="pink">temperature.</span></h2><p class="body">Climate journalism is about physical change, human exposure, public decisions, money, institutions, and unequal consequences.</p></div><ul class="list small-list"><li>Hazards</li><li>Exposure</li><li>Vulnerability</li><li>Official response</li></ul></div></section>
+
+    <section class="slide" data-kicker="06"><div class="inner"><p class="quote wide">A temperature reading does not automatically tell us who was at risk.</p></div></section>
+
+    <section class="slide" data-kicker="07"><div class="inner"><h2>A heat story needs an inventory.</h2><div class="agenda"><div><strong>Hazard</strong><span>How hot was it, and compared with what baseline?</span></div><div><strong>Exposure</strong><span>Who was outside, indoors, working, commuting, or without cooling?</span></div><div><strong>Response</strong><span>What did institutions promise, fund, and implement?</span></div></div></div></section>
+
+    <section class="slide" data-kicker="08"><div class="inner"><h2 class="pink nowrap">Temperature records</h2><div class="matrix"><div class="head">Records</div><div class="head">Reporting question</div><div>Daily max and min temperature, humidity, heatwave days, rainfall departure, long-term normals.</div><div>Has extreme heat become more frequent, or did one exceptional year dominate the pattern?</div></div></div></section>
+
+    <section class="slide" data-kicker="09"><div class="inner"><h2 class="nowrap">Spatial and satellite data</h2><div class="matrix"><div class="head">Records</div><div class="head">Reporting question</div><div>Land surface temperature, tree cover, built-up area, flood extent, shoreline change, water bodies, fire alerts, crop stress.</div><div>Are the hottest neighbourhoods also the places with least the tree cover and densest construction?</div></div></div></section>
+
+    <section class="slide" data-kicker="10"><div class="inner"><h2 class="nowrap">Administrative records</h2><div class="matrix"><div class="head">Records</div><div class="head">Reporting question</div><div>Heat action plans, school closure orders, hospital admissions, disaster losses, crop insurance claims, compensation payouts.</div><div>Did the districts with the greatest recorded losses receive the greatest relief?</div></div></div></section>
+
+    <section class="slide" data-kicker="11"><div class="inner"><h2 class="nowrap">Budgets and procurement</h2><div class="matrix"><div class="head">Records</div><div class="head">Reporting question</div><div>Allocations, releases, expenditure, tenders, drainage contracts, cooling centres, water supply works, disaster mitigation spending.</div><div>Was a climate plan funded, or did it remain an announcement?</div></div></div></section>
+
+    <section class="slide" data-kicker="12"><div class="inner"><h2 class="nowrap">Regulatory records</h2><div class="matrix"><div class="head">Records</div><div class="head">Reporting question</div><div>NGT orders, environmental clearances, consent conditions, pollution notices, compliance reports, public hearings.</div><div>Did the institution comply after the order, and how was compliance measured?</div></div></div></section>
+
+    <section class="slide" data-kicker="13"><div class="inner"><h2>Health, labour, and livelihoods</h2><div class="four-grid"><div class="mini-card"><strong>Health</strong><span>Heat illness, mortality, respiratory disease, vector-borne disease.</span></div><div class="mini-card"><strong>Labour</strong><span>Workplace injuries, productivity loss, safety inspections.</span></div><div class="mini-card"><strong>Agriculture</strong><span>Sowing area, crop yield, prices, irrigation, insurance claims.</span></div><div class="mini-card"><strong>Livelihoods</strong><span>Livestock deaths, fisheries catch, pest outbreaks.</span></div></div></div></section>
+
+    <section class="slide" data-kicker="14"><div class="inner split top-align"><div><h2>Community evidence matters.</h2><p class="body spaced">Local rain gauges, fisher logs, farmer diaries, panchayat registers, photographs, oral histories, school attendance records, and other crowd sourced data can aid further verification.</p></div><p class="quote">What does the official system fail to record?</p></div></section>
+
+    <section class="slide verbs-slide" data-kicker="15"><div class="inner"><div class="flow"><h2>Count</h2><span class="arrow">→</span><h2>Compare</h2><span class="arrow">→</span><h2>Locate</h2></div><div class="flow"><h2>Test</h2><span class="arrow">→</span><h2 class="pink">Hold accountable</h2></div></div></section>
+
+    <section class="slide" data-kicker="16"><div class="inner"><h2>Count</h2><p class="body">How many heatwave days occurred? How many claims were approved? How many monitoring stations reported usable data?</p></div></section>
+
+    <section class="slide" data-kicker="17"><div class="inner"><h2>Compare</h2><p class="body">How does this district compare with its past, its neighbours, or a relevant baseline?</p></div></section>
+
+    <section class="slide" data-kicker="18"><div class="inner"><h2>Locate</h2><p class="body">Where is the change concentrated? A map or district table can identify places for field reporting.</p></div></section>
+
+    <section class="slide" data-kicker="19"><div class="inner"><h2>Test</h2><p class="body">Does the evidence support an official claim?</p></div></section>
+
+    <section class="slide" data-kicker="20"><div class="inner"><h2 class="pink">Hold accountable</h2><p class="body">Who had responsibility, money, authority, or prior warning?</p></div></section>
+
+    <section class="slide" data-kicker="21"><div class="inner"><h2 class="two-line">From weather observation<br>to public-interest story</h2><div class="flow" style="grid-template-columns:repeat(9,auto)"><span>Baseline</span><span class="arrow">→</span><span>Dangerous days</span><span class="arrow">→</span><span>Exposure</span><span class="arrow">→</span><span>Plans</span><span class="arrow">→</span><span>Money</span></div><p class="body">The story moves from <span class="curly-quote">&ldquo;</span>heat happened<span class="curly-quote">&rdquo;</span> to <span class="curly-quote">&ldquo;</span>protection was unequal.<span class="curly-quote">&rdquo;</span></p></div></section>
+
+    <section class="slide" data-kicker="22"><div class="inner image-quote"><img src="decoding-heat.png" alt="Mongabay Decoding Heat series page"><blockquote>&ldquo;The Decoding Heat series explores shifts in broad and local weather systems; cascading patterns within ecosystems and urban areas; how India is forecasting and planning for its heatwaves, and more. Through our storytelling, we attempt to answer: what drives and is driven by a warming country?&rdquo;</blockquote></div></section>
+
+    <section class="slide" data-kicker="23"><div class="inner article-study"><img src="warm-nights-article.png" alt="Mongabay article on warmer nights in India"><div class="article-notes"><p>Minimum temperatures are rising across the country with many states and UTs seeing warmer nights.</p><p>Many parts of India are witnessing unusually high minimum temperatures, with several locations recording minimum temperatures close to 30&deg;C. <a href="https://internal.imd.gov.in/press_release/20260524_pr_5009.pdf" target="_blank" rel="noreferrer">In the last week of May</a>, IMD observations indicated that minimum night temperatures were warmer than normal by 3.1&deg;C to 5.0&deg;C.</p></div></div></section>
+
+    <section class="slide" data-kicker="24"><div class="inner"><ul class="list small-list"><li>What was the central journalistic question?</li><li>What datasets or records were combined?</li><li>What reporting was still required beyond the data?</li></ul></div></section>
+
+    <section class="slide" data-kicker="25"><div class="inner"><h2>Common pitfalls</h2><ul class="list small-list"><li>Weather is not automatically climate.</li><li>Averages can hide extremes.</li><li>Geographies may not match.</li><li>Raw totals can mislead.</li><li>Official records can undercount.</li></ul></div></section>
+
+    <section class="slide" data-kicker="26"><div class="inner"><h2>More pitfalls</h2><ul class="list small-list"><li>Missing data is often patterned.</li><li>Correlation does not establish cause.</li><li>Short periods invite overclaiming.</li><li>Modelled and observed data are different.</li><li>False precision weakens trust.</li></ul></div></section>
+
+    <section class="slide" data-kicker="27"><div class="inner"><h2>Exercise</h2><p class="body">Choose one theme: heat, floods, water, health, agriculture, energy, law, or climate finance.</p><ul class="list small-list"><li>Write one broad statement common in coverage.</li><li>Turn it into a data-led question about unequal impact.</li><li>Turn it into a data-led question that tests accountability.</li></ul></div></section>
+
+    <section class="slide" data-kicker="28"><div class="inner"><p class="quote wide pink">Data does not replace reporting.</p><p class="body">It can tell us what to count, where to look, whose claim to test, and who may be missing.</p></div></section>
+  </main>
+  <div class="controls" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">↑</button><button id="next" aria-label="Next slide">↓</button></div>
+  <div class="slide-lock" id="slideLock" role="dialog" aria-modal="true" aria-labelledby="slideLockTitle" hidden>
+    <div class="slide-lock-card">
+      <p id="slideLockTitle">Please contact me for slides.</p>
+      <div class="slide-lock-actions">
+        <a href="mailto:areena.arora@columbia.edu">Contact me</a>
+        <button type="button" id="dismissLock">Close</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const slides=[...document.querySelectorAll('.slide')];
+    const progress=document.getElementById('progress');
+    const slideNumber=document.getElementById('slideNumber');
+    const slideLock=document.getElementById('slideLock');
+    const dismissLock=document.getElementById('dismissLock');
+    const lockIndex=slides.findIndex(s=>s.dataset.kicker==='05');
+    let correctingScroll=false;
+    function currentIndex(){
+      const y=window.scrollY;
+      let best=0,dist=Infinity;
+      slides.forEach((s,i)=>{const d=Math.abs(s.offsetTop-y); if(d<dist){dist=d;best=i;}});
+      return best;
+    }
+    function go(delta){
+      let i=Math.max(0,Math.min(slides.length-1,currentIndex()+delta));
+      if(lockIndex>=0 && i>lockIndex){
+        i=lockIndex;
+        showLock();
+      } else {
+        hideLock();
+      }
+      slides[i].scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function showLock(){
+      if(lockIndex<0) return;
+      slides[lockIndex].classList.add('locked');
+      slideLock.hidden=false;
+      dismissLock.focus({preventScroll:true});
+    }
+    function hideLock(){
+      if(lockIndex>=0) slides[lockIndex].classList.remove('locked');
+      slideLock.hidden=true;
+    }
+    function update(){
+      const i=currentIndex();
+      if(lockIndex>=0 && i>lockIndex && !correctingScroll){
+        correctingScroll=true;
+        slides[lockIndex].scrollIntoView({behavior:'auto',block:'start'});
+        showLock();
+        requestAnimationFrame(()=>{correctingScroll=false;update();});
+        return;
+      }
+      progress.style.width=((i+1)/slides.length*100)+'%';
+      const kicker=slides[i].dataset.kicker || '';
+      const numericKicker=/^\d+$/.test(kicker) ? String(parseInt(kicker,10)) : null;
+      slideNumber.textContent=numericKicker ? (numericKicker+' / '+(slides.length-1)) : ((i+1)+' / '+slides.length);
+      history.replaceState(null,'','#'+String(i+1).padStart(2,'0'));
+    }
+    document.getElementById('next').addEventListener('click',()=>go(1));
+    document.getElementById('prev').addEventListener('click',()=>go(-1));
+    dismissLock.addEventListener('click',hideLock);
+    slideLock.addEventListener('click',e=>{if(e.target===slideLock) hideLock();});
+    window.addEventListener('wheel',e=>{
+      if(lockIndex>=0 && currentIndex()>=lockIndex && e.deltaY>0){
+        e.preventDefault();
+        slides[lockIndex].scrollIntoView({behavior:'smooth',block:'start'});
+        showLock();
+      }
+    },{passive:false});
+    window.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape' && !slideLock.hidden){e.preventDefault();hideLock();return}
+      if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}
+      if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1)}
+      if(e.key==='Home'){e.preventDefault();slides[0].scrollIntoView({behavior:'smooth'})}
+      if(e.key==='End'){e.preventDefault();if(lockIndex>=0){slides[lockIndex].scrollIntoView({behavior:'smooth'});showLock()}else{slides.at(-1).scrollIntoView({behavior:'smooth'})}}
+    });
+    let startY=null;
+    window.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
+    window.addEventListener('touchend',e=>{if(startY==null)return; const dy=e.changedTouches[0].clientY-startY; if(Math.abs(dy)>70) go(dy<0?1:-1); startY=null},{passive:true});
+    window.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+    window.addEventListener('load',()=>{
+      const n=parseInt(location.hash.replace('#',''),10);
+      if(n>=1&&n<=slides.length){
+        const target=lockIndex>=0 ? Math.min(n-1,lockIndex) : n-1;
+        slides[target].scrollIntoView();
+        if(lockIndex>=0 && n-1>lockIndex) showLock();
+      }
+      update();
+    });
+  </script>
+</body>
+</html>

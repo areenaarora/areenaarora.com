@@ -46,7 +46,7 @@
 			includes: ['Slides', 'Paper exercises', 'Mobile-first checklist', 'Peer critique'],
 			contextNote: 'Originally developed for VizChitra 2026.',
 			links: [
-				{ label: 'View workshop', href: `${base}/viz-slides/preview.html` },
+				{ label: 'View workshop', href: `${base}/viz-slides.html#01` },
 				// TODO: Replace with the final downloadable VizChitra 2026 slide file.
 				{ label: 'Download slides', href: `${base}/downloads/designing-small-screens-slides.pdf` }
 			]
@@ -68,7 +68,7 @@
 			],
 			includes: ['Slides', 'Sample dataset', 'Reading list', 'Story exercises'],
 			links: [
-				{ label: 'View workshop', href: `${base}/workshops-and-talks#climate-data` },
+				{ label: 'View workshop', href: `${base}/climate-slides/preview.html` },
 				// TODO: Replace with final climate workshop materials.
 				{ label: 'Download materials', href: `${base}/downloads/climate-data-journalism-materials.zip` }
 			]
@@ -127,8 +127,8 @@
 						<a
 							class="workshop-title-link"
 							href={viewLink.href}
-							target={viewLink.href.includes('/viz-slides/') || viewLink.href.startsWith('http') ? '_blank' : undefined}
-							rel={viewLink.href.includes('/viz-slides/') || viewLink.href.startsWith('http') ? 'noreferrer' : undefined}
+							target={viewLink.href.includes('-slides') || viewLink.href.startsWith('http') ? '_blank' : undefined}
+							rel={viewLink.href.includes('-slides') || viewLink.href.startsWith('http') ? 'noreferrer' : undefined}
 							aria-label={`View ${workshop.title} workshop`}
 						>
 							<h3>{workshop.title}</h3>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Designing Data Stories for Small Screens — workshop slides by Areena Arora" />
+  <base href="/viz-slides/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <title>Designing Data Stories for Small Screens</title>
+  <style>
+    :root{
+      --bg:#fff;
+      --fg:#050505;
+      --muted:#666;
+      --line:#dedede;
+      --soft:#f7f7f7;
+      --accent:#111;
+      --max:1120px;
+      --side:clamp(22px,6vw,88px);
+      --h1:clamp(3.1rem,9vw,8.5rem);
+      --h2:clamp(2.2rem,6vw,5.8rem);
+      --h3:clamp(1.45rem,3.2vw,3rem);
+      --body:clamp(1.05rem,1.6vw,1.55rem);
+      --small:clamp(.85rem,1vw,1rem);
+    }
+    *{box-sizing:border-box}
+    html{scroll-snap-type:y mandatory;scroll-behavior:smooth;background:var(--bg);color:var(--fg)}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--fg);line-height:1.18;overflow-x:hidden}
+    a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.18em}
+    .slide{min-height:100svh;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(18px,3vw,34px) var(--side);position:relative;border-bottom:1px solid var(--line)}
+    .slide::before{content:attr(data-kicker);font-size:var(--small);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);align-self:start}
+    .inner{width:100%;max-width:var(--max);align-self:center;margin:0 auto;display:grid;gap:clamp(22px,3vw,42px)}
+    .number{position:fixed;top:18px;right:22px;font-size:12px;color:#777;background:rgba(255,255,255,.78);backdrop-filter:blur(8px);padding:5px 8px;border:1px solid var(--line);border-radius:999px;z-index:20}
+    h1,h2,h3,p,ul,ol{margin:0}
+    h1{font-size:var(--h1);line-height:.88;letter-spacing:-.045em;font-weight:800;max-width:12ch}
+    h2{font-size:var(--h2);line-height:.9;letter-spacing:-.035em;font-weight:800;max-width:13ch}
+    h3{font-size:var(--h3);line-height:1;letter-spacing:-.015em;font-weight:760;max-width:18ch}
+    .dek{font-size:clamp(1.25rem,2.4vw,2.35rem);line-height:1.08;letter-spacing:-.04em;max-width:26ch;color:#161616}
+    .body{font-size:var(--body);line-height:1.3;max-width:45ch;color:#202020}
+    .intro-copy{display:grid;gap:20px}
+    .intro-copy .body{line-height:1.4}
+    .small{font-size:var(--small);line-height:1.35;color:var(--muted);max-width:64ch}
+    .huge{font-size:clamp(4.4rem,18vw,16rem);font-weight:850;line-height:.75;letter-spacing:-.1em}
+    .wordmark{font-size:clamp(.95rem,1.2vw,1.2rem);letter-spacing:.02em;color:#555}
+    .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:clamp(28px,5vw,70px);align-items:center}
+    .split.equal{grid-template-columns:1fr 1fr}
+    .list{list-style:none;padding:0;display:grid;gap:.5em;font-size:clamp(1.35rem,2.6vw,2.6rem);line-height:1.02;letter-spacing:-.045em;font-weight:720;max-width:23ch}
+    .list.small-list{font-size:clamp(1.05rem,1.65vw,1.55rem);font-weight:520;letter-spacing:0;line-height:1.22;max-width:38ch;gap:.7em}
+    .list li{position:relative;padding-left:1.25em}
+    .list li::before{content:"—";position:absolute;left:0;color:#999}
+    .label{display:inline-flex;border:1px solid var(--fg);border-radius:999px;padding:.28em .62em;font-size:var(--small);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+    .mode-card{display:grid;align-content:start;gap:18px}
+    .mode-card .body{line-height:1.45}
+    .memory-copy{display:grid;align-content:start;gap:30px}
+    .caption{font-size:var(--small);color:var(--muted);max-width:58ch;line-height:1.35}
+    .quote{font-size:clamp(2.15rem,5vw,5.4rem);line-height:.94;letter-spacing:-.035em;font-weight:820;max-width:14ch}
+    .quote.wide{max-width:18ch}
+    .rule{height:1px;background:var(--line);width:100%}
+    .two-lines{display:grid;gap:clamp(16px,2.5vw,28px)}
+    .agenda{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .agenda div{border-top:1px solid #111;padding-top:14px;display:grid;gap:10px}
+    .agenda strong{font-size:clamp(1.4rem,2.4vw,2.2rem);line-height:1;letter-spacing:-.05em}
+    .agenda span{font-size:var(--small);color:var(--muted);line-height:1.35}
+    .phone{width:min(100%,330px);aspect-ratio:390/844;border:2px solid #111;border-radius:38px;margin-inline:auto;padding:16px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.08);position:relative;display:grid;grid-template-rows:auto 1fr;gap:14px}
+    .phone::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:88px;height:20px;border-radius:999px;background:#111}
+    .phone-head{margin-top:26px;font-size:12px;color:#777;text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid var(--line);padding-bottom:10px}
+    .phone-body{display:grid;align-content:start;gap:14px;overflow:hidden;padding-top:100px}
+    .phone-title{font-size:28px;line-height:.95;letter-spacing:-.06em;font-weight:820}
+    .phone-copy{font-size:15px;line-height:1.25;color:#333}
+    .memory-phone{width:min(100%,330px);aspect-ratio:390/844}
+    .memory-phone .phone-body{padding-top:100px}
+    .map-sketch{margin-top:10px;padding:14px 10px 0;border-top:1px solid #efefef}
+    .map-sketch img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;margin:0 auto}
+    .mini-chart{display:grid;gap:8px;margin-top:6px}
+    .bar{height:22px;background:#111;position:relative}
+    .bar::after{content:attr(data-label);position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);font-size:12px;white-space:nowrap;color:#333}
+    .bar.a{width:78%}.bar.b{width:54%}.bar.c{width:35%}
+    .finger{position:absolute;right:12px;bottom:90px;width:78px;height:112px;border:2px solid #111;border-radius:48px 48px 30px 30px;background:rgba(255,255,255,.86);transform:rotate(-18deg)}
+    .flow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:clamp(1.2rem,2.8vw,2.2rem);letter-spacing:-.04em;font-weight:760}
+    .arrow{color:#999;font-weight:400}
+    .matrix{display:grid;grid-template-columns:1.05fr repeat(3,.9fr);border:1px solid #111;font-size:clamp(.85rem,1.15vw,1.05rem)}
+    .matrix div{padding:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:68px;line-height:1.25}
+    .matrix div:nth-child(4n){border-right:0}.matrix div:nth-last-child(-n+4){border-bottom:0}
+    .matrix .head{font-weight:760;background:#111;color:#fff}.matrix .rowhead{font-weight:760;background:#fafafa}
+    .url-card{border-left:4px solid #111;padding:18px 0 18px 18px;display:grid;gap:8px;max-width:760px}
+    .url-card .name{font-size:clamp(1.45rem,2.5vw,2.45rem);font-weight:780;letter-spacing:-.05em;line-height:1}
+    .url-card a{font-size:clamp(.95rem,1.3vw,1.2rem);word-break:break-word;color:#444}
+    .example-stack{display:grid;gap:18px}
+    .open-link{font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.35;color:#222}
+    .image-strip{display:grid;grid-template-columns:repeat(2,minmax(0,256px));gap:60px;align-items:start;justify-content:center}
+    .image-strip img{width:100%;max-width:256px;height:auto;display:block;border:1px solid var(--line);background:#fff}
+    .image-strip.three-up{grid-template-columns:repeat(3,minmax(0,220px));gap:30px}
+    .image-strip.three-up img{max-width:220px}
+    .timer{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.chip{border:1px solid #111;border-radius:999px;padding:.38em .7em;font-size:var(--small)}
+    .controls{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:30}.controls button{appearance:none;border:1px solid #111;background:#fff;color:#111;border-radius:999px;width:38px;height:38px;font-size:17px;cursor:pointer}.controls button:active{transform:translateY(1px)}
+    .progress{position:fixed;left:0;top:0;height:3px;background:#111;width:0%;z-index:40;transition:width .2s ease}
+    .slide.locked .inner{filter:blur(10px);user-select:none;pointer-events:none}
+    .slide-lock{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:24px;background:rgba(255,255,255,.1);backdrop-filter:blur(7px)}
+    .slide-lock[hidden]{display:none}
+    .slide-lock-card{width:max-content;max-width:calc(100vw - 48px);display:grid;gap:18px;border:1px solid #111;background:#fff;padding:24px;box-shadow:0 18px 60px rgba(0,0,0,.12)}
+    .slide-lock-card p{font-size:clamp(1.35rem,2.4vw,2rem);line-height:1.05;letter-spacing:-.035em;font-weight:780;white-space:nowrap}
+    .slide-lock-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .slide-lock-actions a,.slide-lock-actions button{appearance:none;border:1px solid #111;background:#fff;color:#111;padding:.62rem .82rem;font:inherit;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+    @media (max-width:760px){
+      :root{--side:22px;--h1:clamp(3rem,16vw,4.8rem);--h2:clamp(2.4rem,12vw,4rem)}
+      .slide{padding:18px var(--side) 22px;min-height:100svh}.inner{gap:26px}.split,.split.equal,.image-strip{grid-template-columns:1fr;align-items:start}.agenda{grid-template-columns:1fr}.flow{grid-template-columns:1fr;gap:10px}.arrow{display:none}.matrix{grid-template-columns:1fr;font-size:.92rem}.matrix div{border-right:0}.matrix .head:not(:first-child){display:none}.matrix div:nth-last-child(-n+4){border-bottom:1px solid var(--line)}.matrix div:last-child{border-bottom:0}.phone{max-width:280px}.controls{display:none}.number{display:none}.footer{font-size:10px}.list{font-size:clamp(1.8rem,8vw,2.8rem)}.list.small-list{font-size:clamp(1.05rem,4.6vw,1.35rem)}
+    }
+    @media print{html{scroll-snap-type:none}.slide{page-break-after:always;min-height:100vh}.controls,.number,.progress,.slide-lock{display:none}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="number" id="slideNumber">1 / 31</div>
+  <main>
+    <section class="slide" data-kicker="VizChitra 2026"><div class="inner"><h1>Designing data stories for small screens</h1><p class="dek">A workshop on making stories survive real mobile reading conditions.</p><p class="wordmark">Areena Arora · The Hindu</p></div></section>
+
+    <section class="slide" data-kicker="01"><div class="inner split"><div class="intro-copy"><h2>Who am I?</h2><p class="body">Editorial coder. Data journalist. Often stuck between reporting, code, design, and the tiny angry rectangle where readers actually meet our work.</p></div><ul class="list small-list"><li>Interactive storytelling</li><li>Data journalism</li><li>Information design</li><li>Mobile-first public interest work</li></ul></div></section>
+
+    <section class="slide" data-kicker="02"><div class="inner"><h2>Let’s get to know each other.</h2><div class="agenda"><div><strong>Name</strong><span>What do you do?</span></div><div><strong>Screen</strong><span>What device do you usually design on?</span></div><div><strong>Pain</strong><span>One mobile data story problem you keep seeing.</span></div></div></div></section>
+
+    <section class="slide" data-kicker="03"><div class="inner"><h2>What this workshop is about</h2><div class="agenda"><div><strong>Diagnose</strong></div><div><strong>Redesign</strong></div><div><strong>Critique</strong></div></div></div></section>
+
+    <section class="slide" data-kicker="04"><div class="inner example-stack"><p class="open-link">Open: <a href="https://www.reuters.com/graphics/SOCCER-WORLDCUP/zgvolqqoypd/#lightning">https://www.reuters.com/graphics/SOCCER-WORLDCUP/zgvolqqoypd/#lightning</a></p><div class="image-strip"><img src="reuters-lightning-2.jpg" alt="Phone screenshot of the Reuters lightning article intro." /><img src="reuters-lightning-3.jpg" alt="Phone screenshot of the Reuters lightning explainer graphic." /></div></div></section>
+
+    <section class="slide" data-kicker="05"><div class="inner"><p class="open-link">Explore:<br /><a href="https://projects.propublica.org/toxmap/">https://projects.propublica.org/toxmap/</a><br /><a href="https://projects.propublica.org/habeas-tracker/">https://projects.propublica.org/habeas-tracker/</a><br /><a href="https://www.reuters.com/graphics/UKRAINE-CRISIS/DRONES/dwpkeyjwkpm/">https://www.reuters.com/graphics/UKRAINE-CRISIS/DRONES/dwpkeyjwkpm/</a></p></div></section>
+
+    <section class="slide" data-kicker="06"><div class="inner split"><div><p class="quote wide">We are not designing for a calm rectangle.</p></div><div class="phone"><div class="phone-body"><div class="phone-title">One hand. Low light. Notifications. Bad network.</div><p class="phone-copy">A metro rail, a baby, a coffee, a bag, a plate of lunch — something else is always happening.</p></div><div class="finger"></div></div></div></section>
+
+    <section class="slide" data-kicker="07"><div class="inner"><h2>How do you usually start?</h2><div class="flow"><span>Desktop board</span><span class="arrow">→</span><span>Mobile shrink</span></div><p class="body">Most workflows start in generous space: large canvases, multiple panels, a mouse, stable attention. Then the phone becomes the afterthought. But mobile is more than just a smaller layout.</p></div></section>
+
+    <section class="slide" data-kicker="08"><div class="inner"><p class="quote wide">Can the reader still understand the story under interruption?</p></div></section>
+
+    <section class="slide" data-kicker="09"><div class="inner split equal"><div class="mode-card"><span class="label">Desktop</span><h2>Landscape</h2><p class="body">Many things can be visible at once. Meaning is assembled spatially.</p></div><div class="mode-card"><span class="label">Mobile</span><h2>Sequence</h2><p class="body">One thing enters, then the next. Meaning is choreographed over time.</p></div></div></section>
+
+    <section class="slide" data-kicker="10"><div class="inner"><h2>Attention economics</h2><p class="body">On mobile, try to include a striking number, a stark contrast, a bold claim with a dramatic consequence or a sharp visual feature at the start of the project. First insight isn’t the same as the headline.</p></div></section>
+
+    <section class="slide" data-kicker="11"><div class="inner example-stack"><p class="open-link">Open: <a href="https://www.reuters.com/graphics/USA-RITEAID/SOFTWARE/bdwvkeezzvm/">https://www.reuters.com/graphics/USA-RITEAID/SOFTWARE/bdwvkeezzvm/</a></p><div class="image-strip three-up"><img src="reuters-riteaid-1.jpg" alt="Phone screenshot of Reuters Graphics Central Los Angeles facial recognition map." /><img src="reuters-riteaid-2.jpg" alt="Phone screenshot of Reuters Graphics map and source notes." /><img src="reuters-riteaid-3.jpg" alt="Phone screenshot of Reuters Graphics Manhattan facial recognition map." /></div></div></section>
+
+    <section class="slide" data-kicker="12"><div class="inner"><h2>Five kinds of friction</h2><ul class="list"><li>Entry</li><li>Memory</li><li>Interaction</li><li>Grip</li><li>Escape</li></ul></div></section>
+
+    <section class="slide" data-kicker="13"><div class="inner"><h2>Peripheral vision is a desktop luxury.</h2><p class="body">On a large screen, the reader can sense the legend, headline, note and sidebar while reading the chart. On a phone, those relationships break into separate moments.</p></div></section>
+
+    <section class="slide" data-kicker="14"><div class="inner split"><div class="memory-copy"><h2>Memory tax</h2><p class="body">Once the reader scrolls away, you are relying on them to remember the color code, axis, caveat, filter state or annotation.</p></div><div class="phone memory-phone"><div class="phone-head">Legend left behind</div><div class="phone-body"><div class="phone-title"><span style="color:#2563eb">Blue</span> meant… what again?</div><p class="phone-copy">Every remembered relationship is a tax.</p><div class="mini-chart"><div class="bar a" data-label="2019"></div><div class="bar b" data-label="2024"></div></div></div></div></div></section>
+
+    <section class="slide" data-kicker="15"><div class="inner example-stack"><p class="open-link">Open: <a href="https://pudding.cool/2022/02/women-in-headlines/">https://pudding.cool/2022/02/women-in-headlines/</a></p><div class="image-strip three-up"><img src="pudding-headlines-1.png" alt="Desktop screenshot from The Pudding story about words used in headlines about women." style="max-width:320px" /><img src="pudding-headlines-2.jpg" alt="Phone screenshot from The Pudding story showing the word SUE example." /><img src="pudding-headlines-3.jpg" alt="Phone screenshot from The Pudding story showing the word FIRST example." /></div></div></section>
+
+    <section class="slide" data-kicker="16"><div class="inner split"><div style="display:grid;align-content:start;gap:20px"><h2>Legend rule</h2><p class="quote wide" style="font-size:clamp(2rem,4vw,3.4rem);line-height:1.15">Label the thing. Don’t make me decode the key.</p></div><div><img src="legend-rule-example.png" alt="Mobile screenshot of a Reuters drone explainer with direct labels embedded in the visual." style="width:100%;max-width:320px;height:auto;display:block;margin-left:auto;border:1px solid var(--line);background:#fff" /></div></div></section>
+
+    <section class="slide" data-kicker="17"><div class="inner"><h2>Public dashboards</h2><p class="quote wide" style="font-size:clamp(2.4rem,4.8vw,4.25rem)">Filter first, insight later.</p><p class="body">This pattern feels reasonable to the team that knows the data. But a public reader arrives with low context and low patience.</p></div></section>
+
+    <section class="slide" data-kicker="17"><div class="inner example-stack"><p class="open-link">Open: <a href="https://www.tnagrisnet.tn.gov.in/uattII/dashboard_public">https://www.tnagrisnet.tn.gov.in/uattII/dashboard_public</a></p><div class="image-strip"><img src="tnagrisnet-1.jpg" alt="Phone screenshot of the TN Agrisnet state level dashboard village to headquarters mapping table." /><img src="tnagrisnet-2.jpg" alt="Phone screenshot of the TN Agrisnet dashboard headquarters to users mapping and schedule table." /></div></div></section>
+
+    <section class="slide" data-kicker="18"><div class="inner"><h2 style="white-space:nowrap">Dashboard redesign order</h2><div class="flow" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:nowrap"><span>Outliers</span><span class="arrow">→</span><span>Suggested paths</span><span class="arrow">→</span><span>Filters</span></div><p class="body">First show why the data matters. Then invite self-exploration.</p></div></section>
+
+    <section class="slide" data-kicker="21"><div class="inner"><h2>Fixing dashboards</h2><ul class="list small-list"><li>Cut columns to the story path.</li><li>Turn rows into cards on mobile.</li><li>Sort by largest increase, decline, highest value, your state.</li><li>Put search after summary, not instead of summary.</li></ul></div></section>
+
+    <section class="slide" data-kicker="22"><div class="inner split"><div style="display:grid;align-content:start;gap:22px"><h2>Maps are greedy.</h2><p class="body">If scrolling becomes zooming, the story stops progressing.</p></div><div class="phone"><div class="phone-head">Map trap</div><div class="phone-body"><div class="phone-title">Pinch. Zoom. Stuck.</div><p class="phone-copy">The map took over the thumb path.</p><div class="map-sketch" aria-hidden="true"><img src="slide22-globe.png" alt="Illustration of a globe inside the phone mockup." /></div></div><div class="finger"></div></div></div></section>
+
+    <section class="slide" data-kicker="23"><div class="inner example-stack"><p class="open-link">Open: <a href="https://restofworld.org/2025/data-center-heat-map/">https://restofworld.org/2025/data-center-heat-map/</a></p><div class="image-strip three-up"><img src="restofworld-1.jpg" alt="Phone screenshot of the Rest of World global data center heat map." /><img src="restofworld-2.jpg" alt="Phone screenshot of the Rest of World Asia data center heat map." /><img src="restofworld-3.jpg" alt="Phone screenshot of the Rest of World Singapore data center heat map." /></div></div></section>
+
+    <section class="slide" data-kicker="24"><div class="inner"><h2>How to fix maps</h2><ul class="list small-list"><li>Use a static map before tap-to-explore.</li><li>Keep map height modest unless it is the scene.</li><li>Add an escape lane or clear continue cue.</li><li>Replace maps with rankings when the task is comparison.</li></ul></div></section>
+
+    <section class="slide" data-kicker="25"><div class="inner split"><div style="display:grid;align-content:start;gap:22px"><h2>Scrollytelling</h2><p class="body">Mobile scroll is natural. But each step must fit with the visual state inside the same moment of attention.</p><ul class="list small-list"><li>Text step too long.</li><li>Graphic changes too early.</li><li>Annotation stays too long.</li><li>Step assumes old memory.</li></ul></div><div><img src="slide26-example.png" alt="Phone screenshot of a The Hindu scrollytelling explainer with text and a recovery trajectory diagram." style="width:100%;max-width:360px;height:auto;display:block;margin-left:auto;border:1px solid var(--line);background:#fff" /></div></div></section>
+
+    <section class="slide" data-kicker="26"><div class="inner example-stack"><p class="open-link">Open: <a href="https://www.reuters.com/graphics/MINING-DEEPSEA/CLIMATE/zjpqezqzlpx/">https://www.reuters.com/graphics/MINING-DEEPSEA/CLIMATE/zjpqezqzlpx/</a></p><div class="image-strip" style="grid-template-columns:minmax(0,256px)"><img src="reuters-deepsea-1.jpg" alt="Phone screenshot of a Reuters deep-sea mining explainer showing the sediment plume annotation." /></div></div></section>
+
+    <section class="slide" data-kicker="27"><div class="inner"><h2>Charting efficiently</h2><ul class="list small-list"><li>Directly label line ends.</li><li>Label stacked segments if there are only two or three.</li><li>Reintroduce color meaning in scrolly steps.</li><li>Use exact values in text when exactness matters.</li></ul></div></section>
+
+    <section class="slide" data-kicker="28"><div class="inner"><img src="chart-vocabulary-table1.png" alt="Chart vocabulary table comparing desktop and mobile chart choices, why they work on mobile, and things to watch for." style="width:100%;max-width:1500px;height:auto;display:block;margin:0 auto;border:1px solid var(--line);background:#fff" /></div></section>
+
+    <section class="slide" data-kicker="29"><div class="inner"><img src="chart-vocabulary-table2.png" alt="Chart vocabulary table covering distribution, relationship, flow or process, lookup or details, and many comparisons or exploration for mobile." style="width:100%;max-width:1500px;height:auto;display:block;margin:0 auto;border:1px solid var(--line);background:#fff" /></div></section>
+
+    <section class="slide" data-kicker="30"><div class="inner"><h2>Sketching</h2><ul class="list small-list"><li>Write five insights in order before drawing.</li><li>Pick the chart type after the insight sequence.</li><li>Use interaction stingily.</li><li>Define the default view.</li><li>Keep the color system explainable.</li></ul></div></section>
+
+    <section class="slide" data-kicker="31"><div class="inner"><h2>Reviewing prototypes</h2><p class="quote wide">Put a thumb on it.</p><ul class="list small-list"><li>Where does the thumb naturally land?</li><li>What is hidden?</li><li>What two insights does another group learn?</li><li>Does that match what you intended?</li></ul></div></section>
+
+    <section class="slide" data-kicker="32"><div class="inner"><h2>Mobile survival checklist</h2><ul class="list small-list"><li>Compress images.</li><li>Avoid unnecessary client-side libraries.</li><li>Provide fallbacks for heavy visuals.</li><li>Test on slow mobile data. Try the elevator test.</li></ul></div></section>
+  </main>
+  <div class="controls" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">↑</button><button id="next" aria-label="Next slide">↓</button></div>
+  <div class="slide-lock" id="slideLock" role="dialog" aria-modal="true" aria-labelledby="slideLockTitle" hidden>
+    <div class="slide-lock-card">
+      <p id="slideLockTitle">Please contact me for slides.</p>
+      <div class="slide-lock-actions">
+        <a href="mailto:areena.arora@columbia.edu">Contact me</a>
+        <button type="button" id="dismissLock">Close</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const slides=[...document.querySelectorAll('.slide')];
+    const progress=document.getElementById('progress');
+    const slideNumber=document.getElementById('slideNumber');
+    const slideLock=document.getElementById('slideLock');
+    const dismissLock=document.getElementById('dismissLock');
+    const lockIndex=slides.findIndex(s=>s.dataset.kicker==='06');
+    let correctingScroll=false;
+    function currentIndex(){
+      const y=window.scrollY;
+      let best=0,dist=Infinity;
+      slides.forEach((s,i)=>{const d=Math.abs(s.offsetTop-y); if(d<dist){dist=d;best=i;}});
+      return best;
+    }
+    function showLock(){
+      if(lockIndex<0) return;
+      slides[lockIndex].classList.add('locked');
+      slideLock.hidden=false;
+      dismissLock.focus({preventScroll:true});
+    }
+    function hideLock(){
+      if(lockIndex>=0) slides[lockIndex].classList.remove('locked');
+      slideLock.hidden=true;
+    }
+    function go(delta){
+      let i=Math.max(0,Math.min(slides.length-1,currentIndex()+delta));
+      if(lockIndex>=0 && i>lockIndex){
+        i=lockIndex;
+        showLock();
+      } else {
+        hideLock();
+      }
+      slides[i].scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function update(){
+      const i=currentIndex();
+      if(lockIndex>=0 && i>lockIndex && !correctingScroll){
+        correctingScroll=true;
+        slides[lockIndex].scrollIntoView({behavior:'auto',block:'start'});
+        showLock();
+        requestAnimationFrame(()=>{correctingScroll=false;update();});
+        return;
+      }
+      progress.style.width=((i+1)/slides.length*100)+'%';
+      const kicker=slides[i].dataset.kicker || '';
+      const numericKicker=/^\d+$/.test(kicker) ? String(parseInt(kicker,10)) : null;
+      slideNumber.textContent=numericKicker ? (numericKicker+' / 31') : ((i+1)+' / '+slides.length);
+      history.replaceState(null,'','#'+String(i+1).padStart(2,'0'));
+    }
+    document.getElementById('next').addEventListener('click',()=>go(1));
+    document.getElementById('prev').addEventListener('click',()=>go(-1));
+    dismissLock.addEventListener('click',hideLock);
+    slideLock.addEventListener('click',e=>{if(e.target===slideLock) hideLock();});
+    window.addEventListener('wheel',e=>{
+      if(lockIndex>=0 && currentIndex()>=lockIndex && e.deltaY>0){
+        e.preventDefault();
+        slides[lockIndex].scrollIntoView({behavior:'smooth',block:'start'});
+        showLock();
+      }
+    },{passive:false});
+    window.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape' && !slideLock.hidden){e.preventDefault();hideLock();return}
+      if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}
+      if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1)}
+      if(e.key==='Home'){e.preventDefault();slides[0].scrollIntoView({behavior:'smooth'})}
+      if(e.key==='End'){e.preventDefault();if(lockIndex>=0){slides[lockIndex].scrollIntoView({behavior:'smooth'});showLock()}else{slides.at(-1).scrollIntoView({behavior:'smooth'})}}
+    });
+    let startY=null;
+    window.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
+    window.addEventListener('touchend',e=>{if(startY==null)return; const dy=e.changedTouches[0].clientY-startY; if(Math.abs(dy)>70) go(dy<0?1:-1); startY=null},{passive:true});
+    window.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+    window.addEventListener('load',()=>{
+      const n=parseInt(location.hash.replace('#',''),10);
+      if(n>=1&&n<=slides.length){
+        const target=lockIndex>=0 ? Math.min(n-1,lockIndex) : n-1;
+        slides[target].scrollIntoView();
+        if(lockIndex>=0 && n-1>lockIndex) showLock();
+      }
+      update();
+    });
+  </script>
+</body>
+</html>
