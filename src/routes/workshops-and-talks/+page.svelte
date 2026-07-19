@@ -68,7 +68,7 @@
 			],
 			includes: ['Slides', 'Sample dataset', 'Reading list', 'Story exercises'],
 			links: [
-				{ label: 'View workshop', href: `${base}/climate-slides/preview.html` },
+				{ label: 'View workshop', href: `${base}/climate-slides.html#01` },
 				// TODO: Replace with final climate workshop materials.
 				{ label: 'Download materials', href: `${base}/downloads/climate-data-journalism-materials.zip` }
 			]
