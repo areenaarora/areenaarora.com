@@ -261,7 +261,7 @@
     window.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
     window.addEventListener('touchend',e=>{if(startY==null)return; const dy=e.changedTouches[0].clientY-startY; if(Math.abs(dy)>70) go(dy<0?1:-1); startY=null},{passive:true});
     window.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
-    window.addEventListener('load',()=>{
+    function goToHash(){
       const n=parseInt(location.hash.replace('#',''),10);
       if(n>=1&&n<=slides.length){
         const target=lockIndex>=0 ? Math.min(n-1,lockIndex) : n-1;
@@ -269,7 +269,9 @@
         if(lockIndex>=0 && n-1>lockIndex) showLock();
       }
       update();
-    });
+    }
+    window.addEventListener('load',goToHash);
+    window.addEventListener('hashchange',goToHash);
   </script>
 </body>
 </html>
