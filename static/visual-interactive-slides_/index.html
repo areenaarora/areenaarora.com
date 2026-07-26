@@ -11,6 +11,11 @@
   <link rel="shortcut icon" href="/favicon/favicon.ico" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
   <title>Visual and Interactive Journalism</title>
+  <script>
+    if (!location.hash) {
+      location.replace('#00');
+    }
+  </script>
   <style>
     :root{
       --bg:#fff;--fg:#050505;--muted:#666;--line:#dedede;--soft:#f7f7f7;
