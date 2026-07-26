@@ -1,0 +1,38 @@
+[
+  {
+    "publication": "Reuters Graphics",
+    "title": "Lightning and the World Cup",
+    "url": "https://www.reuters.com/graphics/SOCCER-WORLDCUP/zgvolqqoypd/#lightning",
+    "image": "/viz-slides/reuters-lightning-3.jpg",
+    "alt": "Phone screenshot of a Reuters visual explainer about lightning.",
+    "note": "Notice the reporting decision, not only the animation.",
+    "prompts": [
+      "What is the central visual?",
+      "What changes as the reader progresses?"
+    ]
+  },
+  {
+    "publication": "Reuters Graphics",
+    "title": "Rite Aid facial recognition",
+    "url": "https://www.reuters.com/graphics/USA-RITEAID/SOFTWARE/bdwvkeezzvm/",
+    "image": "/viz-slides/reuters-riteaid-1.jpg",
+    "alt": "Phone screenshot of a Reuters visual investigation about facial recognition locations.",
+    "note": "The map is evidence, not decoration.",
+    "prompts": [
+      "Why is this more effective than a static article?",
+      "Would the story still work without the interaction?"
+    ]
+  },
+  {
+    "publication": "The Pudding",
+    "title": "Words in headlines about women",
+    "url": "https://pudding.cool/2022/02/women-in-headlines/",
+    "image": "/viz-slides/pudding-headlines-1.png",
+    "alt": "Desktop screenshot from The Pudding story about words used in headlines about women.",
+    "note": "The interaction helps readers inspect a pattern at human scale.",
+    "prompts": [
+      "Where does the design become excessive?",
+      "Does interaction reveal anything?"
+    ]
+  }
+]

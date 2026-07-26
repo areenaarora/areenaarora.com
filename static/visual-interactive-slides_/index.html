@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Visual and Interactive Journalism lecture slides by Areena Arora" />
+  <base href="/visual-interactive-slides_/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <title>Visual and Interactive Journalism</title>
+  <style>
+    :root{
+      --bg:#fff;--fg:#050505;--muted:#666;--line:#dedede;--soft:#f7f7f7;
+      --blue:#1B428A;--pink:#F2414F;--cream:#fbf7ef;--max:1160px;
+      --side:clamp(22px,6vw,88px);--h1:clamp(3rem,9vw,8.4rem);
+      --h2:clamp(2.15rem,5.8vw,5.5rem);--h3:clamp(1.35rem,3vw,2.8rem);
+      --body:clamp(1.05rem,1.55vw,1.5rem);--small:clamp(.84rem,1vw,1rem)
+    }
+    *{box-sizing:border-box}
+    html{scroll-snap-type:y mandatory;scroll-behavior:smooth;background:var(--bg);color:var(--fg)}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.18;overflow-x:hidden}
+    a{color:inherit;text-decoration-thickness:.08em;text-underline-offset:.18em}
+    .progress{position:fixed;left:0;top:0;height:3px;background:#111;width:0%;z-index:40;transition:width .2s ease}
+    .slide{min-height:100svh;scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(18px,3vw,34px) var(--side);position:relative;border-bottom:1px solid var(--line);background:var(--bg)}
+    .slide.exercise{background:var(--bg)}
+    .slide::before{content:attr(data-kicker);font-size:var(--small);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:start}
+    .inner{width:100%;max-width:var(--max);align-self:center;margin:0 auto;display:grid;gap:clamp(22px,3vw,42px)}
+    h1,h2,h3,p,ul,ol{margin:0}
+    h1{font-size:var(--h1);line-height:.86;letter-spacing:-.045em;font-weight:850;max-width:12ch}
+    h2{font-size:var(--h2);line-height:.9;letter-spacing:-.035em;font-weight:830;max-width:13ch}
+    h3{font-size:var(--h3);line-height:1;letter-spacing:-.02em;font-weight:780;max-width:18ch}
+    .nowrap{max-width:none;white-space:nowrap}.wide{max-width:none}.blue{color:var(--blue)}.pink{color:var(--pink)}
+    .small-h2{font-size:clamp(1.75rem,4.2vw,4rem);line-height:.95}
+    .dek{font-size:clamp(1.22rem,2.25vw,2.25rem);line-height:1.08;letter-spacing:-.04em;max-width:30ch;color:#171717}
+    .body{font-size:var(--body);line-height:1.3;max-width:49ch;color:#202020}
+    .small{font-size:var(--small);line-height:1.35;color:var(--muted);max-width:66ch}
+    .wordmark{font-size:clamp(.95rem,1.2vw,1.2rem);letter-spacing:.02em;color:#050505;font-weight:800}
+    .title-layout{grid-template-columns:minmax(0,1fr) minmax(260px,.45fr);align-items:end}
+    .title-copy{display:grid;gap:clamp(18px,2.4vw,32px)}
+    .title-slide h1{font-size:clamp(3rem,7.4vw,6.8rem);line-height:.94;max-width:14ch}
+    .motif{height:min(36vh,280px);border-left:1px solid #111;border-bottom:1px solid #111;display:grid;align-items:end;padding:18px;position:relative;overflow:hidden}
+    .motif svg{width:100%;height:100%}.motif path{fill:none;stroke:var(--pink);stroke-width:4;stroke-linecap:round}.motif circle{fill:var(--blue)}
+    .labels{display:flex;gap:10px;flex-wrap:wrap}
+    .label{display:inline-flex;border:1px solid #111;border-radius:999px;padding:.34em .7em;font-size:var(--small);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;background:#fff}
+    .part-label{width:max-content;color:var(--blue);border-color:var(--blue);font-weight:850}
+    .sequence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .sequence div,.card{border-top:1px solid #111;padding-top:14px;display:grid;gap:10px}
+    .sequence strong,.card strong{font-size:clamp(1.6rem,3.3vw,3.2rem);line-height:.95;letter-spacing:-.055em}
+    .sequence span,.card span{font-size:var(--small);line-height:1.35;color:#333}
+    .roadmap span{font-size:clamp(1.05rem,1.6vw,1.45rem);line-height:1.25;color:#050505}
+    .statement{font-size:clamp(2.55rem,6.8vw,7rem);line-height:.9;letter-spacing:-.045em;font-weight:850;max-width:13ch}
+    .statement.wide{max-width:18ch}
+    .loose-statement{line-height:1}
+    .question-statement{font-size:clamp(2rem,5vw,5rem);line-height:.96}
+    .question-slide .question-statement{max-width:24ch;line-height:.92}
+    .question-slide .prompt-grid div{font-size:clamp(1.15rem,1.75vw,1.4rem);line-height:1.18}
+    .movement-slide .statement{line-height:.94;max-width:11ch}
+    .movement-slide .body{margin-top:28px;line-height:1.24;max-width:36ch}
+    .movement-slide .comparison .label{min-width:9.5ch;justify-content:center}
+    .sequence-slide .statement{line-height:.78;max-width:none}
+    .sequence-line{white-space:nowrap}
+    .one-line-heading{max-width:none;white-space:nowrap}
+    .one-line-body{max-width:none;white-space:nowrap}
+    .center-labels .label{justify-content:center}
+    .device-panels .label{width:max-content;justify-self:center;min-width:11ch;justify-content:center}
+    .mini-phone{width:min(190px,45%);aspect-ratio:9/16;border:2px solid #111;border-radius:28px;justify-self:center;display:grid;grid-template-rows:34px repeat(3,1fr);gap:10px;padding:14px;background:#fff}
+    .mini-phone::before{content:"";width:58px;height:10px;border-radius:999px;background:#111;justify-self:center}
+    .mini-phone span{border-top:2px solid var(--blue)}
+    .label-slide .label{justify-self:center;min-width:10ch;justify-content:center}
+    .label-slide .comparison .panel{align-content:start}
+    .trap-slide h2{line-height:.94}
+    .trap-slide .body{margin-top:34px}
+    .intro-gap h2{margin-bottom:24px}
+    .wide-line{max-width:none;white-space:nowrap}
+    .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.9fr);gap:clamp(28px,5vw,70px);align-items:center}
+    .split.equal{grid-template-columns:1fr 1fr}.split.top{align-items:start}
+    .verb-grid{display:grid;gap:14px}
+    .verb{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:18px;font-size:clamp(1.2rem,2.45vw,2.45rem);font-weight:820;letter-spacing:-.05em}
+    .spark{width:44px;height:16px;border-top:3px solid var(--pink);position:relative}.spark::after{content:"";position:absolute;right:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+    .prompt-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+    .prompt-grid div{border-top:1px solid #111;padding-top:12px;font-size:var(--small);font-weight:760;line-height:1.2;min-height:86px;display:grid;align-content:end}
+    .example-slide .inner{max-width:1240px}
+    .example-layout{display:grid;grid-template-columns:minmax(320px,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,54px);align-items:center}
+    .example-shot{width:100%;min-height:360px;border:1px solid var(--line);background:#fafafa;display:grid;place-items:center;overflow:hidden}
+    .example-shot img{width:100%;height:100%;max-height:64vh;object-fit:contain;display:block;background:#fff}
+    .placeholder{display:grid;gap:10px;text-align:center;color:#777;padding:28px}.placeholder strong{font-size:1.1rem;color:#111}
+    .example-meta{display:grid;gap:18px}.example-meta .pub{color:var(--blue);font-size:var(--small);font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+    .example-meta a{width:max-content;border:1px solid #111;padding:.55rem .75rem;text-decoration:none;font-size:13px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}
+    .discussion{display:grid;gap:18px;padding:0;list-style:none}.discussion li{font-size:var(--body);line-height:1.2;color:#1d1d1d}
+    .comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px}.comparison .panel{border:1px solid #111;padding:18px;display:grid;gap:16px;min-height:320px}
+    .mini-chart{display:grid;gap:10px;align-content:center}.bar{height:24px;background:#111;position:relative}.bar::after{content:attr(data-label);position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);font-size:12px;color:#333;white-space:nowrap}
+    .bar.a{width:78%}.bar.b{width:61%}.bar.c{width:43%}.bar.d{width:27%}
+    .chartline{height:220px;border-left:1px solid #111;border-bottom:1px solid #111;position:relative}.chartline svg{width:100%;height:100%}.chartline path{fill:none;stroke:#111;stroke-width:3}.chartline .direct{position:absolute;right:10px;font-size:13px;font-weight:800;color:var(--blue)}
+    .choropleth{display:grid;place-items:center;min-height:220px}.choropleth svg{width:min(100%,360px);height:auto}.choropleth path{stroke:#fff;stroke-width:3}.choropleth .outline{fill:none;stroke:#111;stroke-width:2}
+    .chart-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+    .chart-pair img{width:100%;height:auto;display:block;border:1px solid #ddd;background:#fff}
+    .vocab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .vocab div{border-top:1px solid #111;padding-top:10px;display:grid;gap:5px}
+    .vocab strong{font-size:clamp(1.15rem,1.8vw,1.65rem);line-height:1;color:var(--blue)}
+    .vocab span{font-size:var(--small);line-height:1.35;color:#050505;font-weight:760}
+    .short-lines div{width:50%}
+    .phone{width:min(100%,330px);aspect-ratio:390/844;border:2px solid #111;border-radius:38px;margin-inline:auto;padding:16px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.08);position:relative;display:grid;grid-template-rows:auto 1fr;gap:14px}
+    .phone::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:88px;height:20px;border-radius:999px;background:#111}
+    .phone-head{margin-top:26px;font-size:12px;color:#777;text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid var(--line);padding-bottom:10px}
+    .phone-body{display:grid;align-content:start;gap:14px;overflow:hidden;padding-top:70px}
+    .phone-title{font-size:28px;line-height:.95;letter-spacing:-.06em;font-weight:820}
+    .phone-copy{font-size:15px;line-height:1.25;color:#333}
+    .interruption{position:absolute;border:1px solid #111;background:#fff;padding:.35em .55em;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .interruption:nth-child(1){left:-36px;top:110px}.interruption:nth-child(2){right:-38px;top:170px}.interruption:nth-child(3){left:-42px;bottom:180px}.interruption:nth-child(4){right:-30px;bottom:120px}
+    .scrolly{display:grid;gap:12px}.step{display:grid;grid-template-columns:minmax(120px,.8fr) auto minmax(160px,1fr);align-items:center;gap:12px;font-size:clamp(1.05rem,1.7vw,1.45rem);font-weight:760}.arrow{color:#999;font-weight:400}
+    .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.tool{border:1px solid #111;padding:18px;display:grid;gap:14px}.tool h3{color:var(--blue)}.tool ul{margin:0;padding-left:1.1em;display:grid;gap:.45em;font-size:var(--small);line-height:1.3}
+    .pipeline{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;align-items:stretch}.pipeline div{border:1px solid #111;padding:12px;font-size:var(--small);font-weight:800;line-height:1.15;display:grid;align-content:center;text-align:center}.pipeline div:nth-child(odd){background:#fff}.pipeline div:nth-child(even){background:#f7f7f7}
+    .list{list-style:none;padding:0;display:grid;gap:.55em;font-size:clamp(1.25rem,2.45vw,2.45rem);line-height:1.02;letter-spacing:-.045em;font-weight:760;max-width:29ch}
+    .list.small-list{font-size:clamp(1rem,1.55vw,1.45rem);font-weight:560;letter-spacing:0;line-height:1.22;max-width:48ch;gap:.65em}
+    .list li{position:relative;padding-left:1.25em}.list li::before{content:"—";position:absolute;left:0;color:#999}
+    .shot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.shot{border:1px dashed #999;min-height:160px;display:grid;place-items:center;color:#777;font-size:var(--small);text-align:center;padding:18px;background:#fff}
+    .contact{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.contact a{font-size:var(--small);font-weight:850;text-transform:uppercase;letter-spacing:.08em;text-decoration-thickness:.12em}
+    .controls{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:30}
+    .controls button{appearance:none;border:1px solid #111;background:#fff;color:#111;border-radius:999px;width:38px;height:38px;font-size:17px;cursor:pointer}.controls button:active{transform:translateY(1px)}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.progress{transition:none}.controls button:active{transform:none}}
+    @media (max-height:780px) and (min-width:761px){
+      :root{--h2:clamp(2rem,5vw,4.5rem);--h3:clamp(1.2rem,2.4vw,2.2rem);--body:clamp(.98rem,1.25vw,1.25rem);--small:clamp(.78rem,.9vw,.92rem)}
+      .slide{padding:14px var(--side)}.inner{gap:18px}.statement{font-size:clamp(2.25rem,5.5vw,5.4rem)}
+      .sequence strong,.card strong{font-size:clamp(1.35rem,2.6vw,2.5rem)}.comparison .panel{min-height:230px;padding:14px}
+      .chartline{height:160px}.example-shot{min-height:270px}.phone{max-width:260px}.phone-body{padding-top:48px}.phone-title{font-size:24px}
+      .list{gap:.35em}.list.small-list{gap:.45em}.vocab{gap:8px}.vocab div{padding-top:8px}.tool{padding:14px}.tool ul{gap:.3em}
+    }
+    @media (max-width:760px){
+      :root{--side:22px;--h1:clamp(3rem,16vw,4.8rem);--h2:clamp(2.4rem,12vw,4rem)}
+      .slide{padding:12px 18px 16px}.inner{gap:16px}.title-layout,.split,.split.equal,.sequence,.prompt-grid,.example-layout,.comparison,.vocab,.tool-grid,.pipeline,.shot-grid{grid-template-columns:1fr}
+      h1{font-size:clamp(2.7rem,15vw,4.2rem)}h2{font-size:clamp(1.85rem,9.6vw,3.1rem)}h3{font-size:clamp(1.15rem,6vw,2rem)}
+      .title-copy{gap:16px}.title-slide h1{font-size:clamp(2.65rem,13vw,3.8rem);line-height:.98}.motif{height:130px}.statement{font-size:clamp(2rem,10vw,3.55rem)}.dek{font-size:clamp(1rem,4.8vw,1.45rem)}.body{font-size:clamp(.95rem,3.85vw,1.12rem)}
+      .step{grid-template-columns:1fr;gap:6px}.arrow{display:none}.phone{max-width:210px;border-radius:28px;padding:12px}.phone::before{width:62px;height:14px}.phone-head{margin-top:20px}.phone-body{padding-top:34px}.phone-title{font-size:21px}.phone-copy{font-size:13px}
+      .controls{display:none}.list{font-size:clamp(1.45rem,7vw,2.25rem);gap:.35em}.list.small-list{font-size:clamp(.95rem,4vw,1.14rem);gap:.42em}.nowrap{white-space:normal}
+      .example-shot{min-height:145px}.example-shot img{max-height:28vh}.example-meta{gap:10px}.discussion{gap:10px}.discussion li{font-size:clamp(.95rem,3.85vw,1.12rem)}
+      .comparison .panel{min-height:auto;padding:12px;gap:10px}.prompt-grid div{min-height:auto;padding:10px}.pipeline div{text-align:left;padding:9px}.interruption{display:none}
+      .sequence{gap:10px}.sequence div,.card{padding-top:10px}.sequence strong,.card strong{font-size:clamp(1.25rem,7vw,2.1rem)}
+      .vocab{gap:8px}.vocab div{padding-top:8px}.tool{padding:12px;gap:8px}.tool ul{gap:.25em}.shot{min-height:90px}.chartline{height:130px}
+    }
+    @media print{html{scroll-snap-type:none}.slide{page-break-after:always;min-height:100vh}.controls,.progress{display:none}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <main id="deck" aria-live="polite"></main>
+  <div class="controls" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">↑</button><button id="next" aria-label="Next slide">↓</button></div>
+  <script>
+    const exampleFallback=[
+      {publication:'Placeholder',title:'Replace with final visual story',url:'#',image:'',alt:'Placeholder for final visual journalism screenshot.',note:'Notice the reporting decision, not only the animation.',prompts:['What is the central visual?','What changes as the reader progresses?']},
+      {publication:'Placeholder',title:'Replace with final interactive story',url:'#',image:'',alt:'Placeholder for final interactive journalism screenshot.',note:'Metadata lives in examples/examples.json.',prompts:['Why is this more effective than a static article?','Would the story still work without the interaction?']},
+      {publication:'Placeholder',title:'Replace with final newsroom example',url:'#',image:'',alt:'Placeholder for final newsroom example screenshot.',note:'Do not fabricate story details.',prompts:['Where does the design become excessive?','Does interaction reveal anything?']}
+    ];
+    const esc=s=>String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const link=(href,text)=>`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(text)}</a>`;
+    const section=(kicker,inner,klass='')=>`<section class="slide ${klass}" data-kicker="${esc(kicker)}"><div class="inner">${inner}</div></section>`;
+    const statement=(kicker,text,sub='',klass='')=>section(kicker,`<p class="statement wide ${klass}">${text}</p>${sub?`<p class="body">${sub}</p>`:''}`);
+    const sectionMarker=(kicker,label)=>section(kicker,`<h2 class="wide blue">${esc(label)}</h2>`,'section-divider');
+    const exampleSlide=(kicker,item)=>section(kicker,`
+      <div class="example-layout">
+        <div class="example-shot">${item.image?`<img src="${esc(item.image)}" alt="${esc(item.alt)}" />`:`<div class="placeholder"><strong>Screenshot placeholder</strong><span>Edit examples/examples.json and add an image path.</span></div>`}</div>
+        <div class="example-meta">
+          <span class="pub">${esc(item.publication)}</span>
+          <h2>${esc(item.title)}</h2>
+          <ul class="discussion"><li>${esc(item.note)}</li>${item.prompts.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
+          ${item.url && item.url !== '#' ? link(item.url,'Open example') : '<span class="small">Final URL placeholder</span>'}
+        </div>
+      </div>`,'example-slide');
+    const chartBars=(ordered=false)=>`<div class="mini-chart">${(ordered?[
+      ['Riverside',78,'a'],['North',61,'b'],['Coast',43,'c'],['Hill',27,'d']
+    ]:[
+      ['Coast',43,'c'],['Hill',27,'d'],['North',61,'b'],['Riverside',78,'a']
+    ]).map(([label,,cls])=>`<div class="bar ${cls}" data-label="${label}"></div>`).join('')}</div>`;
+    const choropleth=()=>`<div class="choropleth" aria-label="Example choropleth map">
+      <svg viewBox="0 0 360 240" role="img">
+        <path d="M112 22 L176 34 L202 76 L174 112 L116 104 L88 62 Z" fill="#d7e2f7"/>
+        <path d="M202 76 L266 72 L304 116 L270 158 L210 146 L174 112 Z" fill="#89a8df"/>
+        <path d="M88 62 L116 104 L102 160 L48 170 L28 116 Z" fill="#eef2fb"/>
+        <path d="M116 104 L174 112 L210 146 L188 206 L116 196 L102 160 Z" fill="#1B428A"/>
+        <path d="M210 146 L270 158 L332 142 L316 202 L254 222 L188 206 Z" fill="#4368ad"/>
+        <path d="M48 170 L102 160 L116 196 L88 226 L36 214 Z" fill="#b6c8ee"/>
+        <path class="outline" d="M112 22 L176 34 L202 76 L266 72 L304 116 L332 142 L316 202 L254 222 L188 206 L88 226 L36 214 L48 170 L28 116 L88 62 Z"/>
+      </svg>
+    </div>`;
+    async function loadExamples(){
+      try{
+        const response=await fetch('examples/examples.json',{cache:'no-store'});
+        if(!response.ok) throw new Error('examples unavailable');
+        return await response.json();
+      }catch{
+        return exampleFallback;
+      }
+    }
+    async function render(){
+      const examples=await loadExamples();
+      const slides=[
+        section('',`<div class="split title-layout"><div class="title-copy"><h1><span class="blue">Visual +</span><br>interactive journalism</h1><p class="dek">Using form, sequence and interaction to help readers understand evidence.</p><p class="wordmark">Areena Arora</p></div><div class="motif" aria-hidden="true"><svg viewBox="0 0 320 200"><path d="M10 170 C60 110 85 128 124 86 S210 32 300 46"/><circle cx="74" cy="125" r="6"/><circle cx="156" cy="68" r="6"/><circle cx="252" cy="48" r="6"/></svg></div></div>`,'title-slide'),
+        section('01',`<div class="split"><div><h2>Who am I?</h2><p class="body">Editorial coder and data journalist working across reporting, code, information design and visual storytelling.</p></div><div class="labels"><span class="label">Reporting</span><span class="label">Data</span><span class="label">Design</span><span class="label">Code</span></div></div>`,'intro-gap'),
+        section('02',`<h2>Today, we will</h2><div class="sequence roadmap"><div><strong>Look</strong><span>Look at visual journalism as reporting.</span></div><div><strong>Choose</strong><span>Choose an appropriate chart or map.</span></div><div><strong>Discuss</strong><span>Discuss for mobile readers.</span></div><div><strong>Build</strong><span>Build and critique a newsroom visual.</span></div></div>`),
+        section('03',`<p class="statement wide loose-statement">Visual journalism is reporting in visual form.</p><p class="body">It is not a normal article with movement added afterwards.</p>`),
+        section('05',`<h2 class="wide">A visual should perform<br>reporting work.</h2><div class="verb-grid">${['Reveal scale','Show change','Locate events','Expose relationships','Guide readers through evidence'].map(v=>`<div class="verb"><span class="spark"></span><span>${v}</span></div>`).join('')}</div>`),
+        section('06',`<div class="split equal"><div><h2>Text can tell us that something changed.</h2></div><div><h2 class="blue small-h2">A visual can show the shape, scale and exceptions in that change.</h2><div class="chartline" aria-hidden="true"><svg viewBox="0 0 360 220"><path d="M0 170 L60 162 L110 150 L160 88 L210 124 L270 54 L350 42"/></svg></div></div></div>`),
+        section('07',`<p class="statement wide question-statement">What can the reader understand here that would be harder to understand in prose?</p><div class="prompt-grid">${['Is there a pattern?','Is there a sequence?','Does geography matter?','Does interaction reveal anything?','Is the visual merely decorative?'].map(p=>`<div>${p}</div>`).join('')}</div>`,'question-slide'),
+        exampleSlide('08',examples[0] || exampleFallback[0]),
+        exampleSlide('09',examples[1] || exampleFallback[1]),
+        section('11',`<div class="split equal"><div><p class="statement">Movement is not meaning.</p><p class="body">Animation earns its place only when it clarifies change, sequence, causality, scale or focus.</p></div><div class="comparison"><div class="panel"><span class="label">Static</span>${chartBars(true)}</div><div class="panel"><span class="label">Animated</span><p class="body">If motion adds no new evidence, it is only decoration.</p></div></div></div>`,'movement-slide'),
+        section('12',`<h2 class="one-line-heading">Do not begin with a chart type.</h2><div class="sequence"><div><strong>Question</strong></div><div><strong>Relationship</strong></div><div><strong>Form</strong></div></div><p class="body one-line-body">The chart follows what the reader needs to compare, trace, locate or understand.</p>`),
+        section('14',`<h2 class="one-line-heading">Chart decision framework</h2><div class="vocab short-lines">${[
+          ['Compare categories','Bar chart or dot plot'],['Show change over time','Line chart'],['Show a distribution','Histogram or strip plot'],['Show a relationship','Scatterplot'],['Show composition','Stacked bar, cautiously'],['Show exact values','Table'],['Show geography','Map, only when location matters']
+        ].map(([a,b])=>`<div><strong>${a}</strong><span>${b}</span></div>`).join('')}</div>`),
+        section('15',`<h2 class="one-line-heading">Sorting is an editorial decision.</h2><div class="comparison"><div class="panel"><span class="label">Alphabetical</span>${chartBars(false)}</div><div class="panel"><span class="label">By value</span>${chartBars(true)}</div></div>`,'center-labels'),
+        section('16',`<h2>Is geography the story,<br>or is geography only the label?</h2><div class="comparison"><div class="panel"><span class="label">Map</span>${choropleth()}</div><div class="panel"><span class="label">Ranked chart</span>${chartBars(true)}</div></div><p class="body">Use a map when spatial pattern matters. Use a ranked chart when the primary task is comparison.</p>`,'center-labels'),
+        section('17a',`<div class="chart-pair"><img src="/visual-interactive-slides_/nobels.png" alt="Nobel prizes by country bar chart"><img src="/visual-interactive-slides_/nobel_top5_stacked_bar.png" alt="Stacked bar chart showing Nobel laureates for top five countries by decade"></div>`,'exercise'),
+        section('17',`<h2 class="one-line-heading">Common visual mistakes</h2><div class="vocab short-lines">${['Too many colours','Unsorted categories','Truncated axes','Tiny labels','Legends far from the data','Decorative 3D','Raw totals where rates are needed'].map((m,i)=>`<div><strong>${i%2?'Better choice':'Bad choice'}</strong><span>${m}</span></div>`).join('')}</div>`),
+        section('18',`<p class="statement"><span class="sequence-line">Desktop is space.</span><br><span class="pink sequence-line">Mobile is sequence.</span></p><p class="body">On a large screen, meaning can be assembled spatially. On a phone, one thing enters and then the next.</p>`,'sequence-slide'),
+        section('20',`<div class="split"><div><h2>We are not designing<br>for a calm rectangle.</h2></div><div class="phone"><span class="interruption">One hand</span><span class="interruption">Bad network</span><span class="interruption">Notifications</span><span class="interruption">Commute</span><div class="phone-head">Real reading</div><div class="phone-body"><div class="phone-title">Bright sunlight. Divided attention.</div><p class="phone-copy">The design has to survive the reader’s actual day.</p></div></div></div>`),
+        section('21',`<h2 class="one-line-heading">Peripheral vision is a desktop luxury.</h2><div class="comparison"><div class="panel"><span class="label">Desktop</span><p class="body">Headline, chart, legend and annotation are visible together.</p></div><div class="panel"><span class="label">Mobile</span><div class="mini-phone" aria-label="Mobile screen illustration"><span></span><span></span><span></span></div><p class="body">The same elements split across multiple vertical moments.</p></div></div><p class="body">Once an explanation scrolls away, the reader must remember it.</p>`,'device-panels'),
+        section('22',`<h2>Label the thing.<br>Don’t make readers decode the key.</h2><div class="comparison"><div class="panel"><span class="label">Before</span><div class="chartline"><svg viewBox="0 0 360 220"><path d="M0 170 L80 150 L160 92 L240 120 L350 58"/></svg></div><p class="small">Legend: blue = projected risk</p></div><div class="panel"><span class="label">After</span><div class="chartline"><svg viewBox="0 0 360 220"><path d="M0 170 L80 150 L160 92 L240 120 L350 58"/></svg><span class="direct" style="top:52px">Projected risk</span></div><p class="small">Direct label beside the line</p></div></div>`,'label-slide'),
+        section('23',`<div class="split"><div><h2>Do not trap the reader<br>inside the graphic.</h2><p class="body">Maps, sliders and embedded interactives need a clear continue path.</p></div><div class="phone"><div class="phone-head">Thumb path</div><div class="phone-body"><div class="phone-title">Scroll should still move the story.</div><p class="phone-copy">If the graphic captures the gesture, give the reader an escape lane.</p></div></div></div>`,'trap-slide'),
+        section('24',`<h2>Mobile checklist</h2><ul class="list small-list"><li>One primary insight per screen</li><li>Direct labels</li><li>Short annotations</li><li>Clear default view</li><li>Tap targets with enough space</li><li>Test under interruption and weak network</li></ul>`),
+        section('25',`<h2>Scrollytelling turns space<br>into sequence.</h2><div class="scrolly"><div class="step"><span>Text step 1</span><span class="arrow">→</span><span>Visual state 1</span></div><div class="step"><span>Text step 2</span><span class="arrow">→</span><span>Visual state 2</span></div><div class="step"><span>Text step 3</span><span class="arrow">→</span><span>Visual state 3</span></div></div><p class="body">The visual stays fixed or returns repeatedly while scrolling triggers a controlled sequence of changes.</p>`),
+        section('26',`<p class="statement wide">Does the reader need the sequence?</p><div class="vocab">${['Each step introduces one new idea','The visual state matches the text at that moment','The order builds understanding','Scrolling does more than replace clicking'].map(x=>`<div><strong>Test</strong><span>${x}</span></div>`).join('')}</div><p class="body pink">Do not build a scrolly merely because the chart can animate.</p>`),
+        section('27',`<h2 class="one-line-heading">Datawrapper or Flourish?</h2><div class="tool-grid"><div class="tool"><h3>Datawrapper</h3><ul><li>Clean newsroom charts</li><li>Tables</li><li>Locator and thematic maps</li><li>Fast production</li><li>Consistent embeds</li><li>Accessible defaults</li></ul></div><div class="tool"><h3>Flourish</h3><ul><li>Animated transitions</li><li>Richer interactive formats</li><li>Story-like chart sequences</li><li>Networks, flows and unusual formats</li><li>More visual customisation</li></ul></div></div><p class="body wide wide-line">Use Datawrapper for clarity and speed. Use Flourish when interaction or animation performs real explanatory work.</p>`),
+        section('29',`<h2>Build one clear<br>visual from the supplied dataset.</h2><ul class="list small-list"><li>Choose Datawrapper or Flourish.</li><li>Identify one defensible finding.</li><li>Choose a chart or map that communicates it.</li><li>Write a finding-led headline.</li><li>Add source and units.</li><li>Check the mobile view.</li><li>Publish or save a shareable preview.</li></ul>`,'exercise'),
+        section('31',`<h2>Before visualizing:</h2><ul class="list small-list"><li>What does one row represent?</li><li>Which column contains the measure?</li><li>Are these totals, rates or percentages?</li><li>What comparison matters?</li><li>Is anything missing?</li><li>What might be misleading?</li></ul>`,'exercise'),
+        section('35',`<p class="statement wide">Use the simplest visual form that makes the evidence clear.</p><p class="body wide-line">Add movement, interaction or complexity only when it gives the reader something useful to understand.</p><div class="contact"><span class="wordmark">Areena Arora</span><a href="mailto:areena.arora@columbia.edu">Email me</a><a href="https://www.areenaarora.com" target="_blank" rel="noopener noreferrer">Website</a></div>`)
+      ];
+      document.getElementById('deck').innerHTML=slides.join('');
+      document.querySelectorAll('.slide').forEach((slide,index)=>{
+        slide.dataset.kicker=String(index).padStart(2,'0');
+      });
+      initDeck();
+    }
+    function initDeck(){
+      const slides=[...document.querySelectorAll('.slide')];
+      const progress=document.getElementById('progress');
+      function currentIndex(){
+        const y=window.scrollY;let best=0,dist=Infinity;
+        slides.forEach((s,i)=>{const d=Math.abs(s.offsetTop-y);if(d<dist){dist=d;best=i;}});
+        return best;
+      }
+      function go(delta){
+        const i=Math.max(0,Math.min(slides.length-1,currentIndex()+delta));
+        slides[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+      }
+      function update(){
+        const i=currentIndex();
+        progress.style.width=((i+1)/slides.length*100)+'%';
+        const kicker=slides[i].dataset.kicker || String(i).padStart(2,'0');
+        const numeric=/^\d+$/.test(kicker)?parseInt(kicker,10):i;
+        history.replaceState(null,'','#'+String(numeric).padStart(2,'0'));
+      }
+      document.getElementById('next').addEventListener('click',()=>go(1));
+      document.getElementById('prev').addEventListener('click',()=>go(-1));
+      window.addEventListener('keydown',e=>{
+        if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}
+        if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1)}
+        if(e.key==='Home'){e.preventDefault();slides[0].scrollIntoView({behavior:'smooth'})}
+        if(e.key==='End'){e.preventDefault();slides.at(-1).scrollIntoView({behavior:'smooth'})}
+      });
+      let startY=null;
+      window.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
+      window.addEventListener('touchend',e=>{if(startY==null)return;const dy=e.changedTouches[0].clientY-startY;if(Math.abs(dy)>70)go(dy<0?1:-1);startY=null},{passive:true});
+      window.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+      function goToHash(){
+        const raw=location.hash.replace('#','');
+        const n=raw==='' ? 0 : parseInt(raw,10);
+        const target=Number.isFinite(n) ? slides.find(s=>parseInt(s.dataset.kicker || '',10)===n) : null;
+        if(target) target.scrollIntoView();
+        update();
+      }
+      window.addEventListener('hashchange',goToHash);
+      goToHash();
+    }
+    render();
+  </script>
+</body>
+</html>

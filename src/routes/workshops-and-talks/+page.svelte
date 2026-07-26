@@ -46,7 +46,7 @@
 			includes: ['Slides', 'Paper exercises', 'Mobile-first checklist', 'Peer critique'],
 			contextNote: 'Originally developed for VizChitra 2026.',
 			links: [
-				{ label: 'View workshop', href: `${base}/viz-slides.html#01` },
+				{ label: 'View workshop', href: `${base}/viz-slides/#01` },
 				// TODO: Replace with the final downloadable VizChitra 2026 slide file.
 				{ label: 'Download slides', href: `${base}/downloads/designing-small-screens-slides.pdf` }
 			]
@@ -68,10 +68,23 @@
 			],
 			includes: ['Slides', 'Sample dataset', 'Reading list', 'Story exercises'],
 			links: [
-				{ label: 'View workshop', href: `${base}/climate-slides.html#01` },
+				{ label: 'View workshop', href: `${base}/climate-slides/#01` },
 				// TODO: Replace with final climate workshop materials.
 				{ label: 'Download materials', href: `${base}/downloads/climate-data-journalism-materials.zip` }
 			]
+		},
+		{
+			id: 'visual-interactive',
+			eyebrow: 'WORKSHOP 03',
+			title: 'Visual + Interactive Journalism',
+			deck: 'Using form, sequence and interaction to help readers understand evidence.',
+			details: [
+				{ label: 'Audience', value: 'Journalists, designers and newsroom teams' },
+				{ label: 'Duration', value: '75 minutes' },
+				{ label: 'Format', value: 'Theory, critique and applied examples' }
+			],
+			includes: ['Slides', 'Examples', 'Checklist'],
+			links: [{ label: 'View workshop', href: `${base}/visual-interactive-slides_/#0` }]
 		}
 	];
 
@@ -151,7 +164,6 @@
 							{/each}
 						</ul>
 					</div>
-
 				</article>
 			{/each}
 		</section>
