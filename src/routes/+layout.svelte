@@ -8,7 +8,7 @@
 	{#if !dev}
 		<!-- Served through the first-party proxy in vercel.json; configured by the
 		     plausible.init() stub in app.html. -->
-		<script async src="/stats/js/pa.js"></script>
+		<script async src="/api/js/script.js"></script>
 	{/if}
 </svelte:head>
 

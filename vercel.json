@@ -1,6 +1,14 @@
 {
 	"rewrites": [
 		{
+			"source": "/api/js/script.js",
+			"destination": "https://plausible.io/js/pa--BvepfFBWFK-oIFxnj_Ra.js"
+		},
+		{
+			"source": "/api/event",
+			"destination": "https://plausible.io/api/event"
+		},
+		{
 			"source": "/stats/js/pa.js",
 			"destination": "https://plausible.io/js/pa--BvepfFBWFK-oIFxnj_Ra.js"
 		},
