@@ -7,18 +7,6 @@
 		{
 			"source": "/api/event",
 			"destination": "https://plausible.io/api/event"
-		},
-		{
-			"source": "/stats/js/pa.js",
-			"destination": "https://plausible.io/js/pa--BvepfFBWFK-oIFxnj_Ra.js"
-		},
-		{
-			"source": "/stats/js/script.js",
-			"destination": "https://plausible.io/js/script.js"
-		},
-		{
-			"source": "/stats/api/event",
-			"destination": "https://plausible.io/api/event"
 		}
 	]
 }
