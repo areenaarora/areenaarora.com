@@ -1,0 +1,380 @@
+State,Region,Year,Renewable_generation_GWh,Installed_capacity_MW
+Andhra Pradesh,South,2013,8200,10500
+Andhra Pradesh,South,2014,8868,11130
+Andhra Pradesh,South,2015,9420,11760
+Andhra Pradesh,South,2016,9779,12390
+Andhra Pradesh,South,2017,9984,13020
+Andhra Pradesh,South,2018,10178,13650
+Andhra Pradesh,South,2019,10526,14280
+Andhra Pradesh,South,2020,11106,14910
+Andhra Pradesh,South,2021,11856,15540
+Andhra Pradesh,South,2022,12600,16170
+Andhra Pradesh,South,2023,13150,16800
+Andhra Pradesh,South,2024,13430,17430
+Arunachal Pradesh,Northeast,2013,615,900
+Arunachal Pradesh,Northeast,2014,658,958
+Arunachal Pradesh,Northeast,2015,687,1017
+Arunachal Pradesh,Northeast,2016,705,1076
+Arunachal Pradesh,Northeast,2017,722,1134
+Arunachal Pradesh,Northeast,2018,750,1192
+Arunachal Pradesh,Northeast,2019,794,1251
+Arunachal Pradesh,Northeast,2020,851,1310
+Arunachal Pradesh,Northeast,2021,908,1368
+Arunachal Pradesh,Northeast,2022,950,1426
+Arunachal Pradesh,Northeast,2023,974,1485
+Arunachal Pradesh,Northeast,2024,983,1544
+Assam,Northeast,2013,983,1200
+Assam,Northeast,2014,1034,1284
+Assam,Northeast,2015,1068,1368
+Assam,Northeast,2016,1100,1452
+Assam,Northeast,2017,1148,1536
+Assam,Northeast,2018,1222,1620
+Assam,Northeast,2019,1314,1704
+Assam,Northeast,2020,1407,1788
+Assam,Northeast,2021,1478,1872
+Assam,Northeast,2022,1519,1956
+Assam,Northeast,2023,1539,2040
+Assam,Northeast,2024,1562,2124
+Bihar,East,2013,819,1050
+Bihar,East,2014,852,1129
+Bihar,East,2015,883,1208
+Bihar,East,2016,927,1286
+Bihar,East,2017,992,1365
+Bihar,East,2018,1072,1444
+Bihar,East,2019,1153,1522
+Bihar,East,2020,1216,1601
+Bihar,East,2021,1254,1680
+Bihar,East,2022,1275,1759
+Bihar,East,2023,1297,1838
+Bihar,East,2024,1342,1916
+Chhattisgarh,Central,2013,2096,2800
+Chhattisgarh,Central,2014,2190,3024
+Chhattisgarh,Central,2015,2315,3248
+Chhattisgarh,Central,2016,2491,3472
+Chhattisgarh,Central,2017,2707,3696
+Chhattisgarh,Central,2018,2925,3920
+Chhattisgarh,Central,2019,3098,4144
+Chhattisgarh,Central,2020,3208,4368
+Chhattisgarh,Central,2021,3273,4592
+Chhattisgarh,Central,2022,3342,4816
+Chhattisgarh,Central,2023,3468,5040
+Chhattisgarh,Central,2024,3670,5264
+Goa,West,2013,243,340
+Goa,West,2014,259,360
+Goa,West,2015,281,381
+Goa,West,2016,307,401
+Goa,West,2017,334,422
+Goa,West,2018,356,442
+Goa,West,2019,370,462
+Goa,West,2020,379,483
+Goa,West,2021,388,503
+Goa,West,2022,404,524
+Goa,West,2023,429,544
+Goa,West,2024,460,564
+Gujarat,West,2013,9458,12500
+Gujarat,West,2014,10341,13312
+Gujarat,West,2015,11395,14125
+Gujarat,West,2016,12459,14938
+Gujarat,West,2017,13343,15750
+Gujarat,West,2018,13951,16562
+Gujarat,West,2019,14357,17375
+Gujarat,West,2020,14778,18188
+Gujarat,West,2021,15445,19000
+Gujarat,West,2022,16453,19812
+Gujarat,West,2023,17684,20625
+Gujarat,West,2024,18867,21438
+Haryana,North,2013,1173,1700
+Haryana,North,2014,1271,1819
+Haryana,North,2015,1369,1938
+Haryana,North,2016,1446,2057
+Haryana,North,2017,1494,2176
+Haryana,North,2018,1521,2295
+Haryana,North,2019,1550,2414
+Haryana,North,2020,1605,2533
+Haryana,North,2021,1696,2652
+Haryana,North,2022,1809,2771
+Haryana,North,2023,1916,2890
+Haryana,North,2024,1991,3009
+Himachal Pradesh,North,2013,3113,4200
+Himachal Pradesh,North,2014,3374,4515
+Himachal Pradesh,North,2015,3586,4830
+Himachal Pradesh,North,2016,3723,5145
+Himachal Pradesh,North,2017,3808,5460
+Himachal Pradesh,North,2018,3898,5775
+Himachal Pradesh,North,2019,4054,6090
+Himachal Pradesh,North,2020,4298,6405
+Himachal Pradesh,North,2021,4600,6720
+Himachal Pradesh,North,2022,4889,7035
+Himachal Pradesh,North,2023,5096,7350
+Himachal Pradesh,North,2024,5199,7665
+Jharkhand,East,2013,1028,1400
+Jharkhand,East,2014,1100,1512
+Jharkhand,East,2015,1149,1624
+Jharkhand,East,2016,1182,1736
+Jharkhand,East,2017,1216,1848
+Jharkhand,East,2018,1270,1960
+Jharkhand,East,2019,1352,2072
+Jharkhand,East,2020,1453,2184
+Jharkhand,East,2021,1549,2296
+Jharkhand,East,2022,1620,2408
+Jharkhand,East,2023,1658,2520
+Jharkhand,East,2024,1676,2632
+Karnataka,South,2013,11588,14800
+Karnataka,South,2014,12195,15688
+Karnataka,South,2015,12623,16576
+Karnataka,South,2016,13061,17464
+Karnataka,South,2017,13715,18352
+Karnataka,South,2018,14671,19240
+Karnataka,South,2019,15830,20128
+Karnataka,South,2020,16948,21016
+Karnataka,South,2021,17785,21904
+Karnataka,South,2022,18259,22792
+Karnataka,South,2023,18516,23680
+Karnataka,South,2024,18850,24568
+Kerala,South,2013,2755,3600
+Kerala,South,2014,2874,3834
+Kerala,South,2015,2994,4068
+Kerala,South,2016,3163,4302
+Kerala,South,2017,3402,4536
+Kerala,South,2018,3688,4770
+Kerala,South,2019,3966,5004
+Kerala,South,2020,4179,5238
+Kerala,South,2021,4306,5472
+Kerala,South,2022,4381,5706
+Kerala,South,2023,4474,5940
+Kerala,South,2024,4649,6174
+Madhya Pradesh,Central,2013,5168,7000
+Madhya Pradesh,Central,2014,5428,7490
+Madhya Pradesh,Central,2015,5775,7980
+Madhya Pradesh,Central,2016,6250,8470
+Madhya Pradesh,Central,2017,6815,8960
+Madhya Pradesh,Central,2018,7365,9450
+Madhya Pradesh,Central,2019,7795,9940
+Madhya Pradesh,Central,2020,8065,10430
+Madhya Pradesh,Central,2021,8236,10920
+Madhya Pradesh,Central,2022,8439,11410
+Madhya Pradesh,Central,2023,8798,11900
+Madhya Pradesh,Central,2024,9346,12390
+Maharashtra,West,2013,7088,9800
+Maharashtra,West,2014,7607,10535
+Maharashtra,West,2015,8295,11270
+Maharashtra,West,2016,9103,12005
+Maharashtra,West,2017,9896,12740
+Maharashtra,West,2018,10528,13475
+Maharashtra,West,2019,10943,14210
+Maharashtra,West,2020,11223,14945
+Maharashtra,West,2021,11544,15680
+Maharashtra,West,2022,12076,16415
+Maharashtra,West,2023,12868,17150
+Maharashtra,West,2024,13808,17885
+Manipur,Northeast,2013,290,420
+Manipur,Northeast,2014,311,454
+Manipur,Northeast,2015,336,487
+Manipur,Northeast,2016,360,521
+Manipur,Northeast,2017,378,554
+Manipur,Northeast,2018,389,588
+Manipur,Northeast,2019,395,622
+Manipur,Northeast,2020,403,655
+Manipur,Northeast,2021,418,689
+Manipur,Northeast,2022,442,722
+Manipur,Northeast,2023,471,756
+Manipur,Northeast,2024,497,790
+Meghalaya,Northeast,2013,442,620
+Meghalaya,Northeast,2014,480,657
+Meghalaya,Northeast,2015,518,694
+Meghalaya,Northeast,2016,548,732
+Meghalaya,Northeast,2017,566,769
+Meghalaya,Northeast,2018,577,806
+Meghalaya,Northeast,2019,590,843
+Meghalaya,Northeast,2020,615,880
+Meghalaya,Northeast,2021,652,918
+Meghalaya,Northeast,2022,697,955
+Meghalaya,Northeast,2023,738,992
+Meghalaya,Northeast,2024,766,1029
+Mizoram,Northeast,2013,242,330
+Mizoram,Northeast,2014,263,351
+Mizoram,Northeast,2015,279,373
+Mizoram,Northeast,2016,290,394
+Mizoram,Northeast,2017,297,416
+Mizoram,Northeast,2018,306,437
+Mizoram,Northeast,2019,320,459
+Mizoram,Northeast,2020,341,480
+Mizoram,Northeast,2021,365,502
+Mizoram,Northeast,2022,388,523
+Mizoram,Northeast,2023,404,544
+Mizoram,Northeast,2024,412,566
+Nagaland,Northeast,2013,268,350
+Nagaland,Northeast,2014,287,374
+Nagaland,Northeast,2015,300,399
+Nagaland,Northeast,2016,309,424
+Nagaland,Northeast,2017,319,448
+Nagaland,Northeast,2018,336,473
+Nagaland,Northeast,2019,359,497
+Nagaland,Northeast,2020,387,522
+Nagaland,Northeast,2021,412,546
+Nagaland,Northeast,2022,430,570
+Nagaland,Northeast,2023,440,595
+Nagaland,Northeast,2024,445,620
+Odisha,East,2013,2584,3300
+Odisha,East,2014,2723,3548
+Odisha,East,2015,2826,3795
+Odisha,East,2016,2938,4043
+Odisha,East,2017,3103,4290
+Odisha,East,2018,3336,4538
+Odisha,East,2019,3608,4785
+Odisha,East,2020,3862,5032
+Odisha,East,2021,4047,5280
+Odisha,East,2022,4152,5527
+Odisha,East,2023,4216,5775
+Odisha,East,2024,4307,6022
+Punjab,North,2013,1831,2400
+Punjab,North,2014,1916,2592
+Punjab,North,2015,2006,2784
+Punjab,North,2016,2132,2976
+Punjab,North,2017,2304,3168
+Punjab,North,2018,2505,3360
+Punjab,North,2019,2693,3552
+Punjab,North,2020,2834,3744
+Punjab,North,2021,2918,3936
+Punjab,North,2022,2973,4128
+Punjab,North,2023,3047,4320
+Punjab,North,2024,3181,4512
+Rajasthan,North,2013,8414,11200
+Rajasthan,North,2014,8887,11872
+Rajasthan,North,2015,9516,12544
+Rajasthan,North,2016,10355,13216
+Rajasthan,North,2017,11320,13888
+Rajasthan,North,2018,12236,14560
+Rajasthan,North,2019,12936,15232
+Rajasthan,North,2020,13377,15904
+Rajasthan,North,2021,13679,16576
+Rajasthan,North,2022,14067,17248
+Rajasthan,North,2023,14733,17920
+Rajasthan,North,2024,15705,18592
+Sikkim,Northeast,2013,727,1050
+Sikkim,Northeast,2014,765,1118
+Sikkim,Northeast,2015,820,1186
+Sikkim,Northeast,2016,884,1255
+Sikkim,Northeast,2017,944,1323
+Sikkim,Northeast,2018,987,1391
+Sikkim,Northeast,2019,1011,1460
+Sikkim,Northeast,2020,1024,1528
+Sikkim,Northeast,2021,1045,1596
+Sikkim,Northeast,2022,1086,1664
+Sikkim,Northeast,2023,1149,1732
+Sikkim,Northeast,2024,1223,1801
+Tamil Nadu,South,2013,9958,13800
+Tamil Nadu,South,2014,10742,14766
+Tamil Nadu,South,2015,11654,15732
+Tamil Nadu,South,2016,12510,16698
+Tamil Nadu,South,2017,13145,17664
+Tamil Nadu,South,2018,13516,18630
+Tamil Nadu,South,2019,13752,19596
+Tamil Nadu,South,2020,14078,20562
+Tamil Nadu,South,2021,14681,21528
+Tamil Nadu,South,2022,15589,22494
+Tamil Nadu,South,2023,16635,23460
+Tamil Nadu,South,2024,17552,24426
+Telangana,South,2013,3841,5200
+Telangana,South,2014,4196,5590
+Telangana,South,2015,4532,5980
+Telangana,South,2016,4788,6370
+Telangana,South,2017,4948,6760
+Telangana,South,2018,5057,7150
+Telangana,South,2019,5198,7540
+Telangana,South,2020,5442,7930
+Telangana,South,2021,5799,8320
+Telangana,South,2022,6208,8710
+Telangana,South,2023,6569,9100
+Telangana,South,2024,6806,9490
+Tripura,Northeast,2013,344,470
+Tripura,Northeast,2014,374,508
+Tripura,Northeast,2015,398,545
+Tripura,Northeast,2016,414,583
+Tripura,Northeast,2017,425,620
+Tripura,Northeast,2018,439,658
+Tripura,Northeast,2019,462,696
+Tripura,Northeast,2020,494,733
+Tripura,Northeast,2021,530,771
+Tripura,Northeast,2022,563,808
+Tripura,Northeast,2023,585,846
+Tripura,Northeast,2024,596,884
+Uttar Pradesh,North,2013,3612,4800
+Uttar Pradesh,North,2014,3870,5088
+Uttar Pradesh,North,2015,4050,5376
+Uttar Pradesh,North,2016,4186,5664
+Uttar Pradesh,North,2017,4347,5952
+Uttar Pradesh,North,2018,4592,6240
+Uttar Pradesh,North,2019,4934,6528
+Uttar Pradesh,North,2020,5322,6816
+Uttar Pradesh,North,2021,5671,7104
+Uttar Pradesh,North,2022,5913,7392
+Uttar Pradesh,North,2023,6042,7680
+Uttar Pradesh,North,2024,6124,7968
+Uttarakhand,North,2013,2994,3900
+Uttarakhand,North,2014,3159,4154
+Uttarakhand,North,2015,3289,4407
+Uttarakhand,North,2016,3436,4660
+Uttarakhand,North,2017,3651,4914
+Uttarakhand,North,2018,3942,5168
+Uttarakhand,North,2019,4271,5421
+Uttarakhand,North,2020,4570,5674
+Uttarakhand,North,2021,4783,5928
+Uttarakhand,North,2022,4904,6182
+Uttarakhand,North,2023,4986,6435
+Uttarakhand,North,2024,5113,6688
+West Bengal,East,2013,2331,3100
+West Bengal,East,2014,2447,3317
+West Bengal,East,2015,2576,3534
+West Bengal,East,2016,2755,3751
+West Bengal,East,2017,2992,3968
+West Bengal,East,2018,3259,4185
+West Bengal,East,2019,3503,4402
+West Bengal,East,2020,3682,4619
+West Bengal,East,2021,3789,4836
+West Bengal,East,2022,3866,5053
+West Bengal,East,2023,3977,5270
+West Bengal,East,2024,4171,5487
+Delhi,North,2013,414,600
+Delhi,North,2014,429,645
+Delhi,North,2015,451,690
+Delhi,North,2016,484,735
+Delhi,North,2017,520,780
+Delhi,North,2018,553,825
+Delhi,North,2019,576,870
+Delhi,North,2020,587,915
+Delhi,North,2021,594,960
+Delhi,North,2022,607,1005
+Delhi,North,2023,632,1050
+Delhi,North,2024,669,1095
+Jammu and Kashmir,North,2013,1741,2450
+Jammu and Kashmir,North,2014,1846,2646
+Jammu and Kashmir,North,2015,1989,2842
+Jammu and Kashmir,North,2016,2152,3038
+Jammu and Kashmir,North,2017,2299,3234
+Jammu and Kashmir,North,2018,2403,3430
+Jammu and Kashmir,North,2019,2460,3626
+Jammu and Kashmir,North,2020,2499,3822
+Jammu and Kashmir,North,2021,2560,4018
+Jammu and Kashmir,North,2022,2674,4214
+Jammu and Kashmir,North,2023,2841,4410
+Jammu and Kashmir,North,2024,3025,4606
+Ladakh,North,2013,368,520
+Ladakh,North,2014,399,551
+Ladakh,North,2015,435,582
+Ladakh,North,2016,467,614
+Ladakh,North,2017,490,645
+Ladakh,North,2018,504,676
+Ladakh,North,2019,514,707
+Ladakh,North,2020,529,738
+Ladakh,North,2021,555,770
+Ladakh,North,2022,591,801
+Ladakh,North,2023,631,832
+Ladakh,North,2024,665,863
+Andhra Pradesh,South,2025,13529,18060
+Arunachal Pradesh,Northeast,2025,995,1602
+Assam,Northeast,2025,1611,2208
+Bihar,East,2025,1416,1995
+Chhattisgarh,Central,2025,3921,5488
+Goa,West,2025,489,585
+Gujarat,West,2025,19736,22250

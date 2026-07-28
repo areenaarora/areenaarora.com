@@ -85,6 +85,20 @@
 			],
 			includes: ['Slides', 'Examples', 'Checklist'],
 			links: [{ label: 'View workshop', href: `${base}/visual-interactive-slides_/#0` }]
+		},
+		{
+			id: 'computational-journalism',
+			eyebrow: 'COURSE 01',
+			title: 'Intro to Computational Journalism',
+			deck: 'Learning to use code as a reporting tool, one notebook cell at a time.',
+			details: [
+				{ label: 'Audience', value: 'Journalism students with no coding experience' },
+				{ label: 'Duration', value: 'Multi-session course' },
+				{ label: 'Format', value: 'Notebook-led lecture and practice' }
+			],
+			sessions: ['Session 1: Introducing data in journalism'],
+			includes: ['Web slides', 'Colab notebook', 'Classroom dataset', 'Practice task'],
+			links: [{ label: 'View Session 1', href: `${base}/computational-journalism/#01` }]
 		}
 	];
 

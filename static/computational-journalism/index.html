@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Session 1 of Intro to Computational Journalism by Areena Arora" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
+  <link rel="shortcut icon" href="../favicon/favicon.ico" />
+  <title>Intro to Computational Journalism — Session 1</title>
+  <style>
+    :root {
+      --paper: #f7f1e5;
+      --paper-deep: #eee5d4;
+      --cell: #fffdf7;
+      --ink: #20201e;
+      --muted: #6f6d65;
+      --line: #d8d0c2;
+      --blue: #2f5f9f;
+      --blue-soft: #dbe7f5;
+      --yellow: #f2cf66;
+      --yellow-soft: #fff2b8;
+      --red: #b94a3d;
+      --green: #52755a;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --editorial: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --side: clamp(20px, 5vw, 76px);
+      --max: 1240px;
+      --h1: clamp(3.25rem, 8.5vw, 8.6rem);
+      --h2: clamp(2.4rem, 6vw, 6rem);
+      --h3: clamp(1.35rem, 2.4vw, 2.35rem);
+      --body: clamp(1.05rem, 1.55vw, 1.5rem);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--paper); }
+    body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+    button, a { color: inherit; font: inherit; }
+    a { text-underline-offset: .2em; }
+    h1, h2, h3, p, ul, ol, pre, figure, blockquote { margin: 0; }
+    code, pre { font-family: var(--mono); }
+
+    .skip-link { position: fixed; left: 12px; top: -100px; z-index: 100; background: var(--ink); color: white; padding: 10px 14px; }
+    .skip-link:focus { top: 12px; }
+    .progress { position: fixed; inset: 0 auto auto 0; z-index: 60; width: 0; height: 4px; background: var(--blue); transition: width 180ms ease; }
+    .slide-count { position: fixed; z-index: 50; right: 18px; top: 16px; font: 700 12px/1 var(--mono); color: var(--muted); background: rgba(247,241,229,.9); border: 1px solid var(--line); padding: 8px 10px; border-radius: 99px; backdrop-filter: blur(8px); }
+
+    .slide {
+      min-height: 100svh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(18px, 3vw, 34px) var(--side) clamp(22px, 3vw, 36px);
+      border-bottom: 1px solid var(--line);
+      isolation: isolate;
+    }
+    .slide::before { content: attr(data-label); display: none; font: 700 clamp(.7rem, .85vw, .82rem)/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .slide-inner { width: 100%; max-width: var(--max); margin: auto; display: grid; gap: clamp(24px, 4vw, 52px); align-items: center; }
+    .slide-footer { display: none; }
+    .slide-footer .run-state { color: var(--blue); }
+
+    h1, h2, h3, .editorial { font-family: var(--editorial); }
+    h1 { max-width: 13.5ch; font-size: var(--h1); font-weight: 500; line-height: .86; letter-spacing: -.055em; }
+    h2 { max-width: 15ch; font-size: var(--h2); font-weight: 500; line-height: .92; letter-spacing: -.04em; }
+    h3 { font-size: var(--h3); font-weight: 600; line-height: 1.02; letter-spacing: -.025em; }
+    .dek { max-width: 38ch; font-family: var(--editorial); font-size: clamp(1.35rem, 2.5vw, 2.45rem); line-height: 1.14; }
+    .body { max-width: 54ch; font-family: var(--editorial); font-size: var(--body); line-height: 1.42; }
+    .eyebrow { font: 800 .78rem/1 var(--mono); letter-spacing: .11em; text-transform: uppercase; color: var(--blue); }
+    .blue { color: var(--blue); }
+    .red { color: var(--red); }
+    .marker { background: linear-gradient(transparent 56%, var(--yellow-soft) 56%); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+    .title-slide { background-image: linear-gradient(to right, transparent 0 72px, rgba(185,74,61,.18) 72px 74px, transparent 74px), repeating-linear-gradient(to bottom, transparent 0 39px, rgba(47,95,159,.09) 39px 40px); }
+    #slide-2 { grid-template-rows: 1fr auto 1fr; }
+    #slide-2 .slide-inner { align-self: center; }
+    #slide-3 { grid-template-rows: 1fr auto 1fr; }
+    #slide-3 .slide-inner { align-self: center; }
+    #slide-4 { grid-template-rows: 1fr auto 1fr; }
+    #slide-4 .slide-inner { align-self: center; }
+    #slide-6 { grid-template-rows: 1fr auto 1fr; }
+    #slide-6 .slide-inner { align-self: center; }
+    #slide-8 { grid-template-rows: 1fr auto 1fr; }
+    #slide-8 .slide-inner { align-self: center; }
+    #slide-9 { grid-template-rows: 1fr auto 1fr; }
+    #slide-9 .slide-inner { align-self: center; }
+    #slide-10 { grid-template-rows: 1fr auto 1fr; }
+    #slide-10 .slide-inner { align-self: center; }
+    #slide-22 .four-up { align-items: start; }
+    #slide-22 .concept-card { align-content: start; justify-content: flex-start; }
+    #slide-32 .slide-inner { align-items: start; }
+    #slide-32 .split { grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr); align-items: start; gap: clamp(28px, 5vw, 72px); }
+    #slide-32 .split > div:first-child { max-width: 20ch; }
+    #slide-32 .checklist { margin-top: 8px; gap: 18px; }
+    #slide-32 .checklist li { max-width: none; font-size: clamp(.88rem, 1.05vw, 1.02rem); line-height: 1.38; grid-template-columns: 26px minmax(0, 1fr); }
+    #slide-1 h1 { line-height: .95; }
+    .title-layout { grid-template-columns: minmax(0, 1fr); transform: translateY(-80px); }
+    .title-layout h1 { letter-spacing: -.02em; }
+
+    .cell { border: 1px solid var(--line); border-radius: 8px; background: var(--cell); box-shadow: 0 10px 30px rgba(73,62,43,.07); overflow: hidden; }
+    .cell-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 42px; padding: 9px 14px; border-bottom: 1px solid var(--line); background: #f3efe7; color: var(--muted); font: 700 .73rem/1 var(--mono); }
+    .cell-head .execution { color: var(--blue); white-space: nowrap; }
+    .cell-body { padding: clamp(18px, 3vw, 34px); }
+    .markdown-cell { border-left: 4px solid var(--blue); }
+    .code-cell { border-left: 4px solid var(--blue); }
+    .code-line { font: 600 clamp(1.05rem, 2vw, 1.8rem)/1.6 var(--mono); white-space: pre-wrap; }
+    .output { border-top: 1px solid var(--line); padding: 18px clamp(18px, 3vw, 34px); background: white; font: 600 clamp(1rem, 1.5vw, 1.3rem)/1.35 var(--mono); }
+    .comment { color: var(--green); }
+    .string { color: #9a4f20; }
+    .function { color: var(--blue); }
+    .name { color: #76518e; }
+    .cursor { display: inline-block; width: .55em; height: 1.05em; vertical-align: -.14em; background: var(--ink); animation: blink .8s steps(1) 2; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .section-divider { background: var(--blue); color: #fffdf7; }
+    .section-divider::before, .section-divider .slide-footer { color: #dbe7f5; }
+    .section-divider .slide-inner { grid-template-columns: 110px minmax(0, 1fr); }
+    .section-divider .slide-inner { align-self: center; }
+    .section-number { font: 500 clamp(4rem, 10vw, 9rem)/1 var(--mono); color: var(--yellow); }
+    .section-divider h2 { max-width: 14ch; }
+
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, .9fr); gap: clamp(26px, 5vw, 70px); align-items: center; }
+    .two-up, .four-up, .three-up { display: grid; gap: 14px; }
+    .two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three-up { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .four-up { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .concept-card { min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; padding: 0 4px 0; }
+    .concept-card .index { font: 800 .9rem/1 var(--mono); color: var(--blue); }
+    .concept-card p { font-family: var(--editorial); font-size: clamp(1rem, 1.35vw, 1.25rem); line-height: 1.36; }
+    #slide-6 .four-up { gap: 24px; }
+    #slide-6 .concept-card .index { font-size: calc(.9rem + 5px); }
+    #slide-6 .concept-card h3 { font-size: clamp(1.15rem, 2vw, 2rem); }
+    #slide-6 .concept-card p { font-size: clamp(1.05rem, 1.45vw, 1.35rem); }
+    #slide-17 .concept-card h3 { max-width: none; white-space: nowrap; font-size: clamp(1rem, 1.8vw, 1.75rem); }
+
+    .quote-card { padding: clamp(26px, 5vw, 62px); background: var(--yellow-soft); border: 1px solid #d8bd58; }
+    blockquote { max-width: 28ch; font-family: var(--editorial); font-size: clamp(2.1rem, 5vw, 5.2rem); line-height: .98; letter-spacing: -.04em; }
+    .annotation { position: relative; color: var(--red); font: 700 clamp(.8rem, 1.1vw, 1rem)/1.3 var(--mono); transform: rotate(-2deg); }
+    .annotation::before { content: "↳"; margin-right: 8px; }
+
+    .dataframe { overflow-x: auto; border: 1px solid var(--line); border-radius: 7px; background: #fff; box-shadow: 0 12px 35px rgba(73,62,43,.08); }
+    table { width: 100%; border-collapse: collapse; min-width: 660px; font-size: clamp(.78rem, 1.1vw, 1rem); }
+    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #e7e1d7; }
+    th { background: #eeeae2; font: 700 .8em/1.2 var(--mono); color: var(--muted); }
+    td { font-family: var(--sans); }
+    tbody tr:last-child td { border-bottom: 0; }
+    .row-index { width: 42px; color: var(--muted); font-family: var(--mono); }
+    .focus-col { background: var(--yellow-soft); }
+    .focus-row td { background: #eef4fa; }
+    .focus-row .focus-col { background: #ffe58b; }
+
+    .type-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--ink); background: var(--cell); }
+    .type-strip > div { min-height: 210px; padding: clamp(18px, 2.3vw, 30px); border-right: 1px solid var(--line); display: grid; align-content: space-between; gap: 26px; }
+    .type-strip > div:last-child { border-right: 0; }
+    .type-strip code { color: var(--blue); font-weight: 800; }
+    .type-strip p { font-family: var(--editorial); font-size: clamp(1rem, 1.3vw, 1.2rem); line-height: 1.35; }
+
+    .dictionary { display: grid; grid-template-columns: .7fr 1.3fr; border: 1px solid var(--line); background: var(--cell); }
+    .dictionary > * { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+    .dictionary > :nth-last-child(-n+2) { border-bottom: 0; }
+    .dictionary dt { font: 700 .82rem/1.3 var(--mono); color: var(--blue); }
+    .dictionary dd { margin: 0; font-family: var(--editorial); font-size: 1.05rem; line-height: 1.35; }
+
+    .checklist { list-style: none; padding: 0; display: grid; gap: 12px; counter-reset: checks; }
+    .checklist li { counter-increment: checks; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 13px; align-items: start; font-family: var(--editorial); font-size: clamp(1.05rem, 1.55vw, 1.45rem); line-height: 1.3; }
+    .checklist li::before { content: counter(checks, decimal-leading-zero); color: var(--blue); font: 700 .78rem/1.8 var(--mono); }
+
+    .folder-window { border: 1px solid var(--ink); border-radius: 9px; overflow: hidden; background: var(--cell); box-shadow: 0 18px 50px rgba(73,62,43,.1); }
+    .window-bar { display: flex; align-items: center; gap: 8px; padding: 12px 15px; background: #e9e5dc; border-bottom: 1px solid var(--line); }
+    .window-bar i { width: 10px; height: 10px; border-radius: 50%; background: #b4afa5; }
+    .window-bar span { margin-left: 8px; font: 700 .75rem/1 var(--mono); color: var(--muted); }
+    .files { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); }
+    .file { min-height: 155px; padding: 20px; background: var(--cell); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+    .file code { font-size: clamp(.8rem, 1vw, .95rem); overflow-wrap: anywhere; }
+    .file-type { width: max-content; padding: 4px 6px; background: var(--blue-soft); color: var(--blue); font: 800 .66rem/1 var(--mono); }
+    .file.note { background: var(--yellow-soft); }
+
+    .browser { border: 1px solid var(--ink); border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 18px 50px rgba(73,62,43,.1); }
+    .tabs { height: 48px; padding: 9px 14px 0; display: flex; align-items: end; gap: 7px; background: #e6e2d9; }
+    .tab { padding: 9px 16px; border-radius: 7px 7px 0 0; background: #d4d0c8; font: 700 .72rem/1 var(--sans); }
+    .tab.active { background: #fff; color: var(--blue); }
+    .address { padding: 10px 14px; border-bottom: 1px solid var(--line); font: 600 .72rem/1 var(--mono); color: var(--muted); }
+    .browser-body { padding: clamp(18px, 3vw, 32px); background: #f8f8f8; }
+
+    .token-line { display: flex; flex-wrap: wrap; gap: .45em; align-items: baseline; font: 700 clamp(1.35rem, 3.2vw, 3rem)/1.4 var(--mono); }
+    .token { position: relative; padding: .06em .12em; }
+    .token.import { background: var(--blue-soft); color: var(--blue); }
+    .token.library { background: var(--yellow-soft); }
+    .token.alias { border-bottom: 3px solid var(--red); }
+    .token small { position: absolute; top: calc(100% + 10px); left: 0; color: var(--muted); font: 700 .68rem/1.2 var(--mono); white-space: nowrap; }
+
+    .pipeline { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px; align-items: center; }
+    .pipeline-card { min-height: 160px; padding: 22px; border: 1px solid var(--line); background: var(--cell); display: grid; align-content: space-between; gap: 22px; }
+    .pipeline-card code { font-size: clamp(.85rem, 1.3vw, 1.15rem); color: var(--blue); overflow-wrap: anywhere; }
+    .pipeline-card p { font-family: var(--editorial); line-height: 1.3; }
+    .pipeline-arrow { font-size: 2rem; color: var(--muted); }
+
+    .error-box { border: 1px solid #d4aaa4; background: #fff8f6; }
+    .error-box .cell-head { background: #f6e4e0; color: var(--red); }
+    .traceback { padding: clamp(20px, 3vw, 34px); font: 600 clamp(.78rem, 1.3vw, 1.1rem)/1.65 var(--mono); overflow-x: auto; }
+    .error-name { display: inline-block; background: #f3cbc5; color: #8e2f25; padding: 0 .3em; }
+    .underline-error { text-decoration: underline 3px var(--red); text-underline-offset: 4px; }
+    .suggestion { display: inline-block; margin-top: 16px; background: var(--yellow-soft); padding: 9px 12px; color: var(--ink); }
+
+    .sticky-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 32px); }
+    .sticky { min-height: 230px; padding: clamp(22px, 3vw, 34px); background: var(--yellow-soft); box-shadow: 3px 5px 0 rgba(92,76,34,.15); transform: rotate(-1deg); display: grid; align-content: space-between; gap: 24px; }
+    .sticky:nth-child(2) { background: var(--blue-soft); transform: rotate(1deg); }
+    .sticky:nth-child(3) { background: #eee9df; transform: rotate(-.5deg); }
+    .sticky strong { font: 800 .76rem/1 var(--mono); color: var(--blue); }
+    .sticky p { font-family: var(--editorial); font-size: clamp(1.15rem, 1.8vw, 1.7rem); line-height: 1.18; }
+
+    .resource-dock { position: fixed; z-index: 45; left: 50%; bottom: 18px; display: flex; gap: 14px; transform: translate(-50%, 90px); opacity: 0; pointer-events: none; }
+    .resource-dock.visible { transform: none; opacity: 1; pointer-events: auto; }
+    .resource-dock a { display: inline-flex; align-items: center; gap: 9px; min-height: 56px; padding: 0 22px; border: 1px solid var(--ink); border-radius: 0; background: white; text-decoration: none; font: 800 .94rem/1 var(--mono); box-shadow: 0 6px 18px rgba(73,62,43,.12); }
+    .resource-dock a.primary { background: white; color: var(--ink); border-color: var(--ink); }
+
+    .controls { position: fixed; z-index: 45; right: 18px; bottom: 17px; display: flex; gap: 7px; }
+    .controls button { width: 40px; height: 40px; border: 1px solid var(--ink); border-radius: 50%; background: var(--cell); cursor: pointer; box-shadow: 0 6px 18px rgba(73,62,43,.1); }
+    .controls button:hover, .controls button:focus-visible, .resource-dock a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .slide.is-current .reveal { animation: reveal .45s ease forwards; animation-delay: var(--delay, 0ms); }
+    @keyframes reveal { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 820px) {
+      :root { --side: 20px; --h1: clamp(3.1rem, 16vw, 5.6rem); --h2: clamp(2.35rem, 12vw, 4.3rem); }
+      .slide { min-height: 100svh; padding-top: 18px; }
+      .title-layout, .split, .section-divider .slide-inner { grid-template-columns: 1fr; }
+      .section-number { font-size: 4rem; }
+      .four-up, .type-strip, .files { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .three-up, .sticky-grid { grid-template-columns: 1fr; }
+      .concept-card { min-height: 130px; }
+      .type-strip > div { min-height: 160px; border-bottom: 1px solid var(--line); }
+      .type-strip > div:nth-child(2) { border-right: 0; }
+      .type-strip > div:nth-last-child(-n+2) { border-bottom: 0; }
+      .pipeline { grid-template-columns: 1fr; }
+      .pipeline-arrow { transform: rotate(90deg); justify-self: center; }
+      .sticky { min-height: 150px; }
+      .resource-dock { left: 50%; bottom: 12px; max-width: calc(100vw - 24px); transform: translate(-50%, 90px); gap: 10px; }
+      .resource-dock a { min-height: 46px; font-size: .8rem; padding-inline: 14px; }
+      .controls, .slide-count { display: none; }
+      .slide-footer { padding-bottom: 42px; }
+    }
+
+    @media (max-width: 520px) {
+      .two-up, .four-up, .type-strip, .files { grid-template-columns: 1fr; }
+      .type-strip > div { border-right: 0; border-bottom: 1px solid var(--line) !important; }
+      .type-strip > div:last-child { border-bottom: 0 !important; }
+      .dictionary { grid-template-columns: 1fr; }
+      .dictionary > * { border-bottom: 0; }
+      .dictionary dd { border-bottom: 1px solid var(--line); }
+      .file { min-height: 110px; }
+      .resource-dock a.secondary { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media print {
+      html { scroll-snap-type: none; }
+      .slide { min-height: 100vh; page-break-after: always; }
+      .progress, .slide-count, .controls, .resource-dock { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#slide-1">Skip to slides</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="slide-count" id="slideCount" aria-live="polite">01 / 32</div>
+
+  <main id="slides">
+    <section class="slide title-slide" id="slide-1" data-label="" tabindex="-1">
+      <div></div>
+      <div class="slide-inner title-layout">
+        <div>
+          <p class="eyebrow">Intro to Computational Journalism</p>
+          <h1>How coding can help journalists</h1>
+        </div>
+      </div>
+      <footer class="slide-footer" aria-hidden="true"></footer>
+    </section>
+
+    <section class="slide" id="slide-2" data-label="Welcome" tabindex="-1">
+      <div></div>
+      <div class="slide-inner split">
+        <h2>We are going to use code as a <span class="marker">reporting tool.</span></h2>
+        <div class="cell markdown-cell reveal">
+          <div class="cell-head"><span>MARKDOWN</span><span>Welcome.md</span></div>
+          <div class="cell-body body">You don't need to memorise everything, and expect your code to fail regularly. The important skill is learning how to understand what happened and what to try next.</div>
+        </div>
+      </div>
+      <footer class="slide-footer"><span>Session 1</span><span class="run-state">Notebook ready</span></footer>
+    </section>
+
+    <section class="slide section-divider" id="slide-3" data-label="Section 01" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="section-number">01</div><h2>What is computational journalism?</h2></div>
+      <footer class="slide-footer"><span>Structured methods · data · code</span><span>In [1]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-4" data-label="A working definition" tabindex="-1">
+      <div></div><div class="slide-inner">
+        <div class="cell markdown-cell">
+          <div class="cell-head"><span>MARKDOWN</span><span class="execution">In [1]</span></div>
+          <div class="cell-body"><p class="dek">Computational journalism means using <span class="blue">structured methods, data and code</span> to support reporting.</p></div>
+          <div class="output editorial reveal" style="font-size:var(--body)">The code is useful only because it helps us ask or answer a journalistic question.</div>
+        </div>
+      </div><footer class="slide-footer"><span>What the code is for</span><span class="run-state">Executed</span></footer>
+    </section>
+
+    <section class="slide" id="slide-5" data-label="In newsrooms" tabindex="-1">
+      <div></div><div class="slide-inner"><h2 style="max-width:19ch">When we want to work at a different scale</h2><div class="two-up">
+        <article class="concept-card reveal"><span class="index">01 / SCALE</span><h3>10 → 5,000</h3><p>Checking ten company filings manually may be manageable; checking 5,000 requires automation.</p></article>
+        <article class="concept-card reveal" style="--delay:140ms"><span class="index">02 / REPETITION</span><h3>Every month</h3><p>A script can download the same monthly table every time it is updated.</p></article>
+      </div></div><footer class="slide-footer"><span>In newsrooms, we use it when we want to…</span><span>In [2]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-6" data-label="In newsrooms" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="four-up">
+        <article class="concept-card"><span class="index">CONSISTENCY</span><p>Apply the same cleaning rule to every row rather than relying on manual edits.</p></article>
+        <article class="concept-card"><span class="index">REPRODUCIBILITY</span><p>A colleague can rerun the notebook and see how the result was produced.</p></article>
+        <article class="concept-card"><span class="index">DISCOVERY</span><p>Expose outliers that become reporting leads.</p></article>
+        <article class="concept-card"><span class="index">ACCOUNTABILITY</span><p>Audit public claims, procurement data and company disclosures.</p></article>
+      </div></div><footer class="slide-footer"><span>Four newsroom advantages</span><span>Out [2]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-7" data-label="A boundary" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="quote-card"><blockquote>Code does not replace <span class="marker">reporting.</span></blockquote></div><p class="body reveal">It helps us decide where to report, what claim to test and what evidence to request. Computational work does not remove journalistic judgement.</p></div>
+      <footer class="slide-footer"><span>Code supports judgement</span><span>In [3]</span></footer>
+    </section>
+
+    <section class="slide section-divider" id="slide-8" data-label="Section 02" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="section-number">02</div><h2>The anatomy of a dataset</h2></div>
+      <footer class="slide-footer"><span>Rows · columns · variables</span><span>In [4]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-9" data-label="Rows" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><p class="eyebrow">One row</p><h2>One observation</h2><p class="body" style="margin-top:22px">Depending on the dataset, that observation might be one company, one person, one district, one transaction or one financial year.</p></div>
+        <div class="dataframe"><table aria-label="Example observations"><thead><tr><th></th><th>company</th><th>year</th><th>profit</th></tr></thead><tbody><tr class="focus-row"><td class="row-index">0</td><td>Aruna Power</td><td>2024</td><td>₹84m</td></tr><tr><td class="row-index">1</td><td>Nila Energy</td><td>2024</td><td>₹51m</td></tr><tr><td class="row-index">2</td><td>Vaigai Solar</td><td>2024</td><td>₹73m</td></tr></tbody></table></div>
+      </div><footer class="slide-footer"><span>A dataset is organised into rows and columns</span><span>Out [4]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-10" data-label="Columns" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><p class="eyebrow">One column</p><h2>One variable</h2><p class="body" style="margin-top:22px">A variable is one characteristic recorded about each observation. In tables, variables appear as columns.</p></div>
+        <div class="dataframe"><table aria-label="Profit column highlighted"><thead><tr><th></th><th>company</th><th>year</th><th class="focus-col">profit</th></tr></thead><tbody><tr><td class="row-index">0</td><td>Aruna Power</td><td>2024</td><td class="focus-col">₹84m</td></tr><tr><td class="row-index">1</td><td>Nila Energy</td><td>2024</td><td class="focus-col">₹51m</td></tr><tr><td class="row-index">2</td><td>Vaigai Solar</td><td>2024</td><td class="focus-col">₹73m</td></tr></tbody></table></div>
+      </div><footer class="slide-footer"><span>Variables appear as columns</span><span>In [5]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-11" data-label="Variable types" tabindex="-1">
+      <div></div><div class="slide-inner"><h2>Variables can be different types</h2><div class="type-strip">
+        <div><code>84</code><div><h3>Numeric</h3><p>Numbers that we may calculate with.</p></div></div>
+        <div><code>"solar"</code><div><h3>Categorical</h3><p>Groups observations into labels.</p></div></div>
+        <div><code>2026-07-28</code><div><h3>Date</h3><p>Records time.</p></div></div>
+        <div><code>TN-0042</code><div><h3>Identifier</h3><p>Distinguishes one record from another.</p></div></div>
+      </div></div><footer class="slide-footer"><span>Type changes what a variable can do</span><span>Out [5]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-12" data-label="Data dictionary" tabindex="-1">
+      <div></div><div class="slide-inner split"><h2>How to read a dataset</h2><div><p class="body">A data dictionary explains what each variable means, how it was measured, what format it uses and what its possible values represent.</p><p class="annotation" style="margin-top:28px; transform:none">Without one, an obvious column name can still mislead.</p></div></div>
+      <footer class="slide-footer"><span>README for the data</span><span>In [6]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-13" data-label="Ambiguous columns" tabindex="-1">
+      <div></div><div class="slide-inner"><h2 style="max-width:24ch">What does <code class="marker" style="font-size:.8em">profit</code> mean?</h2><div class="five-options" style="display:flex;flex-wrap:wrap;gap:12px">
+        <span class="cell cell-body reveal">operating profit</span><span class="cell cell-body reveal" style="--delay:90ms">profit before tax</span><span class="cell cell-body reveal" style="--delay:180ms">net profit</span><span class="cell cell-body reveal" style="--delay:270ms">quarterly profit</span><span class="cell cell-body reveal" style="--delay:360ms">annual profit</span>
+      </div></div><footer class="slide-footer"><span>Column names need definitions</span><span>Out [6]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-14" data-label="Dictionary questions" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><p class="eyebrow">At minimum</p><ol class="checklist" style="margin-top:22px"><li>What does each row represent?</li><li>What does each column mean?</li><li>What unit is being used?</li><li>Which time period does the value cover?</li></ol></div>
+        <div class="cell markdown-cell reveal"><div class="cell-head"><span>MORE ROBUST</span><span>dictionary.md</span></div><div class="cell-body"><ol class="checklist"><li>Are the figures estimates, provisional values or final figures?</li><li>How are missing values recorded?</li><li>Have definitions changed over time?</li></ol></div></div>
+      </div><footer class="slide-footer"><span>Questions before calculations</span><span>In [7]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-15" data-label="When documentation is missing" tabindex="-1">
+      <div></div><div class="slide-inner"><h2>No data dictionary? That becomes a <span class="marker">reporting problem.</span></h2><div class="two-up">
+        <ol class="checklist"><li>Look for methodology notes.</li><li>Inspect the source website.</li><li>Contact the data provider.</li></ol>
+        <ol class="checklist" start="4"><li style="counter-set:checks 3">Compare the data with published reports.</li><li>Create your own working dictionary as you investigate.</li></ol>
+      </div></div><footer class="slide-footer"><span>Missing context is a lead</span><span>Out [7]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-16" data-label="Common file types" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="split"><h2>Data</h2><p class="body" style="transform:translateX(-20px)">The file extension is a clue: it tells us what a file can preserve, how it is structured and how we might open it.</p></div><div class="folder-window">
+        <div class="window-bar"><i></i><i></i><i></i><span>Data</span></div><div class="files">
+          <div class="file"><span class="file-type">CSV</span><code>companies.csv</code></div><div class="file"><span class="file-type">XLSX</span><code>survey.xlsx</code></div><div class="file"><span class="file-type">SHP</span><code>districts.shp</code></div><div class="file"><span class="file-type">PDF</span><code>report.pdf</code></div><div class="file"><span class="file-type">JSON</span><code>api.json</code></div><div class="file"><span class="file-type">HTML</span><code>table.html</code></div><div class="file"><span class="file-type">ZIP</span><code>archive.zip</code></div><div class="file note"><span class="file-type">?</span><code>README.md</code></div>
+        </div></div>
+      </div><footer class="slide-footer"><span>Seven common formats</span><span>In [8]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-17" data-label="Tables and documents" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="four-up">
+        <article class="concept-card"><span class="index">CSV</span><h3>Plain-text table</h3><p>Portable and easy to analyse. Does not preserve highlight colours, formulas or multiple sheets when exported.</p></article>
+        <article class="concept-card"><span class="index">XLSX</span><h3>Excel workbook</h3><p>May include several sheets, formulas, merged cells and formatting.</p></article>
+        <article class="concept-card"><span class="index">PDF</span><h3>Document, not data</h3><p>Tables may look structured but be difficult to extract reliably if they are not machine readable.</p></article>
+        <article class="concept-card"><span class="index">HTML</span><h3>Webpage language</h3><p>Useful when collecting tables or repeated page elements.</p></article>
+      </div></div><footer class="slide-footer"><span>What the format preserves</span><span>Out [8]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-18" data-label="Structured and spatial files" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="three-up">
+        <article class="sticky"><strong>api.json</strong><p>Structured data commonly returned by APIs.</p></article>
+        <article class="sticky"><strong>archive.zip</strong><p>A compressed container that may hold one or many data files.</p></article>
+        <article class="sticky"><strong>districts.shp</strong><p>Commonly used to store geographic boundaries. It is both data and geometry.</p></article>
+      </div></div><footer class="slide-footer"><span>JSON · ZIP · Shapefile</span><span>In [9]</span></footer>
+    </section>
+
+    <section class="slide section-divider" id="slide-19" data-label="Section 03" data-resources="true" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="section-number">03</div><h2 style="max-width:18ch">Trying out Google Colab</h2></div>
+      <footer class="slide-footer"><span>A notebook in the browser</span><span>In [10]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-20" data-label="Why Colab" data-resources="true" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><h2>A workspace and a record</h2><p class="body" style="margin-top:24px">The same notebook can later become a transparent record of the analysis.</p></div><div class="browser">
+        <div class="tabs"><span class="tab">New tab</span><span class="tab active">session_1.ipynb</span></div><div class="address">colab.research.google.com</div><div class="browser-body"><ol class="checklist"><li>It runs in the browser.</li><li>You don’t need to install Python.</li><li>Notebooks combine code, notes and output in one document.</li></ol></div>
+      </div></div><footer class="slide-footer"><span>Google Colab</span><span>Out [10]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-21" data-label="First code cell" data-resources="true" tabindex="-1">
+      <div></div><div class="slide-inner"><h2 style="max-width:20ch">Say hello to the newsroom</h2><div class="cell code-cell">
+        <div class="cell-head"><span>CODE</span><span class="execution">In [11]</span></div><div class="cell-body"><div class="code-line"><span class="function">print</span>(<span class="string">"Hello, newsroom"</span>)<span class="cursor" aria-hidden="true"></span></div></div><div class="output reveal">Hello, newsroom</div>
+      </div></div><footer class="slide-footer"><span>First code cell</span><span class="run-state">Executed in 0.02s</span></footer>
+    </section>
+
+    <section class="slide" id="slide-22" data-label="Explain only what is necessary" data-resources="true" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="cell code-cell"><div class="cell-head"><span>CODE</span><span class="execution">In [12]</span></div><div class="cell-body"><div class="code-line"><span class="function">print</span>(<span class="string">"Hello, newsroom"</span>)</div></div></div><div class="four-up">
+        <article class="concept-card"><span class="index">print</span><p>A function: a named instruction Python already knows.</p></article><article class="concept-card"><span class="index">"Hello, newsroom"</span><p>The text inside quotation marks is a string.</p></article><article class="concept-card"><span class="index">( )</span><p>Parentheses hold the information being passed to the function.</p></article><article class="concept-card"><span class="index">OUTPUT</span><p>The output appears directly below the cell.</p></article>
+      </div><div class="code-line reveal" style="font-size:clamp(.9rem,1.5vw,1.25rem)"><span class="name">publication</span> = <span class="string">"The Hindu"</span><br><span class="function">print</span>(<span class="name">publication</span>)</div></div><footer class="slide-footer"><span>Then demonstrate a variable</span><span>Out [12]</span></footer>
+    </section>
+
+    <section class="slide section-divider" id="slide-23" data-label="Section 04" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="section-number">04</div><h2 style="max-width:18ch">Your first Pandas exercise</h2></div>
+      <footer class="slide-footer"><span>Open a dataset · ask what is inside</span><span>In [13]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-24" data-label="Pandas" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><h2>A library for tabular data</h2><p class="body" style="margin-top:24px">A library is reusable code written by other people. We import it rather than rebuilding its functions ourselves.</p></div><div class="folder-window"><div class="window-bar"><i></i><i></i><i></i><span>Python library</span></div><div class="file" style="min-height:270px"><span class="file-type">PANDAS</span><code>read_csv()<br>head()<br>shape<br>columns</code><p class="comment"># tools we can reuse</p></div></div></div>
+      <footer class="slide-footer"><span>Python + tabular data</span><span>In [14]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-25" data-label="Import Pandas" tabindex="-1">
+      <div></div><div class="slide-inner"><h2 style="max-width:13ch">Read one line,<br>one part at a time</h2><div class="cell code-cell"><div class="cell-head"><span>CODE</span><span class="execution">In [15]</span></div><div class="cell-body"><div class="token-line"><span class="token import reveal">import<small>load</small></span><span class="token library reveal" style="--delay:300ms">pandas<small>the library</small></span><span class="token reveal" style="--delay:600ms">as</span><span class="token alias reveal" style="--delay:900ms">pd<small>shorter nickname</small></span></div></div></div></div>
+      <footer class="slide-footer"><span>import pandas as pd</span><span class="run-state">Executed</span></footer>
+    </section>
+
+    <section class="slide" id="slide-26" data-label="CSV → dataframe" tabindex="-1">
+      <div></div><div class="slide-inner"><h2>Open a dataset</h2><div class="pipeline">
+        <div class="pipeline-card"><code>url = ...</code><p>Store the dataset address in a variable.</p></div><span class="pipeline-arrow">→</span><div class="pipeline-card"><code>pd.read_csv(url)</code><p>Read the CSV and turn it into a dataframe.</p></div><span class="pipeline-arrow">→</span><div class="pipeline-card"><code>df</code><p>A conventional short name for the dataframe.</p></div>
+      </div></div><footer class="slide-footer"><span>Address → reader → dataframe</span><span>In [16]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-27" data-label="Inspect the dataframe" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><h2>Ask what is inside</h2><div class="cell code-cell" style="margin-top:24px"><div class="cell-head"><span>CODE</span><span class="execution">In [17]</span></div><div class="cell-body code-line" style="font-size:clamp(.9rem,1.4vw,1.2rem)"><span class="name">df</span>.head()<br><span class="name">df</span>.shape<br><span class="name">df</span>.columns</div></div><p class="body" style="margin-top:18px"><code>head()</code> shows five rows. <code>shape</code> returns rows and columns. <code>columns</code> lists names exactly as Python sees them.</p></div>
+        <div><p class="eyebrow">Journalistic inspection</p><ol class="checklist" style="margin-top:20px"><li>What does one row represent?</li><li>How many records are present?</li><li>Which columns might answer a reporting question?</li><li>Do the column names make sense?</li><li>Do any values immediately look suspicious?</li><li>What information would we need from a data dictionary or source note?</li></ol><p class="annotation" style="margin-top:20px; transform:none">Optional final command if the class is moving comfortably.</p></div>
+      </div><footer class="slide-footer"><span>Look before analysing</span><span>Out [17]</span></footer>
+    </section>
+
+    <section class="slide section-divider" id="slide-28" data-label="Section 05" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="section-number">05</div><h2 style="max-width:16ch">Errors and debugging</h2></div>
+      <footer class="slide-footer"><span>Errors are information</span><span>In [18]</span></footer>
+    </section>
+
+    <section class="slide" id="slide-29" data-label="Read the message together" tabindex="-1">
+      <div></div><div class="slide-inner"><div class="cell code-cell"><div class="cell-head"><span>CODE</span><span class="execution">In [18]</span></div><div class="cell-body code-line"><span class="name">df</span>.<span class="underline-error">heed</span>()</div></div><div class="error-box reveal"><div class="cell-head"><span>ERROR</span><span>Traceback</span></div><div class="traceback">-------------------------------------------------------------------<br><span class="error-name">AttributeError</span>: 'DataFrame' object has no attribute '<span class="underline-error">heed</span>'<br><span class="suggestion">Did you mean: head() ?</span></div></div></div>
+      <footer class="slide-footer"><span>Read the message together</span><span class="red">Execution failed</span></footer>
+    </section>
+
+    <section class="slide" id="slide-31" data-label="Wrap-up" tabindex="-1">
+      <div></div><div class="slide-inner"><h2>What to carry forward</h2><div class="sticky-grid">
+        <article class="sticky"><strong>01</strong><p>Code is a reporting tool, not the story.</p></article><article class="sticky"><strong>02</strong><p>A notebook is both a workspace and a record of your method.</p></article><article class="sticky"><strong>03</strong><p>You are not expected to avoid errors; you are expected to learn how to investigate them.</p></article>
+      </div></div><footer class="slide-footer"><span>Session 1</span><span>In [19]</span></footer>
+    </section>
+
+    <section class="slide title-slide" id="slide-32" data-label="Take-home practice" data-resources="true" tabindex="-1">
+      <div></div><div class="slide-inner split"><div><p class="eyebrow">Before the next class</p><h2>Open the notebook once.</h2></div><ol class="checklist">
+        <li>Rerun every cell from the top.</li><li>Change the text in the <code>print()</code> statement.</li><li>Use <code>df.head(10)</code> and observe what changes.</li><li>Write two sentences in a text cell: what one row represents and one question you have about the data.</li>
+      </ol></div><footer class="slide-footer"><span>Notebook saved</span><span class="run-state">Session complete ✓</span></footer>
+    </section>
+  </main>
+
+  <nav class="resource-dock" id="resourceDock" aria-label="Classroom resources">
+    <a class="primary" href="https://colab.research.google.com/drive/1KeaBLMsBRC5eYn3768Vt4MOjVJ7ZixbX" target="_blank" rel="noopener noreferrer">↗ Open notebook</a>
+    <a class="secondary" href="india_state_renewable_energy_379_rows.csv" download>↓ Classroom data</a>
+  </nav>
+  <nav class="controls" aria-label="Slide controls"><button id="prev" type="button" aria-label="Previous slide">↑</button><button id="next" type="button" aria-label="Next slide">↓</button></nav>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const progress = document.getElementById('progress');
+    const slideCount = document.getElementById('slideCount');
+    const resourceDock = document.getElementById('resourceDock');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    let current = 0;
+    let ticking = false;
+    let initialized = false;
+
+    function closestSlide() {
+      const viewportMiddle = window.scrollY + window.innerHeight / 2;
+      let best = 0;
+      let distance = Infinity;
+      slides.forEach((slide, index) => {
+        const center = slide.offsetTop + slide.offsetHeight / 2;
+        const nextDistance = Math.abs(center - viewportMiddle);
+        if (nextDistance < distance) { distance = nextDistance; best = index; }
+      });
+      return best;
+    }
+
+    function update() {
+      current = closestSlide();
+      slides.forEach((slide, index) => slide.classList.toggle('is-current', index === current));
+      progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+      slideCount.textContent = `${String(current + 1).padStart(2, '0')} / ${slides.length}`;
+      resourceDock.classList.toggle('visible', current === 18);
+      const hash = `#${String(current + 1).padStart(2, '0')}`;
+      if (location.hash !== hash) history.replaceState(null, '', hash);
+      ticking = false;
+    }
+
+    function goTo(index, focus = false, immediate = false) {
+      const target = Math.max(0, Math.min(slides.length - 1, index));
+      slides[target].scrollIntoView({ behavior: immediate || reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+      if (focus) slides[target].focus({ preventScroll: true });
+    }
+
+    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+    window.addEventListener('scroll', () => { if (initialized && !ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('keydown', (event) => {
+      if (event.target instanceof HTMLAnchorElement || event.target instanceof HTMLButtonElement) return;
+      if (['ArrowDown', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); goTo(current + 1); }
+      if (['ArrowUp', 'PageUp'].includes(event.key)) { event.preventDefault(); goTo(current - 1); }
+      if (event.key === 'Home') { event.preventDefault(); goTo(0); }
+      if (event.key === 'End') { event.preventDefault(); goTo(slides.length - 1); }
+    });
+    function fromHash() {
+      const requested = Number.parseInt(location.hash.slice(1), 10);
+      if (Number.isFinite(requested) && requested >= 1 && requested <= slides.length) {
+        goTo(requested - 1, false, true);
+        requestAnimationFrame(() => { initialized = true; update(); });
+      } else {
+        initialized = true;
+        update();
+      }
+    }
+    window.addEventListener('hashchange', fromHash);
+    window.addEventListener('load', fromHash);
+  </script>
+</body>
+</html>
