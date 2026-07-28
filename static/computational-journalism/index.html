@@ -269,6 +269,13 @@
       .progress, .slide-count, .controls, .resource-dock { display: none; }
     }
   </style>
+  <!-- Plausible, via the first-party proxy in vercel.json -->
+  <script async src="/api/js/script.js"></script>
+  <script>
+    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) };
+    plausible.init = plausible.init || function (i) { plausible.o = i || {} };
+    plausible.init({ endpoint: '/api/event' });
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#slide-1">Skip to slides</a>

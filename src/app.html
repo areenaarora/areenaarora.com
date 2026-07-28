@@ -46,6 +46,29 @@
 		/>
 		<meta name="twitter:image" content="/areena_OG.jpeg" />
 
+		<!--
+			Plausible bootstrap. The script itself is loaded from +layout.svelte so it
+			stays behind the `dev` check; this stub only queues config, so it is inert
+			until that script arrives. It lives here because the new Plausible script
+			is configured through `plausible.init()` rather than data- attributes, and
+			an inline script cannot go in a .svelte file — Svelte would parse its
+			braces as template expressions. `endpoint` points at the first-party proxy
+			in vercel.json so requests stay same-origin.
+		-->
+		<script>
+			window.plausible =
+				window.plausible ||
+				function () {
+					(plausible.q = plausible.q || []).push(arguments);
+				};
+			plausible.init =
+				plausible.init ||
+				function (i) {
+					plausible.o = i || {};
+				};
+			plausible.init({ endpoint: '/api/event' });
+		</script>
+
 		%sveltekit.head%
 	</head>
 
