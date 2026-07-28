@@ -6,11 +6,9 @@
 
 <svelte:head>
 	{#if !dev}
-		<script
-			data-api="/stats/api/event"
-			data-domain="areenaarora.com"
-			src="/stats/js/script.js"
-		></script>
+		<!-- Served through the first-party proxy in vercel.json; configured by the
+		     plausible.init() stub in app.html. -->
+		<script async src="/stats/js/pa.js"></script>
 	{/if}
 </svelte:head>
 

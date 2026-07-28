@@ -11,7 +11,13 @@
   <link rel="shortcut icon" href="/favicon/favicon.ico" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
   <title>Climate Data Journalism</title>
-  <script defer data-api="/stats/api/event" data-domain="areenaarora.com" src="/stats/js/script.js"></script>
+  <!-- Plausible, via the first-party proxy in vercel.json -->
+  <script async src="/stats/js/pa.js"></script>
+  <script>
+    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) };
+    plausible.init = plausible.init || function (i) { plausible.o = i || {} };
+    plausible.init({ endpoint: '/stats/api/event' });
+  </script>
   <style>
     :root{
       --bg:#fff;
