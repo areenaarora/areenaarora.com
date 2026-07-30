@@ -96,9 +96,12 @@
 				{ label: 'Duration', value: 'Multi-session course' },
 				{ label: 'Format', value: 'Notebook-led lecture and practice' }
 			],
-			sessions: ['Session 1: Introducing data in journalism'],
+			sessions: ['Session 1: Introducing data in journalism', 'Session 2: Exploring data with Pandas'],
 			includes: ['Web slides', 'Colab notebook', 'Classroom dataset', 'Practice task'],
-			links: [{ label: 'View Session 1', href: `${base}/computational-journalism/#01` }]
+			links: [
+				{ label: 'View Session 1', href: `${base}/computational-journalism/#01` },
+				{ label: 'View Session 2', href: `${base}/computational-journalism/session-2/#01` }
+			]
 		}
 	];
 
