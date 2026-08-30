@@ -1,8 +1,8 @@
 {
 	"rewrites": [
 		{
-			"source": "/api/js/script.js",
-			"destination": "https://plausible.io/js/pa--BvepfFBWFK-oIFxnj_Ra.js"
+			"source": "/v1/tracker.js",
+			"destination": "https://stats.sreetamdas.com/v1/tracker.js"
 		}
 	]
 }

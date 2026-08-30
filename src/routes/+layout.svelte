@@ -6,9 +6,7 @@
 
 <svelte:head>
 	{#if !dev}
-		<!-- Served through the first-party proxy in vercel.json; configured by the
-		     plausible.init() stub in app.html. -->
-		<script async src="/api/js/script.js"></script>
+		<script async src="/v1/tracker.js" data-endpoint="/api" data-key="event"></script>
 	{/if}
 </svelte:head>
 
