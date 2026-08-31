@@ -6,7 +6,7 @@
 
 <svelte:head>
 	{#if !dev}
-		<script async src="/v1/tracker.js" data-endpoint="/api" data-key="event"></script>
+		<script async src="/v1/nltyx.js" data-endpoint="/api/prxy/nltyx" data-key="event"></script>
 	{/if}
 </svelte:head>
 

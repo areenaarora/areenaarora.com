@@ -1,8 +1,12 @@
 {
 	"rewrites": [
 		{
+			"source": "/v1/nltyx.js",
+			"destination": "https://stats.sreetamdas.com/v1/nltyx.js"
+		},
+		{
 			"source": "/v1/tracker.js",
-			"destination": "https://stats.sreetamdas.com/v1/tracker.js"
+			"destination": "https://stats.sreetamdas.com/v1/nltyx.js"
 		}
 	]
 }
