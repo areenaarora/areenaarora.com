@@ -96,12 +96,13 @@
 				{ label: 'Duration', value: 'Multi-session course' },
 				{ label: 'Format', value: 'Notebook-led lecture and practice' }
 			],
-			sessions: ['Session 1: Introducing data in journalism', 'Session 2: Exploring data with Pandas', 'Session 3: From datasets to websites'],
+			sessions: ['Session 1: Introducing data in journalism', 'Session 2: Exploring data with Pandas', 'Session 3: From datasets to websites', 'Session 8: Thinking with data'],
 			includes: ['Web slides', 'Colab notebook', 'Classroom dataset', 'Practice task'],
 			links: [
 				{ label: 'View Session 1', href: `${base}/computational-journalism/#01` },
 				{ label: 'View Session 2', href: `${base}/computational-journalism/session-2/#01` },
-				{ label: 'View Session 3', href: `${base}/computational-journalism/session-3/#01` }
+				{ label: 'View Session 3', href: `${base}/computational-journalism/session-3/#01` },
+				{ label: 'View Session 8', href: `${base}/computational-journalism/session-8/#01` }
 			]
 		}
 	];
