@@ -25,21 +25,6 @@
       ],
       "port": 5174,
       "autoPort": false
-    },
-    {
-      "name": "tariffs",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "--prefix",
-        "/Users/areena.arora/dev/th_dev/tariffs",
-        "run",
-        "dev",
-        "--",
-        "--port",
-        "5175"
-      ],
-      "port": 5175,
-      "autoPort": false
     }
   ]
 }

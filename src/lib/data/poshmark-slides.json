@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Storytelling with Data",
+    "text": "Storytelling with Data\nFrom showing numbers to moving people\nAreena Arora · Editorial Coder, The Hindu"
+  },
+  {
+    "title": "Q3 Chargeback Analysis                                                                                                Payments Ops · Internal · v3 FINAL (2)",
+    "text": "Q3 Chargeback Analysis                                                                                                Payments Ops · Internal · v3 FINAL (2)\n\n\n• Data source: disputes system export, Jul 1 to Sep 30, 2026; excludes test accounts and reversed disputes; reason codes mapped per network guidelines v4.2; USD at\n  transaction-date FX\n• Q3 total chargebacks 1,656 vs 1,200 in Q2 (QoQ +38.00%); avg dispute value $287.40; blended win rate 33.12%; see tabs 4 to 9\n\n\n                Reason code                      Jul           Aug            Sep              Q3               QoQ %                Share %\n\n               10.4 Fraud CNP                    118            122           120             360               12.50%                21.74%\n\n\n                  13.3 NAD                       110            118           117             345               15.00%                20.83%\n\n\n               13.1 INR (other)                   85            92             93             270               22.73%                16.30%\n\n\n            13.1 INR (>$250, NSR)                120            170           190             480               166.67%               28.99%\n\n\n                12.6 Duplicate                    36            37             37             110               10.00%                 6.64%\n\n\n                     Misc.                        29            31             31              91               13.75%                 5.50%\n\n\n                     Total                       498            570           588            1,656              38.00%               100.00%"
+  },
+  {
+    "title": "Every number was there.",
+    "text": "Every number was there.\nThe story wasn't.\nToday: from showing data to communicating with it.\n\n    What changed?   So what?   Now what?\n\n\n\n\n3"
+  },
+  {
+    "title": "We present in the order we worked",
+    "text": "We present in the order we worked\nHow we work                               How they listen\n\n    Data                                                    Recommendation\n\n    Cleaning                                                 Why it matters\n\n    Analysis                                                   Evidence\n\n    Findings                                                Method: appendix\n\n    Recommendation (a much later slide)\n\n\n\n\n4"
+  },
+  {
+    "title": "For today, let’s imagine we’re working with chargeback data",
+    "text": "For today, let’s imagine we’re working with chargeback data\n\n\nChargeback is a reversal of a credit or debit\ntransaction initiated by the cardholder’s bank\non customer’s request to return funds to the\ncustomer.\n\n\n4"
+  },
+  {
+    "title": "SO WHAT?",
+    "text": "SO WHAT?\n\n\nKeep asking until there is no more “so what” possible\n                                                                  so what?     Signatures could halve it\n\n\n                                              so what?      Costs more than all the rest\n\n\n                           so what?      'Not received' grew fastest\n\n\n         so what?     Split by reason and order value\n\n\n    We pulled 18 months of data\n\n\n\n\n5"
+  },
+  {
+    "title": "WHERE DOES THE METHOD GO",
+    "text": "WHERE DOES THE METHOD GO\n\n\nMethod earns its place when someone asks\n\n\n    One line up front          The rest: appendix   Unless it changes\n    Enough for credibility     Ready when asked     the answer\n                                                    Then say it first\n\n\n\n\nWrite the email subject line first.\n\n\n\n\n6"
+  },
+  {
+    "title": "FINDING THE MESSAGE",
+    "text": "FINDING THE MESSAGE\n\n\nHow to spot what’s the message in the data?\n\n    1                        2\n    Is it real?              What's driving it?\n    Signal or noise          Rate or volume\n\n     Small numbers\n                              Contribution\n\n    Regression to the mean       Mix shift\n\n\n\n7"
+  },
+  {
+    "title": "Which week would you escalate?",
+    "text": "Which week would you escalate?\n                                            Outside: investigate\n\n     8\n\n                                                                                  Upper limit\n     7\n\n\n\n     6                                                                            Average\n\n\n     5                     Inside the band: noise\n                                                                                  Lower limit\n\n\n         Week 1   Week 7                                      Week 17   Week 20\n\n\n\n\n7·"
+  },
+  {
+    "title": "Win rate fell from 52% to 33%.",
+    "text": "Win rate fell from 52% to 33%.\nRetrain the disputes team?\n\n Dispute type                 Q2 disputes   Q2 win rate   Q3 disputes   Q3 win rate\n\n Fraud claims (hard to win)   200           20%           800           25%\n\n Item not received (easier)   800           60%           200           65%\n\n All disputes                 1,000         52%           1,000         33%\n\n\n\nBetter at both types. The mix flipped: four times as many fraud claims.\n\n\n\n8·"
+  },
+  {
+    "title": "Write your main point in one sentence",
+    "text": "Write your main point in one sentence\n    Does it change a decision?   Is it big enough to matter?   Is it new to this room?\n\n\n\nINTERESTING IS NOT THE SAME AS IMPORTANT\n\n\n      [What] [rose or fell] by [how much] [compared with what], driven by [rate, volume\n      or mix] in [which segment].\n\n\n\n\n9"
+  },
+  {
+    "title": "The eye reads position best, colour worst",
+    "text": "The eye reads position best, colour worst\n\n\n       Position   Aligned scales   Length        Angle          Area       Colour shade\n\n\n\n\n                                       You found the blue dot before you read this.\n\n\n\n\n10 ·"
+  },
+  {
+    "title": "CHOOSING THE RIGHT CHART",
+    "text": "CHOOSING THE RIGHT CHART\n\n\nStart from the question\n\n\n     Over time?            Which is biggest?   What shifted?       How did A become B?\n     Line                  Sorted bar          Dumbbell or slope   Waterfall\n\n\n\n\n                                                                   1,656\n     What's typical?       A real outlier?     Related?            Just one number?\n     Histogram             Funnel plot         Scatter             No chart. Big number.\n\n\n\n\n11"
+  },
+  {
+    "title": "Which chart?",
+    "text": "Which chart?\n            1                             2                    3                            4\n\n\n        Dumbbell                       Waterfall           Histogram                   Funnel plot\n\n\nA Before vs after, 8 reason codes                  B $1.2M → $1.5M: what made the gap?\nC Typical time, if some take a week?               D Which of 40 groups is truly unusual?\n\n\n\n\n12"
+  },
+  {
+    "title": "SPOT THE PROBLEM · 1 OF 4",
+    "text": "SPOT THE PROBLEM · 1 OF 4\n\n\nThe stretched gap\n                                          96%      98%\n\n                            98%\n\n\n\n                96%\n\n  95%                                0%\n\n               Team A       Team B        Team A   Team B\n\n\n\n\n13 ·"
+  },
+  {
+    "title": "SPOT THE PROBLEM · 2 OF 4",
+    "text": "SPOT THE PROBLEM · 2 OF 4\n\n\nThe cumulative trap\nYear to date growth                                               Monthly: it doubled in August\n\n  3,000                                                              600\n\n\n\n  2,000                                                              400\n\n\n\n  1,000                                                              200\n\n\n\n       0                                                                0\n           Jan   Feb   Mar    Apr   May   Jun   Jul   Aug   Sep             Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep\n\nTotal chargebacks since January                                   Chargebacks added each month\n\n\n\n\n14 ·"
+  },
+  {
+    "title": "SPOT THE PROBLEM · 3 OF 4",
+    "text": "SPOT THE PROBLEM · 3 OF 4\n\n\nEvery map of totals is a population map\n                                                 Per 1,000 orders\nChargebacks by state (count)\n                                                 Nevada                                14.2\nCalifornia                                 410\n                                                 Florida                        11.8\nTexas                                290\n                                                 Arizona                    10.9\nFlorida                         260\n                                                 Georgia                  9.7\nNew York                       230\n                                                 Texas              8.1\nIllinois               120\n\n\n\n\n15 ·"
+  },
+  {
+    "title": "SPOT THE PROBLEM · 4 OF 4",
+    "text": "SPOT THE PROBLEM · 4 OF 4\n\n\nThe dual axis: the crossing means nothing\nChargebacks                              Revenue   Index (Jan = 100)\n\n   550                                    $12M\n                                                     140\n\n                                          $11M       130\n   500\n                                                     120\n                                          $10M\n   450                                               110\n                                          $9M\n                                                     100\n   400\n\n         Jan   Mar     May   Jul   Sep                      Jan        Mar   May   Jul   Sep\n\n\n\n\n16 ·"
+  },
+  {
+    "title": "Q3 Chargeback Analysis                                                                                                Payments Ops · Internal · v3 FINAL (2)",
+    "text": "Q3 Chargeback Analysis                                                                                                Payments Ops · Internal · v3 FINAL (2)\n\n\n• Data source: disputes system export, Jul 1 to Sep 30, 2026; excludes test accounts and reversed disputes; reason codes mapped per network guidelines v4.2; USD at\n  transaction-date FX\n• Q3 total chargebacks 1,656 vs 1,200 in Q2 (QoQ +38.00%); avg dispute value $287.40; blended win rate 33.12%; see tabs 4 to 9\n\n                Reason code                      Jul           Aug            Sep              Q3               QoQ %                Share %\n\n\n               10.4 Fraud CNP                    118            122           120             360               12.50%                21.74%\n\n\n                  13.3 NAD                       110            118           117             345               15.00%                20.83%\n\n\n               13.1 INR (other)                   85            92             93             270               22.73%                16.30%\n\n\n            13.1 INR (>$250, NSR)                120            170           190             480               166.67%               28.99%\n\n\n                12.6 Duplicate                    36            37             37             110               10.00%                 6.64%\n\n\n                     Misc.                        29            31             31              91               13.75%                 5.50%\n\n\n                     Total                       498            570           588            1,656              38.00%               100.00%"
+  },
+  {
+    "title": "Chargebacks rose 38% in Q3.",
+    "text": "Chargebacks rose 38% in Q3.\nTwo-thirds of the rise came from one fixable gap.\nIncrease in chargebacks by reason, Q2 to Q3 (count)                     SO WHAT\n\n  Not received, >$250, unsigned                +300 (66% of the rise)   ≈ $96,000 a quarter in extra\n                                                                        losses, still rising in September.\n             Not received, other         +50\n\n               Not as described          +45\n\n           Unauthorised or fraud     +40                                NOW WHAT\n\n                          Other    +11                                  Approve a six-week signature\n         Duplicate or processing   +10                                  pilot on orders over $250.\n                                                                        Decision today.\n\n\n\n\n18 ·"
+  },
+  {
+    "title": "Find the story",
+    "text": "Find the story\n  1 Headline: one sentence, with a          2 Chart: type, axes, what to                 3 Ask: Make a recommendation -\n  number                                    highlight                                    who does what, by when\n\n\n Month   Tickets    Avg resolution   Weekday avg       Weekend avg       Weekend   First-contact   Consumer       Consumer\n                    time (hrs)       resolution time   resolution time   share     resolution      satisfaction   satisfaction\n                                     (hrs)             (hrs)                                       overall        weekend\n\n Jan     11,800     18.4             22                10                30%       62%             4.3            4.4\n\n Feb     11,200     18.4             22                10                30%       61%             4.3            4.4\n\n Mar     12,100     18.0             18                18                30%       63%             4.2            4.1\n\n Apr     12,400     18.4             16                24                30%       62%             4.2            3.7\n\n May     12,000     18.9             15                28                30%       62%             4.1            3.4\n\n Jun     12,300     19.1             14                31                30%       63%             4.1            3.2\n\n\n\n\n19 ·"
+  },
+  {
+    "title": "Weekend tickets now take 3× as long",
+    "text": "Weekend tickets now take 3× as long\n                                                                                               WHAT\n hrs                    1 Mar: weekend shift cut, 6 → 2 agents\n                                                                                               31 hours, up from 10\n                                                                       Weekend: 31 hrs\n  30\n                                                                                               SO WHAT\n                                                                                               1 in 3 customers waits over a\n  20                                                                                           day\n                                                                       All tickets: 19.1 hrs\n\n                                                                       Weekday: 14 hrs\n                                                                                                NOW WHAT\n  10                                                                                            Two agents back on\n       10 hrs\n                                                                                                weekends\n\n   0\n        Jan     Feb   Mar          Apr            May            Jun\n\n\n\n\n20 ·"
+  },
+  {
+    "title": "TAKE THIS WITH YOU",
+    "text": "TAKE THIS WITH YOU\n\n\n\n\nWhat changed?\nSo what?\nNow what?\n   Rewrite every slide title in your next deck as a sentence that says the point.\n\n\n\n21 ·"
+  },
+  {
+    "title": "Questions?",
+    "text": "Questions?\nData doesn't speak for itself. You speak for it.\n\n\n\n\nAreena Arora · Editorial Coder, The Hindu"
+  }
+]
