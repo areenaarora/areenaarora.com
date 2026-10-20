@@ -1,0 +1,84 @@
+{
+  "retrieved": "2026-10-20",
+  "catalogue_version_date": "20260922",
+  "ppp_reference_year": 2021,
+  "source": "https://datacatalogfiles.worldbank.org/ddh-published/0063646/DR0090357/world_100bin.csv",
+  "source_sha256": "6d35e14b8cbbb3effe53d52127d874d593eb0960810841368a9f6e83ce3943d1",
+  "selection": {
+    "IND": "2022",
+    "USA": "2022",
+    "CAN": "2022",
+    "DEU": "2022",
+    "AUS": "2020"
+  },
+  "units": "2021 international dollars per person per day",
+  "status": "Selected rows reproduce the rounded article figures; author export and original selection not confirmed.",
+  "decile_mean_method": "Sum(avg_welfare * pop_share) / Sum(pop_share) across percentiles 1\u201310 or 91\u2013100. A one-percentile bin mean is not a decile mean.",
+  "rows": [
+    {
+      "country_code": "IND",
+      "year": 2022,
+      "reporting_level": "national",
+      "welfare_type": "consumption",
+      "ppp_reference_year": 2021,
+      "p10": 3.399099349056368,
+      "p90": 9.976807521628455,
+      "bin10_mean": 3.359099966558555,
+      "bin90_mean": 9.831454990342042,
+      "bottom_decile_mean": 2.866519907515581,
+      "top_decile_mean": 14.065255437077006
+    },
+    {
+      "country_code": "USA",
+      "year": 2022,
+      "reporting_level": "national",
+      "welfare_type": "income",
+      "ppp_reference_year": 2021,
+      "p10": 25.12962698087616,
+      "p90": 172.9883133155812,
+      "bin10_mean": 24.55446841896749,
+      "bin90_mean": 169.6505461136855,
+      "bottom_decile_mean": 15.239075794292157,
+      "top_decile_mean": 278.0511473645738
+    },
+    {
+      "country_code": "CAN",
+      "year": 2022,
+      "reporting_level": "national",
+      "welfare_type": "income",
+      "ppp_reference_year": 2021,
+      "p10": 31.11643913240531,
+      "p90": 128.8946386021876,
+      "bin10_mean": 30.49768523340756,
+      "bin90_mean": 127.1972180990935,
+      "bottom_decile_mean": 22.23396238502666,
+      "top_decile_mean": 185.9383173090867
+    },
+    {
+      "country_code": "DEU",
+      "year": 2022,
+      "reporting_level": "national",
+      "welfare_type": "income",
+      "ppp_reference_year": 2021,
+      "p10": 28.43761913311936,
+      "p90": 127.8585719666293,
+      "bin10_mean": 27.48831094854083,
+      "bin90_mean": 125.9426065857561,
+      "bottom_decile_mean": 17.50861116672923,
+      "top_decile_mean": 198.80526455968447
+    },
+    {
+      "country_code": "AUS",
+      "year": 2020,
+      "reporting_level": "national",
+      "welfare_type": "income",
+      "ppp_reference_year": 2021,
+      "p10": 28.07838079561768,
+      "p90": 128.8908257179731,
+      "bin10_mean": 27.56209696172925,
+      "bin90_mean": 126.9333136149867,
+      "bottom_decile_mean": 18.71462532441086,
+      "top_decile_mean": 188.5966194681023
+    }
+  ]
+}

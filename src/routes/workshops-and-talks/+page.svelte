@@ -96,7 +96,7 @@
 				{ label: 'Duration', value: 'Multi-session course' },
 				{ label: 'Format', value: 'Notebook-led lecture and practice' }
 			],
-				sessions: ['Session 1: Introducing data in journalism', 'Session 2: Exploring data with Pandas', 'Session 3: From datasets to websites', 'Session 8: Thinking with data', 'Session 9: Building a visual data story', 'Session 10: The AI Aesthetic'],
+				sessions: ['Session 1: Introducing data in journalism', 'Session 2: Exploring data with Pandas', 'Session 3: From datasets to websites', 'Session 8: Thinking with data', 'Session 9: Building a visual data story', 'Session 10: The AI Aesthetic', 'Session 11: Writing What the Data Can Defend'],
 			includes: ['Web slides', 'Colab notebook', 'Classroom dataset', 'Practice task'],
 			links: [
 				{ label: 'View Session 1', href: `${base}/computational-journalism/#01` },
@@ -104,7 +104,8 @@
 				{ label: 'View Session 3', href: `${base}/computational-journalism/session-3/#01` },
 				{ label: 'View Session 8', href: `${base}/computational-journalism/session-8/#01` }
 				, { label: 'View Session 9', href: `${base}/computational-journalism/session-9/#01` },
-				{ label: 'View Session 10: The AI Aesthetic', href: `${base}/computational-journalism/session-10/#01` }
+				{ label: 'View Session 10: The AI Aesthetic', href: `${base}/computational-journalism/session-10/#01` },
+				{ label: 'View Session 11: Writing What the Data Can Defend', href: `${base}/computational-journalism/session-11/#01` }
 			]
 		}
 	];
