@@ -144,6 +144,11 @@
 		</div>
 	</section>
 
+	<details class="tldr">
+		<summary>TL;DR <span aria-hidden="true">+</span></summary>
+		<p>After a decade in journalism, it’s time for me to move on. I’m proud of the work I’ve done, but I worry about where the industry is headed and my own growth has slowed along the way. I want to take everything journalism has taught me into a space where I can learn new skills, explore AI and be challenged all over again.</p>
+	</details>
+
 	<article class="notebook" aria-labelledby="notes-title">
 		<header class="notes-heading">
 			<h2 id="notes-title">{notes[0]}</h2>
@@ -175,9 +180,9 @@
 	.intro{display:grid;gap:28px;padding:54px 0 44px}
 	h1{font-size:clamp(44px,6.7vw,92px);font-weight:500;line-height:.98;letter-spacing:-.065em;margin:0}h1 span{color:#783beb}
 	.intro>p{font:17px/1.5 Georgia,serif;max-width:none;margin:0 0 5px}.intro>p span{display:block}
-	.field{border:1px solid #e2daef;background:#fff;overflow:hidden}
+	.field{background:#fff;overflow:hidden}
 	canvas{display:block;width:100%;height:clamp(290px,34vw,460px);touch-action:pan-y}
-	.field-bottom{border-top:1px solid #e9e1f3;display:flex;justify-content:space-between;align-items:center;padding:13px 18px;gap:20px;background:#fff}
+	.field-bottom{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;gap:20px;background:#fff}
 	.stops{display:flex;flex-wrap:wrap;gap:6px 22px}.stops button,.motion{background:none;border:0;border-radius:0;padding:9px 0;font:12px/1 monospace;color:#7b6d8b;cursor:pointer}.stops button.active{color:#ed2590}.stops button.active::before{content:'■ ';color:#ed2590}.stops button:nth-child(2){color:#783beb}.stops button:nth-child(3){color:#2878ef}.stops button:nth-child(4){color:#ed2590}.stops button:hover,.motion:hover{text-decoration:underline;text-underline-offset:5px}.motion{white-space:nowrap;color:#262035}
 	button:focus-visible{outline:2px solid #2878ef;outline-offset:5px}
 	@media(max-width:700px){.wandering-page{padding-top:20px}.page-meta{font-size:10px}.page-meta>span:first-child{font-size:13px}.intro{display:block;padding:42px 0 30px}.intro>p{margin-top:24px;font-size:16px}h1{font-size:clamp(42px,10vw,68px)}canvas{height:300px}.field-bottom{padding:9px 12px;gap:12px}.stops{gap:3px 13px}.stops button,.motion{font-size:10px;min-height:38px}.stops{max-width:225px}}
@@ -199,4 +204,12 @@
 	.closing-note{margin:55px 0 0;font-size:clamp(21px,2.2vw,29px);line-height:1.5;color:#2878ef;transform:rotate(-1deg);max-width:32ch}
 	@media(max-width:900px){.notebook{padding-right:115px;padding-left:42px}.notebook::before{left:20px}.margin-note{left:calc(100% + 18px);width:110px;font-size:15px}}
 	@media(max-width:600px){.notebook{margin-top:65px;padding:0 8px 25px 24px}.notebook::before{left:5px;top:100px}.notes-heading{margin-bottom:34px}.notes-heading svg{width:160px}.notes-body{font-size:16px;line-height:1.8}.note-entry{margin-bottom:28px}.note-entry p{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent calc(1.8em - 1px),#e9e8f570 calc(1.8em - 1px),#e9e8f570 1.8em)}.margin-note{position:relative;left:auto;top:auto;margin:24px 0 32px auto;width:140px;font-size:17px}.margin-note svg{height:40px}.closing-note{font-size:22px;margin-top:38px}}
+
+	.tldr{max-width:1100px;margin:50px auto 0;padding:0 72px;font-family:'Special Elite','Courier New',monospace}
+	.tldr summary{display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none;cursor:pointer;color:#783beb;font-size:17px;padding:14px 0;border-bottom:1px solid #e9e1f3}
+	.tldr summary::-webkit-details-marker{display:none}.tldr summary span{font:24px/1 monospace;color:#ed2590}.tldr[open] summary span{transform:rotate(45deg)}
+	.tldr summary:focus-visible{outline:2px solid #2878ef;outline-offset:5px}
+	.tldr p{max-width:74ch;font-size:17px;line-height:1.8;color:#393247;margin:22px 0 0}
+	@media(max-width:900px){.tldr{padding:0 42px}}
+	@media(max-width:600px){.tldr{padding:0 8px 0 24px;margin-top:35px}.tldr p{font-size:16px}.tldr summary{font-size:16px}}
 </style>

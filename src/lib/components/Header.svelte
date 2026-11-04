@@ -98,18 +98,23 @@
 			right: 0;
 			z-index: 1000;
 			background: #fff; /* so content doesn't show through */
-			padding: 20px 0; /* your mobile spacing */
+			padding: 6px 0;
 			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 		}
 
 		.nav {
-			flex-wrap: wrap;
-			gap: 12px 16px;
+			flex-wrap: nowrap;
+			gap: clamp(6px, 2vw, 12px);
+			padding: 0 12px;
 		}
 
 		.nav a {
-			font-size: 18px;
+			font-size: clamp(12px, 3.6vw, 16px);
 			line-height: 1.3;
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+			min-height: 44px;
 		}
 
 		.sep {
