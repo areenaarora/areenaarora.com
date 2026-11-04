@@ -12,6 +12,23 @@
       "autoPort": true
     },
     {
+      "name": "voyager",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/areena.arora/dev/th_dev/voyager",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5173",
+        "--host",
+        "127.0.0.1"
+      ],
+      "port": 5173,
+      "autoPort": false
+    },
+    {
       "name": "nepal",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
@@ -39,6 +56,21 @@
         "5175"
       ],
       "port": 5175,
+      "autoPort": false
+    },
+    {
+      "name": "voyager-build",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4174",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "/Users/areena.arora/dev/th_dev/voyager/build"
+      ],
+      "port": 4174,
       "autoPort": false
     }
   ]
