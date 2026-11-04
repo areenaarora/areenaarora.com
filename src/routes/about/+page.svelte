@@ -173,7 +173,7 @@
 					<li>
 						<a href="https://win98icons.alexmeub.com/" target="_blank" class="blue_links"
 							>Win98icons</a
-						> for well, the icons on the fun page.
+						> for the icons on the fun page.
 					</li>
 				</ul>
 			</div>

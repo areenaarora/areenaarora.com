@@ -118,7 +118,7 @@
 </script>
 
 <svelte:head>
-	<title>areena2pointO | A work in motion</title>
+	<title>areena2pointO | Areena Arora</title>
 	<meta name="robots" content="noindex, nofollow" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -127,7 +127,7 @@
 </svelte:head>
 
 <main class="wandering-page">
-	<div class="page-meta"><span>areena / 2.0</span><span><i></i> a work in motion</span></div>
+	<div class="page-meta"><span>areena / 2.0</span></div>
 	<section class="intro" aria-labelledby="page-title">
 		<h1 id="page-title">I've always had questions.<br /><span>I still do.</span></h1>
 		<p><span>I became a journalist to ask questions,</span><span>I'm now looking to take the same skills elsewhere, to a bigger playground.</span></p>
@@ -176,7 +176,7 @@
 	:global(body:has(.wandering-page)){background:#fff}
 	.wandering-page{max-width:1440px;margin:0 auto;padding:32px clamp(22px,5vw,76px) 40px;color:#262035;font-family:Arial,Helvetica,sans-serif}
 	.page-meta{display:flex;justify-content:space-between;gap:20px;font:12px/1.4 monospace;border-top:1px solid #e2daef;padding-top:16px}
-	.page-meta>span:first-child{font-size:15px;font-weight:bold;letter-spacing:-.05em;color:#783beb}.page-meta i{display:inline-block;width:6px;height:6px;background:#ed2590;margin-right:7px}
+	.page-meta>span:first-child{font-size:15px;font-weight:bold;letter-spacing:-.05em;color:#783beb}
 	.intro{display:grid;gap:28px;padding:54px 0 44px}
 	h1{font-size:clamp(44px,6.7vw,92px);font-weight:500;line-height:.98;letter-spacing:-.065em;margin:0}h1 span{color:#783beb}
 	.intro>p{font:17px/1.5 Georgia,serif;max-width:none;margin:0 0 5px}.intro>p span{display:block}
