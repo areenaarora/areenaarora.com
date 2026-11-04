@@ -130,7 +130,7 @@
 	<div class="page-meta"><span>areena / 2.0</span></div>
 	<section class="intro" aria-labelledby="page-title">
 		<h1 id="page-title">I've always had questions.<br /><span>I still do.</span></h1>
-		<p><span>I became a journalist to ask questions,</span><span>I'm now looking to take the same skills elsewhere, to a bigger playground.</span></p>
+		<p><span>I became a journalist to ask questions,</span><span>I'm now looking to take the same skills elsewhere, to a new playground.</span></p>
 	</section>
 	<section class="field" aria-label="An animated exploration of journalism, technology and AI">
 		<canvas bind:this={canvas} aria-hidden="true"></canvas>
