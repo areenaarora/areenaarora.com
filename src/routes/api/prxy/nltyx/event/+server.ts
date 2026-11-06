@@ -14,12 +14,8 @@ function vercelGeo(raw: string | null): string {
 }
 
 function errorResponse(
-	error:
-		| 'analytics_unavailable'
-		| 'analytics_misconfigured'
-		| 'analytics_rejected'
-		| 'analytics_oversized',
-	status: 400 | 413 | 503
+	error: 'analytics_unavailable' | 'analytics_misconfigured' | 'analytics_oversized',
+	status: 413 | 503
 ): Response {
 	console.warn(`[analytics] ${error}`);
 	return new Response(JSON.stringify({ error }), {
@@ -89,11 +85,17 @@ export const POST: RequestHandler = async ({ request }) => {
 			signal: AbortSignal.timeout(1500)
 		});
 
-		if (response.status !== 202) return errorResponse('analytics_rejected', 400);
-		return new Response(null, { status: 202 });
+		// The collector refuses bots, automation and shielded traffic on purpose.
+		// That is its decision, not the visitor's problem, so the page gets the
+		// same 202 the Cloudflare proxies give (they relay in the background and
+		// never wait for the answer). Before this, every refused bot visit printed
+		// a 400 in the browser console. The status is still logged here.
+		if (response.status !== 202) console.warn(`[analytics] relay answered ${response.status}`);
 	} catch {
-		return errorResponse('analytics_unavailable', 503);
+		// Same reasoning: a slow or unreachable collector is logged, not surfaced.
+		console.warn('[analytics] relay unreachable');
 	}
+	return new Response(null, { status: 202 });
 };
 
 export const GET: RequestHandler = async () =>
